@@ -1,9 +1,35 @@
-# Dorina Salman Authority Website
+# Dorina Salman — Authority Portal
 
-Static GitHub Pages website for the consolidated Dorina mental health management / workplace wellbeing authority package.
+A single-page execution portal for the consolidated mental health management / workplace wellbeing authority package. Static, no build step, no backend.
 
-Open `index.html`, then read `step-by-step-guide.html`.
+## Deploy to GitHub Pages
+Copy the contents of this folder to the repository root (or to `/docs` and point Pages at it). Nothing else is required.
 
-Boundary: non-clinical workplace wellbeing education / mental health literacy only.
+    index.html            the portal
+    support.js            runtime
+    portal/portal-data.js roadmap, decisions, calendar, workflow, workshop data
+    portal/docs-data.js   all 15 documents, converted from markdown
+    markdown/             the source-of-truth markdown
+    *.html                redirects from the old per-document pages
 
-Claude Design refinement: use `CLAUDE_DESIGN_UPLOAD_PROMPT.md` and upload the root HTML files, `assets/style.css`, and the `markdown/` folder.
+## Deep links
+    index.html#/map                     the twelve-month map
+    index.html#/library                 all documents
+    index.html#/doc/<slug>              one document
+    index.html#/decisions               the decisions hub
+    index.html#/pipeline                the approval workflow
+    index.html#/calendar                the twelve-month content calendar
+    index.html#/workshop                facilitator mode
+    index.html#/guardrails              the non-clinical boundary
+    index.html#/progress                progress, KPIs, export / import
+
+Every old page URL (`readme.html`, `premium-prompt-library.html`, …) redirects to its document in the portal, so existing links keep working.
+
+## Updating a document
+Edit the file in `markdown/`, then regenerate `portal/docs-data.js`. The portal reads only that file.
+
+## Storage
+Ticks, answers and content items are stored in the browser (`localStorage`, key `dorina-portal-v1`) on the device that made them. Nothing is transmitted. Progress &rarr; Export writes a JSON file that can be imported on another device.
+
+## Boundary
+Educational, non-clinical material only: workplace wellbeing, mental health literacy, stress literacy, burnout prevention, boundaries, routines, emotional organization and help-seeking. Not therapy, diagnosis, treatment, crisis support, or medical, legal or HR advice.
