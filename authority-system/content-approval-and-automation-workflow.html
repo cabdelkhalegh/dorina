@@ -1,0 +1,687 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Approval &amp; Automation Workflow — Dorina Mental Health Management Strategy</title><link rel="stylesheet" href="assets/style.css"></head><body><header><div class="head"><div style="display:flex;gap:12px;align-items:center"><div class="brand">DS</div><div><strong>Dorina Salman — Mental Health Management Authority</strong><div class="sub">Document 12 of 15 · Non-clinical workplace wellbeing strategy</div></div></div><div><a class="btn" href="index.html">All documents</a> <button class="btn gold" onclick="window.print()">Print / PDF</button></div></div></header><main><article class="doc"><h1 id="content-approval-automation-workflow-dorina-salman">Content Approval &amp; Automation Workflow — Dorina Salman</h1>
+<p><strong>Purpose:</strong> This document is the operating system for Dorina's content engine: a pipeline that lets drafting, design, and scheduling scale — with human help or AI assistance — while Dorina retains 100% control over everything that reaches the public. It defines the statuses, gates, checklists, rhythms, tools, logs, and emergency procedures that make three LinkedIn posts a week sustainable for a busy professional without ever compromising the non-clinical boundary or her voice. The absolute law of this workflow: <strong>nothing is published, scheduled-to-publish, or sent externally without Dorina's explicit approval of BOTH the final text AND the final graphic.</strong></p>
+<hr />
+<h2 id="1-operating-principles">1. Operating Principles</h2>
+<p>Five principles govern every decision in this workflow. When in doubt, resolve any conflict in the order listed — safety and approval always beat speed.</p>
+<ol>
+<li><strong>Approval-first, always.</strong> Automation and assistants accelerate <em>drafting, formatting, and scheduling of approved items only</em>. No tool, assistant, or "time-saving shortcut" ever publishes, schedules-to-publish, or sends anything externally that Dorina has not explicitly approved in both its final text and its final graphic. There is no exception for "small edits", "urgent posts", or "it's basically the same as last week's".</li>
+<li><strong>Draft fast, approve deliberately.</strong> Speed lives upstream. Ideas can be generated in bulk, drafts can be produced in minutes with AI assistance (see <code>PREMIUM_PROMPT_LIBRARY.md</code>), and visuals can be templated. The two approval gates are the only deliberately slow points in the pipeline — and that is by design. A post that misses its slot is a minor inconvenience; a post that misrepresents Dorina's non-clinical positioning is a reputational and ethical problem.</li>
+<li><strong>One calendar is the single source of truth.</strong> <code>12_MONTH_LINKEDIN_CONTENT_CALENDAR.md</code> (and its live working copy in the shared spreadsheet or board) is the only authoritative record of what is planned, for when, and in what status. If a post is not on the calendar, it does not exist. If two records disagree, the calendar wins and the discrepancy is fixed the same day.</li>
+<li><strong>Everything is auditable.</strong> Every item carries an ID from idea to archive. Every approval is dated and attributable. Every published post can be traced back to who drafted it, when the safety check ran, when Dorina approved text and visual, and when it went live. The approval log (Section 7) is not bureaucracy — it is Dorina's protection and her learning record.</li>
+<li><strong>Safety gates are non-negotiable and cannot be skipped — even when late.</strong> The automated boundary/fact check (P26 in <code>PREMIUM_PROMPT_LIBRARY.md</code>) plus a human read happen on every item, every time. If the pipeline is running behind, the correct response is to publish later or skip a slot — never to bypass a gate. A missed Tuesday post has zero long-term cost. A boundary breach can undo months of authority-building.</li>
+</ol>
+<p><strong>How to use this document:</strong></p>
+<ul>
+<li>Read Sections 1–4 in full before the first post moves through the pipeline; they are the constitution.</li>
+<li>Sections 5–7 are the day-to-day manual — print or pin the weekly rhythm table and the two gate checklists.</li>
+<li>Sections 8–9 are the "break glass" pages: skim them now, know where they are, and rehearse the STOP protocol once (Section 9.1) before any scheduling tool is adopted.</li>
+<li>Section 10 is for the monthly and quarterly sessions only.</li>
+<li>Wherever this document and a sibling document overlap, the more restrictive rule wins; where safety is concerned, <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code> always wins.</li>
+</ul>
+<hr />
+<h2 id="2-roles-permissions">2. Roles &amp; Permissions</h2>
+<p>The workflow defines four roles. At launch, Dorina plus one assistant (human, or Dorina working with her AI assistant) can hold all of them; the roles still matter because they define <em>which hat is being worn</em> at each step, and which combinations are never acceptable.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Held by</th>
+<th>May do</th>
+<th>May NEVER do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Approver &amp; Voice Owner</strong></td>
+<td>Dorina, and only Dorina</td>
+<td>Approve/reject text (Gate 1); approve/reject visuals (Gate 2); own the publish/schedule decision; edit anything at any stage; veto anything at any stage</td>
+<td>Delegate approval; pre-approve unseen future content ("approve the whole month sight unseen" is not approval)</td>
+</tr>
+<tr>
+<td><strong>Content Assistant</strong></td>
+<td>A human assistant, or Dorina/assistant working with an AI assistant</td>
+<td>Capture ideas; write briefs; draft posts using <code>PREMIUM_PROMPT_LIBRARY.md</code>; run the automated safety check; format approved text; load approved items into the scheduling tool; maintain the calendar and approval log</td>
+<td>Approve anything; edit text <em>after</em> Gate 1 approval without sending it back through Gate 1; touch the publish button on unapproved content; reply to sensitive/urgent inbound messages (Section 8)</td>
+</tr>
+<tr>
+<td><strong>Designer</strong></td>
+<td>A human designer, or an AI-assisted design step operated by the Content Assistant</td>
+<td>Produce visuals from approved text only; apply the brand look; write alt-text drafts</td>
+<td>Start design before Gate 1 text approval (wasted work and version-drift risk); alter approved wording to "fit the layout" without triggering a Gate 1 re-check</td>
+</tr>
+<tr>
+<td><strong>Safety Gate</strong></td>
+<td>Automated check (P26 boundary/fact compliance checker in <code>PREMIUM_PROMPT_LIBRARY.md</code>) <strong>plus</strong> one human eye</td>
+<td>Flag boundary violations, clinical drift, unsourced statistics, missing disclaimers; block progression to Gate 1 until issues are resolved</td>
+<td>Approve. A pass from the safety gate is a <em>precondition</em> for Dorina's review, never a substitute for it</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Acceptable role combinations:</strong></p>
+<ul>
+<li>Dorina may draft AND approve her own content. Approving her own words is the normal case, not a conflict — the safety gate still runs on everything, including Dorina's own drafts, because everyone (including the expert) occasionally drifts.</li>
+<li>One assistant may hold Content Assistant + Designer + safety-gate <em>operator</em> (running P26 and doing the human read) simultaneously.</li>
+<li><strong>An assistant may never approve.</strong> Not "approve small ones", not "approve reposts", not "approve while Dorina is travelling". If Dorina is unavailable, content waits. The calendar is built with enough lead time (Section 5) that a week of unavailability never creates pressure to break this rule.</li>
+<li>An AI assistant may hold no role beyond producing drafts, formats, checks, and summaries <em>for a human to act on</em>. AI output is always input to a human step, never a step of its own.</li>
+</ul>
+<hr />
+<h2 id="3-the-pipeline">3. The Pipeline</h2>
+<p>Every content item moves through eleven statuses. The two bold statuses are <strong>Dorina's gates</strong> — the only two points where an item acquires the right to move toward the public.</p>
+<p><strong>Happy path:</strong> IDEA → BRIEFED → DRAFTED → SAFETY-CHECKED → <strong>TEXT-APPROVED (Gate 1)</strong> → DESIGNED → <strong>VISUAL-APPROVED (Gate 2)</strong> → SCHEDULED → PUBLISHED → MEASURED → ARCHIVED</p>
+<p><strong>Rework loops:</strong> From Gate 1 or Gate 2, Dorina may return an item to <strong>REVISION-REQUESTED</strong>, with a note saying what to fix and which status it returns to.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Status</th>
+<th>Who acts</th>
+<th>"Done" means</th>
+<th>Max dwell time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>IDEA</strong></td>
+<td>Anyone (Dorina, assistant, AI-suggested from the calendar's monthly themes)</td>
+<td>Idea captured in the calendar/board with one line, a pillar tag (stress &amp; burnout literacy / systems &amp; boundaries / story &amp; advocacy / workplace culture &amp; managers), and a DESK Method (proposed) stage if relevant</td>
+<td>Open-ended; ideas can sit in the backlog indefinitely, but the backlog is pruned monthly</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>BRIEFED</strong></td>
+<td>Content Assistant</td>
+<td>Brief written: target post date, pillar, format (per <code>LINKEDIN_AUTHORITY_ENGINE.md</code>), key message, CTA rung, language(s) (EN / AR / bilingual), which prompt from <code>PREMIUM_PROMPT_LIBRARY.md</code> will be used</td>
+<td>2 weeks before target post date</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>DRAFTED</strong></td>
+<td>Content Assistant (AI-assisted drafting allowed and encouraged)</td>
+<td>Full text drafted in final language(s), disclaimer included where the brief requires it, hashtags and CTA written</td>
+<td>10 days before target post date</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>SAFETY-CHECKED</strong></td>
+<td>Safety Gate: P26 automated check + human read by the Content Assistant</td>
+<td>P26 run and result logged (pass, or issues fixed and re-run to pass); human eye confirms no clinical language, no statistics outside the four approved sources, no forbidden claims</td>
+<td>Within 24 hours of DRAFTED</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>TEXT-APPROVED (Gate 1)</strong></td>
+<td><strong>Dorina</strong></td>
+<td>Dorina has read the full final text (including Arabic text, hashtags, CTA, and disclaimer) against the Gate 1 checklist (Section 4) and explicitly approved it in writing (a dated "Approved" in the calendar/log). Or: REVISION-REQUESTED with a note → back to DRAFTED</td>
+<td>Dorina reviews within her Sunday batch (Section 5); items should reach this gate ≥7 days before target date</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>DESIGNED</strong></td>
+<td>Designer (human or AI-assisted step)</td>
+<td>Visual produced from the <em>approved</em> text, in the brand look, correct dimensions for LinkedIn, alt-text drafted</td>
+<td>5 days before target post date</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>VISUAL-APPROVED (Gate 2)</strong></td>
+<td><strong>Dorina</strong></td>
+<td>Dorina has seen the final graphic at actual size (including a phone-screen check) against the Gate 2 checklist (Section 4) and explicitly approved it in writing. Or: REVISION-REQUESTED with a note → back to DESIGNED (or to DRAFTED if the text itself needs changing — which then re-triggers Gate 1)</td>
+<td>Same Sunday batch; ≥3 days before target date</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>SCHEDULED</strong></td>
+<td>Content Assistant</td>
+<td>The doubly-approved item (text + visual, exactly as approved, byte-for-byte) is loaded into the scheduling tool or the manual-posting checklist, with date/time per <code>LINKEDIN_AUTHORITY_ENGINE.md</code> posting windows</td>
+<td>Loaded within 48 hours of Gate 2 approval</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>PUBLISHED</strong></td>
+<td>Scheduling tool fires, or assistant posts manually; assistant verifies the post is live and correct within 2 hours of the slot</td>
+<td>Live post matches the approved version exactly; URL captured in the log</td>
+<td>—</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>MEASURED</strong></td>
+<td>Content Assistant</td>
+<td>KPIs per <code>LINKEDIN_AUTHORITY_ENGINE.md</code> recorded at day 7 (impressions, engagements, comments, profile actions as available)</td>
+<td>Day 7 after publishing</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>ARCHIVED</strong></td>
+<td>Content Assistant</td>
+<td>Final text, final visual, metrics, and log entry stored in the shared folder archive; strong performers tagged for the reuse/repurposing pool</td>
+<td>End of the month</td>
+</tr>
+<tr>
+<td>—</td>
+<td><strong>REVISION-REQUESTED</strong></td>
+<td>Content Assistant / Designer act on Dorina's note</td>
+<td>The specific issues Dorina flagged are fixed; the item re-enters at the status Dorina specified (DRAFTED items re-run the safety check before returning to Gate 1)</td>
+<td>72 hours per rework loop</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three rules that keep the pipeline honest:</strong></p>
+<ol>
+<li><strong>No skipping.</strong> An item may never jump a status. In particular: nothing enters DESIGNED without a dated Gate 1 approval, and nothing enters SCHEDULED without a dated Gate 2 approval.</li>
+<li><strong>Any change resets the gate.</strong> If text changes after Gate 1 — even one word, even "just the hashtag" — the item goes back through SAFETY-CHECKED and Gate 1. If a visual changes after Gate 2, it goes back through Gate 2. Approval attaches to an exact version, not to an item in general.</li>
+<li><strong>Dwell-time breaches degrade gracefully.</strong> If an item misses a dwell target, the fallback is: move it to a later slot, or promote a ready evergreen item from the approved reserve (Section 5). The fallback is never "compress the gates".</li>
+</ol>
+<h3 id="a-worked-example-one-post-end-to-end">A worked example — one post, end to end</h3>
+<p>To make the pipeline concrete, here is a typical item's journey (dates illustrative):</p>
+<ol>
+<li><strong>IDEA (Sept 1).</strong> The calendar's September theme includes a systems &amp; boundaries post. The assistant logs <code>DS-2026-09-004</code>: "The meeting-free hour — one small boundary that survives a busy week", pillar: systems &amp; boundaries, DESK stage: Establish.</li>
+<li><strong>BRIEFED (Sept 3).</strong> Brief written: target date Tuesday Sept 15, bilingual (EN body, AR pull-quote on the visual), text-plus-graphic format, CTA rung: soft ("What's the smallest boundary that has actually held for you?"), drafting prompt selected from <code>PREMIUM_PROMPT_LIBRARY.md</code>.</li>
+<li><strong>DRAFTED (Sept 5).</strong> The assistant produces the draft with AI assistance, including hashtags and the Arabic pull-quote. No statistics are needed for this post, so no source citations arise; the disclaimer is not required per the brief (a pure how-to post, no distress content).</li>
+<li><strong>SAFETY-CHECKED (Sept 6).</strong> P26 is run: PASS. The assistant's human read confirms no clinical drift; result and date logged.</li>
+<li><strong>TEXT-APPROVED — Gate 1 (Sunday Sept 6).</strong> In the batch session, Dorina reads the full text against the Gate 1 checklist. She tightens one sentence herself (owner-edits at the gate are fine — the approved version is what she signs off). "TEXT-APPROVED — 06 Sep — DS" goes into the log.</li>
+<li><strong>DESIGNED (Sept 8).</strong> The designer builds the graphic from the approved text: the Arabic pull-quote, brand colors, alt-text drafted. File saved as <code>DS-2026-09-004_APPROVED-pending-visual</code>.</li>
+<li><strong>VISUAL-APPROVED — Gate 2 (Sunday Sept 13).</strong> Dorina checks the graphic at phone size, verifies her name in both scripts and the exact match of the pull-quote to the approved text. "VISUAL-APPROVED — 13 Sep — DS" logged.</li>
+<li><strong>SCHEDULED (Sept 13).</strong> The assistant loads the doubly-approved item for Tuesday Sept 15, 8:30 a.m. per the posting windows in <code>LINKEDIN_AUTHORITY_ENGINE.md</code>.</li>
+<li><strong>PUBLISHED (Sept 15).</strong> The post goes live; the assistant verifies it within two hours and pastes the URL into the log.</li>
+<li><strong>MEASURED (Sept 22).</strong> Day-7 KPIs recorded. The post over-performs on comments; the assistant tags it "strong — boundary micro-habit angle" for the retro.</li>
+<li><strong>ARCHIVED (end of Sept).</strong> Final text, final visual, metrics, and notes stored under the item ID; the angle is flagged for the repurposing pool.</li>
+</ol>
+<p>Total Dorina time on this item: roughly ten minutes across two Sunday sessions. That is the whole point of the pipeline — her attention is spent only at the two moments where it is irreplaceable.</p>
+<hr />
+<h2 id="4-approval-checklists-use-verbatim-at-each-gate">4. Approval Checklists (Use Verbatim at Each Gate)</h2>
+<p>These are Dorina's working checklists. They should be pasted into the calendar/board as checklist fields so each approval is a matter of ticking through, not remembering.</p>
+<h3 id="41-gate-1-text-approval-checklist-dorina-before-any-design-work-starts">4.1 Gate 1 — Text Approval Checklist (Dorina, before any design work starts)</h3>
+<p>Approve only when every line is a yes:</p>
+<ul>
+<li>[ ] <strong>Voice match.</strong> This sounds like me — warm, direct, practical, educator-not-lecturer. I would say this sentence out loud to a room of Lebanese professionals.</li>
+<li>[ ] <strong>Pillar fit.</strong> The post clearly belongs to one of my four pillars (stress &amp; burnout literacy, systems &amp; boundaries, story &amp; advocacy, workplace culture &amp; managers) and, where relevant, maps cleanly to a DESK Method (proposed) stage (Detect, Establish, Support, Keep) without forcing it.</li>
+<li>[ ] <strong>Boundary compliance.</strong> Zero clinical positioning. No language from the prohibited list in <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>: nothing that diagnoses, treats, promises therapeutic outcomes, or frames me as a therapist/psychologist/counselor/clinician. Educator and advocate only.</li>
+<li>[ ] <strong>Facts from the four sources only.</strong> Every statistic and factual claim traces to the WHO mental health at work fact sheet, the WHO "strengthening our response" fact sheet, the Lebanon MoPH National Mental Health Programme page, or the WHO World Mental Health Day page — and is stated accurately. If a number appears and I cannot name its source from those four, the post fails.</li>
+<li>[ ] <strong>P26 safety check logged as PASS</strong>, dated, before this text reached me. (If there is no logged pass, I stop here and send it back — not because the text is necessarily wrong, but because the gate order is the system.)</li>
+<li>[ ] <strong>Arabic accuracy and register</strong> (for Arabic or bilingual posts). The Arabic is correct, natural, and in the right register for Lebanese professional readers — not a stiff literal translation of the English. Names, terms, and the DESK Method (proposed) rendering are consistent with previous approved posts.</li>
+<li>[ ] <strong>Disclaimer present where needed.</strong> Any post touching personal struggle, symptoms, or distress carries the standing short-form disclaimer: <em>"Educational content on workplace wellbeing — not therapy, diagnosis, or crisis support. If you're struggling, please reach a qualified professional; in an emergency, contact local emergency services."</em> Pure how-to/culture posts may omit it per the rules in <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>.</li>
+<li>[ ] <strong>CTA matches the authority-ladder rung.</strong> The ask is appropriate to where my audience currently is on the ladder in <code>LINKEDIN_AUTHORITY_ENGINE.md</code> — no premature selling, no mismatch between a soft educational post and a hard commercial ask.</li>
+<li>[ ] <strong>No forbidden claims.</strong> No outcome guarantees ("this will eliminate your burnout"), no cure/fix framing, no implied clinical results, no exaggeration of my credentials, and no unnamed-but-identifiable stories about real workplaces or people without consent.</li>
+<li>[ ] <strong>Practical read-through.</strong> Hook works in the first two lines; length and formatting suit LinkedIn; hashtags are the approved set; the target date and time still make sense.</li>
+</ul>
+<p><strong>Decision:</strong> write "TEXT-APPROVED — [date] — [initials]" in the log, or "REVISION-REQUESTED — [date] — [what to fix]".</p>
+<h3 id="42-gate-2-visual-approval-checklist-dorina-before-anything-is-scheduled">4.2 Gate 2 — Visual Approval Checklist (Dorina, before anything is scheduled)</h3>
+<p>Approve only when every line is a yes:</p>
+<ul>
+<li>[ ] <strong>My name is spelled correctly</strong> in English (Dorina Salman) and, where it appears, in Arabic — checked character by character, in every place it appears on the graphic.</li>
+<li>[ ] <strong>Text-on-image matches the approved text exactly.</strong> Any quote, statistic, headline, or phrase on the graphic is identical to the Gate 1–approved wording. No paraphrasing by the design step. (If the designer needed to shorten a line, the shortened line came back through me.)</li>
+<li>[ ] <strong>Readable on mobile.</strong> I have viewed the graphic at phone size. Every word is legible without zooming; Arabic text renders correctly (right-to-left, correct letter joining, no broken glyphs).</li>
+<li>[ ] <strong>Brand look.</strong> Colors, fonts, and layout match my brand kit; the visual would sit comfortably next to my last ten posts in the profile grid.</li>
+<li>[ ] <strong>Alt-text written</strong> and accurate — it describes the image and includes any text shown on it, in the post's language(s).</li>
+<li>[ ] <strong>Dignified imagery — no stocky clichés.</strong> No head-clutching, no dark-storm-cloud-over-silhouette, no dramatic despair imagery. My visual language is calm, respectful, and hopeful: real workplaces, clean typography, light, steady colors. People experiencing stress are portrayed (if at all) with dignity, never as broken.</li>
+<li>[ ] <strong>Disclaimer/attribution placement</strong> (where the format requires it) is present and legible but not dominating.</li>
+<li>[ ] <strong>Technical check.</strong> Correct dimensions for the LinkedIn format, no compression artifacts, file named with the item ID.</li>
+</ul>
+<p><strong>Decision:</strong> write "VISUAL-APPROVED — [date] — [initials]" in the log, or "REVISION-REQUESTED — [date] — [what to fix] — [returns to DESIGNED or DRAFTED]".</p>
+<h3 id="43-quick-reference-the-most-common-rejection-reasons-train-the-upstream-steps-on-these">4.3 Quick reference — the most common rejection reasons (train the upstream steps on these)</h3>
+<p>These lists exist so the assistant and designer can self-check before an item ever reaches Dorina, keeping her gate time short.</p>
+<p><strong>Most common Gate 1 rejections to pre-empt:</strong></p>
+<ul>
+<li>Sounds like generic wellbeing content — could have been written by anyone; missing Dorina's specificity, Lebanese workplace context, or DESK Method (proposed) anchoring.</li>
+<li>A statistic slipped in from outside the four approved sources (often via AI drafting — this is exactly what P26 exists to catch, and why the human read backs it up).</li>
+<li>Clinical drift in single words: "symptoms", "treat", "heal", "diagnose", "therapy-adjacent" phrasing used loosely. See the prohibited list in <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>.</li>
+<li>CTA too heavy for the post's rung — an educational post ending in a hard commercial ask.</li>
+<li>Arabic register off — technically correct but stiff, or a term rendered inconsistently with earlier posts.</li>
+<li>Missing disclaimer on a post that brushes personal struggle.</li>
+</ul>
+<p><strong>Most common Gate 2 rejections to pre-empt:</strong></p>
+<ul>
+<li>Text on the graphic paraphrases (rather than reproduces) the approved wording.</li>
+<li>Arabic rendering broken by the design tool: disconnected letters, wrong direction, flipped punctuation.</li>
+<li>Type too small for a phone screen, or low contrast against the background.</li>
+<li>A stock image that dramatizes distress — the head-in-hands cliché in any variation.</li>
+<li>Alt-text missing, or written for the wrong language version.</li>
+</ul>
+<hr />
+<h2 id="5-weekly-operating-rhythm">5. Weekly Operating Rhythm</h2>
+<p>This rhythm assumes a busy professional with roughly 2.5–3 focused hours per week for content operations. The pipeline's lead times (Section 3) exist precisely so this rhythm never becomes frantic.</p>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>Duration</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sunday</strong></td>
+<td>60–90 min</td>
+<td><strong>Batch approval session.</strong> Dorina reviews next week's three posts: runs Gate 1 on any texts waiting, runs Gate 2 on any visuals waiting, writes revision notes for anything not approved. Target output: all three of next week's posts doubly approved and handed to SCHEDULED. Then a 10-minute look one week further ahead to unblock briefs and drafts early.</td>
+</tr>
+<tr>
+<td><strong>Mon–Fri (daily)</strong></td>
+<td>15 min</td>
+<td><strong>Engagement window</strong> per <code>LINKEDIN_AUTHORITY_ENGINE.md</code>: reply to routine comments on recent posts, engage with target-audience content, note any inbound message that needs triage (Section 8). This is the one daily touch; everything else is batched.</td>
+</tr>
+<tr>
+<td><strong>Friday</strong></td>
+<td>15 min</td>
+<td><strong>Metrics glance.</strong> Content Assistant (or Dorina) records day-7 KPIs for posts due for measurement, flags anything unusual (a breakout post, an underperformer, a comment thread that needs Dorina personally). No deep analysis — that is monthly.</td>
+</tr>
+<tr>
+<td><strong>Monthly</strong> (first Sunday, extending the batch session)</td>
+<td>90 min</td>
+<td><strong>Calendar planning session</strong> using <code>12_MONTH_LINKEDIN_CONTENT_CALENDAR.md</code>: confirm next month's themes and post briefs, prune the idea backlog, review the monthly retro (Section 10), adjust briefs based on what the metrics said.</td>
+</tr>
+<tr>
+<td><strong>Quarterly</strong></td>
+<td>Half a day</td>
+<td><strong>Strategy review</strong>: pillars balance vs the 30/30/25/15 target, authority-ladder progress, KPI trends vs <code>LINKEDIN_AUTHORITY_ENGINE.md</code> targets, whether to change tooling level (Section 6), and a read-through of this workflow document for updates (Section 10).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The evergreen reserve.</strong> The Content Assistant maintains 3–5 fully doubly-approved, non-time-sensitive posts as a reserve. When travel, illness, or a heavy work week breaks the rhythm, the reserve fills slots without any pressure to rush a gate. The reserve is replenished during normal Sunday sessions, never as an emergency scramble. Reserve items are re-glanced by Dorina before use if they are more than a quarter old (context can shift).</p>
+<p><strong>If Dorina cannot do the Sunday session:</strong> the week's unapproved items simply do not publish. Reserve items (already approved) may run instead, or slots go quiet. An empty slot is always acceptable; a bypassed gate never is.</p>
+<h3 id="suggested-sunday-session-agenda-75-minutes">Suggested Sunday session agenda (75 minutes)</h3>
+<table>
+<thead>
+<tr>
+<th>Minutes</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td>Open the calendar/board; confirm which items are waiting at each gate; scheduling-tool reconciliation check if at Level 3 (queue vs approval log, line by line)</td>
+</tr>
+<tr>
+<td>5–35</td>
+<td><strong>Gate 1 pass:</strong> read each waiting text in full against the checklist; approve, owner-edit-and-approve, or write a revision note. Three posts typically take 8–10 minutes each</td>
+</tr>
+<tr>
+<td>35–55</td>
+<td><strong>Gate 2 pass:</strong> review each waiting visual at desktop and phone size against the checklist; approve or write a revision note</td>
+</tr>
+<tr>
+<td>55–65</td>
+<td>Confirm next week's slots are fully covered (doubly-approved or reserve-backed); flag any gaps to the assistant</td>
+</tr>
+<tr>
+<td>65–75</td>
+<td>Look one week further ahead: unblock briefs, answer the assistant's open questions, top up the evergreen reserve if a slot in the session remains</td>
+</tr>
+</tbody>
+</table>
+<p>The session works best as a protected, recurring calendar block with notifications off. If it routinely overruns 90 minutes, that is a signal to raise at the next quarterly review — usually it means drafts are arriving at the gate under-cooked, which is a prompt-library or briefing problem, not a Dorina problem.</p>
+<hr />
+<h2 id="6-tooling-patterns-tools-agnostic">6. Tooling Patterns (Tools-Agnostic)</h2>
+<p>The workflow runs identically at three implementation levels. Start at Level 1; move up only when a migration trigger fires. No tool is ever named here on purpose — any product in each generic category works, and switching products never changes the workflow.</p>
+<h3 id="level-1-minimal-shared-spreadsheet-cloud-folder-manual-posting">Level 1 — Minimal: shared spreadsheet + cloud folder + manual posting</h3>
+<p>The right starting point for Dorina + one assistant. Total tool cost: usually zero.</p>
+<ul>
+<li><strong>A shared spreadsheet</strong> is the calendar, the pipeline tracker, and the approval log in one. One row per content item, with these columns:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item ID</td>
+<td>Sequential, e.g., <code>DS-2026-09-001</code></td>
+</tr>
+<tr>
+<td>Target date &amp; slot</td>
+<td>Per the calendar</td>
+</tr>
+<tr>
+<td>Pillar</td>
+<td>One of the four pillars</td>
+</tr>
+<tr>
+<td>DESK stage</td>
+<td>Detect / Establish / Support / Keep / n/a</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>EN / AR / bilingual</td>
+</tr>
+<tr>
+<td>Format &amp; CTA rung</td>
+<td>Per <code>LINKEDIN_AUTHORITY_ENGINE.md</code></td>
+</tr>
+<tr>
+<td>Status</td>
+<td>One of the eleven pipeline statuses (data-validated dropdown)</td>
+</tr>
+<tr>
+<td>Drafter</td>
+<td>Who/what produced the draft</td>
+</tr>
+<tr>
+<td>Safety check (P26)</td>
+<td>PASS + date, or issue summary</td>
+</tr>
+<tr>
+<td>Text approved</td>
+<td>Date + Dorina's initials (blank until Gate 1)</td>
+</tr>
+<tr>
+<td>Visual approved</td>
+<td>Date + Dorina's initials (blank until Gate 2)</td>
+</tr>
+<tr>
+<td>Scheduled for</td>
+<td>Confirmed date/time</td>
+</tr>
+<tr>
+<td>Published URL</td>
+<td>Filled after go-live verification</td>
+</tr>
+<tr>
+<td>Day-7 metrics</td>
+<td>Impressions / engagements / comments / profile actions</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Revision notes, learnings, incident references</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>A shared cloud folder</strong> holds one subfolder per item ID containing the brief, draft versions, the approved final text (clearly named <code>APPROVED-TEXT</code>), design files, and the approved final graphic (<code>APPROVED-VISUAL</code>). Only files with the <code>APPROVED-</code> prefix may ever be posted.</li>
+<li><strong>Manual posting</strong> follows this exact checklist every time (pin it wherever the assistant works):</li>
+</ul>
+<ol>
+<li>Open the item's row in the spreadsheet; confirm both approval dates are present. If either is blank, stop — do not post, message Dorina.</li>
+<li>Open the item's folder; use only the files prefixed <code>APPROVED-</code>.</li>
+<li>Copy the approved text exactly — no re-typing, no "quick improvements", no hashtag adjustments.</li>
+<li>Attach the approved visual; paste the approved alt-text into the platform's alt-text field.</li>
+<li>Post at the scheduled time (±15 minutes is fine).</li>
+<li>View the live post; check text, image, and alt-text against the approved files.</li>
+<li>Paste the URL and actual publish time into the spreadsheet; move status to PUBLISHED.</li>
+</ol>
+<h3 id="level-2-board-a-kanban-board-mirroring-the-statuses">Level 2 — Board: a kanban board mirroring the statuses</h3>
+<p>Add when volume or collaborators grow. <strong>A kanban board</strong> (any product) with one column per pipeline status, one card per item. Cards carry the checklists from Section 4 as tick-lists, and the two gate columns are configured so that only Dorina moves cards out of them (by convention if the tool cannot enforce it technically). The spreadsheet remains as the approval log and metrics record; the board is the live status view. Board and spreadsheet are reconciled in the Friday 15-minute slot.</p>
+<h3 id="level-3-assisted-ai-drafting-scheduling-tool-for-approved-items-only">Level 3 — Assisted: AI drafting + scheduling tool for approved items only</h3>
+<p>Add when the rhythm is stable and both gates have run cleanly for at least a quarter.</p>
+<ul>
+<li><strong>AI-assisted drafting</strong> at scale using <code>PREMIUM_PROMPT_LIBRARY.md</code>: batch-drafting a month of posts from the calendar briefs, batch-running the P26 safety check, drafting alt-text and Arabic/English parallel versions. All AI output enters the pipeline at DRAFTED — never later.</li>
+<li><strong>A scheduling tool</strong> holds <em>only</em> doubly-approved items. The rule: the scheduling tool is a delivery mechanism for approved content, never a content source and never an approval surface.</li>
+<li><strong>The weekly reconciliation rule (mandatory at Level 3):</strong> every week, in the Sunday session, the scheduling tool's queue is checked line-by-line against the approval log. Anything in the queue without a matching Gate 2 approval date is removed immediately, no discussion. This 5-minute check is the price of using a scheduler, and it is non-negotiable.</li>
+</ul>
+<h3 id="migration-triggers">Migration triggers</h3>
+<table>
+<thead>
+<tr>
+<th>Move</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level 1 → 2</td>
+<td>More than ~6 items in flight at once, or a second collaborator joins, or status confusion causes a missed dwell time twice in a month</td>
+</tr>
+<tr>
+<td>Level 2 → 3</td>
+<td>Three consecutive months of on-rhythm publishing with zero gate bypass incidents, and Sunday sessions consistently finishing with approved reserve to spare</td>
+</tr>
+<tr>
+<td>Any level → one level down</td>
+<td>Any incident where unapproved content nearly (or actually) reached the public; drop back, run the emergency procedures in Section 9, and re-earn the higher level</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-approval-log-audit">7. Approval Log &amp; Audit</h2>
+<p>The approval log is the permanent, append-only record of every item's journey. At Level 1 it lives in the spreadsheet (the columns above already contain it); at Levels 2–3 the spreadsheet remains the canonical log even if the board shows live status.</p>
+<p><strong>Log specification — one row per item, these fields are mandatory:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item ID</td>
+<td>Never reused, never renumbered</td>
+</tr>
+<tr>
+<td>Date drafted</td>
+<td>And drafter (person, or "assistant + AI-assisted")</td>
+</tr>
+<tr>
+<td>Safety-check result</td>
+<td>PASS/FAIL + date + one line on any issue fixed</td>
+</tr>
+<tr>
+<td>Text-approval date</td>
+<td>Gate 1 — date + Dorina's initials; a revision loop adds a new dated entry, it never overwrites the old one</td>
+</tr>
+<tr>
+<td>Visual-approval date</td>
+<td>Gate 2 — same convention</td>
+</tr>
+<tr>
+<td>Publish date &amp; time</td>
+<td>Actual, not planned</td>
+</tr>
+<tr>
+<td>Published URL</td>
+<td>Captured at go-live verification</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Revision reasons, incidents, standout learnings, take-down/correction references (Section 9)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why the log matters:</strong></p>
+<ol>
+<li><strong>Trust.</strong> It is the operational proof of the promise this whole package makes: Dorina personally approved everything in her name. If a client, partner, or institution ever asks "who writes your content?", the honest answer — "it's drafted with help, and I approve every word and every image" — is backed by dated evidence.</li>
+<li><strong>Dispute-proofing.</strong> If a post is ever challenged (a quoted statistic questioned, a phrase criticized, a claimed boundary breach), the log shows exactly which source the fact came from, when the safety check passed, and when Dorina approved it. In a field as sensitive as mental health literacy, being able to reconstruct any decision is not optional.</li>
+<li><strong>The learning loop.</strong> The log joined with day-7 metrics is the raw material for the monthly retro (Section 10): which pillars, formats, languages, and CTA rungs actually perform. Without the log, the retro runs on impressions and memory; with it, it runs on data.</li>
+</ol>
+<p><strong>Example log row (illustrative):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item ID</th>
+<th>Drafted</th>
+<th>Drafter</th>
+<th>P26</th>
+<th>Text appr.</th>
+<th>Visual appr.</th>
+<th>Published</th>
+<th>URL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DS-2026-09-004</td>
+<td>05 Sep</td>
+<td>Assistant + AI-assisted</td>
+<td>PASS 06 Sep</td>
+<td>06 Sep — DS</td>
+<td>13 Sep — DS</td>
+<td>15 Sep 08:32</td>
+<td>[link]</td>
+<td>Gate 1 owner-edit to closing line; strong comment performance — boundary micro-habit angle tagged for reuse</td>
+</tr>
+</tbody>
+</table>
+<p>The log is never edited retroactively except to fix a typo in a note — and even then, corrections are added, not overwritten. Archive a copy of the log quarterly to the cloud folder.</p>
+<hr />
+<h2 id="8-inbound-interaction-workflow-comments-dms">8. Inbound Interaction Workflow (Comments &amp; DMs)</h2>
+<p>Publishing is only half the surface area. Every comment and direct message is triaged into one of the three categories defined by the P27 inbound crisis-content detector in <code>PREMIUM_PROMPT_LIBRARY.md</code>. P27 (or the human applying its criteria manually at Level 1) is a <em>sorting</em> aid — it routes messages; it never answers them.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Definition (per P27)</th>
+<th>Who replies</th>
+<th>Response-time target</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Routine</strong></td>
+<td>Professional engagement: agreement, questions about content, sharing experiences at a general level, networking, speaking/workshop inquiries</td>
+<td>Content Assistant may draft; Dorina reviews and sends, or sends directly. Simple thank-you/acknowledgment replies on posts may be handled by the assistant in Dorina's established voice</td>
+<td>Comments: within 24h (engagement window); DMs: within 48h</td>
+<td>Normal warm, professional replies</td>
+</tr>
+<tr>
+<td><strong>Sensitive</strong></td>
+<td>Personal disclosure of struggle, distress, or a difficult workplace mental-health situation — without indications of immediate danger</td>
+<td><strong>Dorina only.</strong> Never delegated to the assistant, never to automation</td>
+<td>Within 24h</td>
+<td>Only the sensitive-disclosure signposting templates from <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>: acknowledge with warmth, restate the non-clinical boundary, signpost to qualified professional support. No advice, no assessment, no ongoing supportive correspondence</td>
+</tr>
+<tr>
+<td><strong>Urgent-signpost</strong></td>
+<td>Any indication of crisis, immediate risk, or acute danger to self or others</td>
+<td><strong>Dorina personally</strong>, same day — and if she is unreachable, the assistant sends the verbatim urgent template with zero modification and flags Dorina immediately</td>
+<td>Same day — as fast as humanly possible</td>
+<td>Only the verbatim urgent template from <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>, which signposts to emergency services and to [TO VERIFY before use: current national emotional-support helpline number — check the Ministry of Public Health / National Mental Health Programme site]. Nothing is added, nothing improvised</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hard rules for inbound:</strong></p>
+<ul>
+<li><strong>Sensitive and urgent replies are never automated and never AI-generated.</strong> No auto-replies, no AI-drafted responses to a person in distress, no "smart" chatbot on any channel. The templates exist so that the human response is fast <em>and</em> safe.</li>
+<li>Every sensitive or urgent interaction is logged (date, category, template used, outcome) in a private incidents tab per <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code> — separate from the public content log, minimal in personal detail.</li>
+<li>The assistant's triage instinct is set to caution: when in doubt between routine and sensitive, treat as sensitive; between sensitive and urgent, treat as urgent.</li>
+<li>Public crisis-adjacent comments on posts get the short public signpost reply (from the templates) plus, where appropriate, a move to private only per the protocol — never a public back-and-forth about someone's personal situation.</li>
+</ul>
+<p><strong>Daily triage flow (fits inside the 15-minute engagement window):</strong></p>
+<ol>
+<li>Sweep new comments and DMs across channels.</li>
+<li>Sort each into routine / sensitive / urgent-signpost, applying the P27 criteria (automated pre-sort at Level 3; manual at Levels 1–2 using the same criteria).</li>
+<li>Handle routine items immediately within the window.</li>
+<li>Flag sensitive items to Dorina the same day with a link and the recommended template from <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code>.</li>
+<li>For anything urgent-signpost: interrupt Dorina immediately through the agreed reachability channel; if she is unreachable within the agreed window, send the verbatim urgent template, then log and brief her as soon as she is available.</li>
+<li>Log every sensitive/urgent interaction in the private incidents tab before closing the window.</li>
+</ol>
+<hr />
+<h2 id="9-emergency-procedures">9. Emergency Procedures</h2>
+<p>Three procedures, written down now so nobody has to invent them under stress.</p>
+<h3 id="91-the-stop-protocol-pause-everything-in-one-action">9.1 The STOP protocol — pause everything in one action</h3>
+<p>Trigger: anything that makes Dorina say "I don't want anything going out right now" — a suspected error in queued content, a personal emergency, a breaking situation, a discovered gate bypass. Anyone on the team may <em>call</em> STOP; only Dorina <em>lifts</em> it.</p>
+<table>
+<thead>
+<tr>
+<th>Tooling level</th>
+<th>How STOP executes (target: under 5 minutes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Level 1 (manual posting)</td>
+<td>Message the assistant: "STOP — nothing posts until I say so." Mark the spreadsheet's status column header with a STOP flag. Since nothing posts without a human hand, the pause is inherently immediate</td>
+</tr>
+<tr>
+<td>Level 2 (board)</td>
+<td>Same message + drag every SCHEDULED card into a frozen "ON HOLD" column so the live view shows the pause</td>
+</tr>
+<tr>
+<td>Level 3 (scheduler)</td>
+<td><strong>First action: pause or clear the scheduling tool's entire queue</strong> (every scheduling tool has a pause-all or bulk-unschedule; the assistant must know where it is <em>before</em> Level 3 goes live — practicing this once is part of Level 3 onboarding). Then flag board and spreadsheet as above</td>
+</tr>
+</tbody>
+</table>
+<p>After STOP: nothing resumes until Dorina reviews the queue item-by-item and explicitly lifts the hold. Resumption is logged with date, reviewer, and a one-line reason for the original stop.</p>
+<p><strong>The STOP drill.</strong> Once, before the first scheduled post ever goes live at Level 3 (and again whenever the scheduling tool changes), the team runs a five-minute drill: call STOP, execute the pause, time it, and confirm the queue is verifiably empty or frozen. A protocol nobody has rehearsed is a document, not a capability.</p>
+<h3 id="92-take-down-correction-protocol-a-published-mistake">9.2 Take-down / correction protocol — a published mistake</h3>
+<p>When an error is found in a live post, the assistant screenshots it immediately (evidence for the log), then Dorina chooses the response by severity:</p>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Example</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cosmetic</td>
+<td>Typo, formatting glitch, broken hashtag</td>
+<td><strong>Edit</strong> the post quietly; note in the log</td>
+</tr>
+<tr>
+<td>Substantive but not harmful</td>
+<td>A fact stated imprecisely, a wrong date, an attribution slip</td>
+<td><strong>Edit</strong> the post <em>and</em> add a brief <strong>correction comment</strong> ("Corrected: …") — transparency builds authority rather than undermining it; note in the log</td>
+</tr>
+<tr>
+<td>Boundary-relevant or potentially harmful</td>
+<td>Clinical-sounding phrasing, a statistic not from the four sources, a missing disclaimer on a sensitive post, an identifiable story without consent</td>
+<td><strong>Delete</strong> the post promptly. If it had meaningful reach, publish a short, calm correction/clarification post (which itself goes through both gates — an expedited same-day pass is allowed, but the gates still run). Log fully as an incident</td>
+</tr>
+<tr>
+<td>Someone may have been affected</td>
+<td>The post caused visible distress in comments, or a person/organization is identifiable and aggrieved</td>
+<td>Delete, correct publicly as above, and <strong>notify directly</strong>: Dorina personally reaches the affected person/organization with a straightforward apology. Consult <code>RISK_ETHICS_AND_REFERRAL_PROTOCOL.md</code> for tone and boundaries of that outreach</td>
+</tr>
+</tbody>
+</table>
+<p>Every take-down or correction triggers a root-cause note in the next monthly retro: which gate should have caught it, and what checklist line or prompt needs updating (Section 10).</p>
+<h3 id="93-crisis-adjacent-pause-rule">9.3 Crisis-adjacent pause rule</h3>
+<p>If a major tragic public event occurs in Lebanon (or one that directly affects Dorina's audience), the default is: <strong>STOP protocol on all scheduled promotional and light-toned content immediately</strong> — do not let a cheerful pre-scheduled post publish into a national moment of grief. Then, within 24–48 hours, Dorina reviews the queue: some educational items may be appropriate or even valuable (calm, supportive literacy content often is); anything promotional, celebratory, or tonally jarring is postponed. Resumption is a deliberate, dated decision by Dorina, and the first post back is reviewed specifically for tone against the moment. This rule is exactly why a scheduler must never run unattended for long stretches — the weekly reconciliation (Section 6) doubles as the "does this queue still fit the world?" check.</p>
+<hr />
+<h2 id="10-quality-learning-loop">10. Quality &amp; Learning Loop</h2>
+<p>The workflow improves itself on a fixed cadence, using its own records.</p>
+<p><strong>Monthly content retro (inside the 90-minute planning session, ~20 minutes):</strong></p>
+<ul>
+<li>Pull the month's day-7 metrics from the log and compare against the KPI targets in <code>LINKEDIN_AUTHORITY_ENGINE.md</code>.</li>
+<li>Identify the top and bottom two posts. For each: which pillar, format, language, hook style, CTA rung? Write one sentence of hypothesis per post in the log's notes.</li>
+<li>Check pillar balance actually published vs the 30/30/25/15 target and correct next month's briefs if drifting.</li>
+<li>Review any incidents (revisions at the gates, take-downs, inbound escalations) for root cause.</li>
+</ul>
+<p><strong>Prompt-library update trigger.</strong> Update <code>PREMIUM_PROMPT_LIBRARY.md</code> when any of these occurs: the same revision note appears at Gate 1 three times (the drafting prompt is producing the flaw — fix it at the source); P26 misses something a human catches at a gate (tighten P26's criteria); P27 mis-categorizes an inbound message (tighten its category definitions); or a new post format enters the calendar without a supporting prompt.</p>
+<p><strong>Checklist update trigger.</strong> Update the Section 4 checklists when a published mistake traces to something neither checklist asks about, or when a checklist line has never once caught anything in a quarter <em>and</em> is slowing reviews (retire or merge it — checklists must stay short enough to actually be used).</p>
+<p><strong>Versioning of this document.</strong> This workflow document itself carries a version line (below). Changes are made only by Dorina or with her sign-off, at the quarterly strategy review or after any incident that exposes a gap — never silently mid-quarter. Each new version notes the date and a one-line reason; superseded versions are kept in the archive folder. The workflow governs the content; the quarterly review governs the workflow.</p>
+<blockquote>
+<p><strong>Version:</strong> 1.0 — July 2026 — initial workflow (this package).</p>
+</blockquote>
+<hr />
+<h2 id="what-we-still-need-from-dorina-workflow-specific">What we still need from Dorina (workflow-specific)</h2>
+<ol>
+<li><strong>Approval channel of record.</strong> Where does a dated "Approved" live so it counts — the shared spreadsheet cell, a message in an agreed chat thread, or both? We recommend the spreadsheet cell as canonical; please confirm.</li>
+<li><strong>Assistant situation.</strong> Will a human assistant hold the Content Assistant/Designer roles from month one, or does Dorina start solo with AI assistance and hire later? This decides how much of the Level 1 spec to build immediately.</li>
+<li><strong>Sunday slot confirmation.</strong> Is Sunday genuinely the best 60–90 minute weekly window, or should the batch session move (the pipeline works with any fixed day; it only needs <em>one</em>)?</li>
+<li><strong>Reachability rule for urgent inbound.</strong> Agreed maximum response window in which Dorina is reachable for urgent-signpost triage, and confirmation that the assistant may send the verbatim urgent template when she is not.</li>
+<li><strong>Brand kit for Gate 2.</strong> Final colors, fonts, logo/name lockup in EN and AR, and 2–3 reference visuals that define "my look", so the Gate 2 "brand look" line has a concrete standard.</li>
+<li><strong>Helpline verification.</strong> Before the first sensitive/urgent template is ever used: verify and record the current national emotional-support helpline number from the Ministry of Public Health / National Mental Health Programme site, and diarize a quarterly re-check.</li>
+<li><strong>Evergreen reserve seed.</strong> 3–5 non-time-sensitive post topics Dorina is happy to approve early to seed the reserve.</li>
+<li><strong>Delegation comfort line.</strong> Confirm which routine comment replies (if any) the assistant may send without per-message review, and the exact voice guidelines for them.</li>
+</ol>
+<hr />
+<h2 id="sources">Sources</h2>
+<p>This document, like the whole package, relies exclusively on the four approved sources below. Any draft in this pipeline citing any other statistic fails the safety check by definition.</p>
+<ol>
+<li>World Health Organization — <em>Mental health at work</em> (fact sheet): https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work</li>
+<li>World Health Organization — <em>Mental health: strengthening our response</em> (fact sheet): https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response</li>
+<li>Lebanon Ministry of Public Health — <em>National Mental Health Programme</em>: https://www.moph.gov.lb/en/Pages/6/553/the-national-mental-health-program</li>
+<li>World Health Organization — <em>World Mental Health Day</em> (10 October): https://www.who.int/campaigns/world-mental-health-day</li>
+</ol>
+<blockquote>
+<p>Educational content on workplace wellbeing — not therapy, diagnosis, or crisis support. If you're struggling, please reach a qualified professional; in an emergency, contact local emergency services.</p>
+</blockquote>
+<hr />
+<h2 id="final-review-addendum-preconditions-before-public-delivery">Final Review Addendum — Preconditions Before Public Delivery</h2>
+<p>Before Dorina publishes the profile positioning or delivers paid workshops, complete these checks:</p>
+<ul>
+<li>Confirm exact employment history and current employer restrictions; do not publish any dates or titles that Dorina has not verified.</li>
+<li>Complete at least one non-clinical mental-health-literacy or Psychological First Aid training and one basic facilitation practice cycle before paid delivery.</li>
+<li>Confirm local public/professional liability insurance options and obtain local legal review for disclaimers, privacy boundaries, workshop terms, and employer/moonlighting issues.</li>
+<li>Verify current Lebanon crisis/referral contacts and operating hours before every printed handout or live workshop. Embrace Lebanon publicly lists 1564 for its Lifeline, but all details must be re-checked close to use.</li>
+<li>Budget honestly: content drafting may take 2–3 hours/week, but the full engine including engagement, approvals, outreach, workshop preparation, delivery, and review can require 6–10+ hours/week during launch periods.</li>
+<li>Track safeguarding metrics alongside growth: referral signposts made, boundary escalations, stopped exercises, post-workshop debrief notes, and whether the protocol was followed.</li>
+</ul></article><nav class="pager"><a href="premium-prompt-library.html"><div>Previous</div><strong>Premium Prompt Library</strong></a><a class="next" href="opportunity-map-lebanon.html"><div>Next</div><strong>Opportunity Map Lebanon</strong></a></nav></main><div class="foot">Educational, non-clinical strategy package · Prepared for Dorina Salman · Lebanon</div></body></html>
