@@ -101,6 +101,46 @@ Recommended path: **A → B → C**. Do not launch the 8-week program before run
 - Support map.
 - Closing ritual: one commitment, no forced disclosure.
 
+
+## 7A. Signature framework — The CIRCLE Method
+
+The public method should be consistent everywhere: landing page, LinkedIn, workshop, consultation, workbook, and follow-up.
+
+**C — Come back to the body**  
+Feet, breath, posture, and presence before analysis.
+
+**I — Identify the emotion**  
+Name what is happening without shame or drama.
+
+**R — Read the trigger**  
+Map: Situation → Body signal → Emotion → Need → Response.
+
+**C — Choose the response**  
+Move from automatic reaction to one clear next action.
+
+**L — Link to support**  
+Choose the right person, sentence, or professional path.
+
+**E — Embed the ritual**  
+Build a small routine for normal days and difficult days.
+
+### Technique bank
+1. 90-second arrival: feet on floor, slower breath, shoulders down, one emotion word.
+2. Breath reset: counted breathing before discussion, after movement, and during difficult moments.
+3. Trigger map: the core workbook tool.
+4. Boundary sentence lab: short phrases for time, space, and support.
+5. Bad-day card: three grounding tools, two supportive people, one next step.
+6. Gentle movement: accessible stretching, breath-led movement, body awareness.
+7. Support map: who to call, what to ask for, when to use qualified support.
+8. Seven-day integration: one small practice per day after the circle.
+
+### Evidence base
+Use only modest, checkable claims. The public page can reference:
+- WHO Mental health at work — mental-health literacy, stress-management skills, support pathways.
+- WHO Doing What Matters in Times of Stress — practical self-help skills for coping with adversity.
+- WHO Mental health: strengthening our response — emotional skills and social support as protective factors.
+- NCCIH Yoga: what you need to know — yoga commonly combines postures, breathing techniques, and meditation, with possible stress-management benefits.
+
 ## 8. Roles
 ### Dorina
 - Lead facilitator for emotional awareness, stress literacy, NLP/coaching-informed tools.
