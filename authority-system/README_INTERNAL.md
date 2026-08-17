@@ -1,9 +1,13 @@
-# Dorina Authority System — internal review copy
+# Dorina Authority System — internal big-plan platform
 
-This folder restores the big mental-health authority platform/strategy pack under `/authority-system/`.
+This is the restored interactive Mental Health Authority platform with the original map/library/decision/progress/timer experience, moved under `/authority-system/` and re-themed toward Dorina’s warm public palette.
 
-It is intentionally separated from the public Dorina website:
-- Public customer site: `/`, `/women-circle/`, `/about/`, `/consultation/`, `/hosted/`, `/contact/`
-- Internal authority/big-plan system: `/authority-system/`
+Public customer pages remain separate:
+- `/`
+- `/women-circle/`
+- `/about/`
+- `/consultation/`
+- `/hosted/`
+- `/contact/`
 
-Do not use `/authority-system/` as the LinkedIn public link. Use `/women-circle/` for public traffic.
+Use `/authority-system/` for AK/Dorina review of the full plan. Do not publish it on LinkedIn.
