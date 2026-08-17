@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /dorina-mental-health-authority/
+Disallow: /dorina-mental-health-authority/women-circle/*.md
+Disallow: /dorina-mental-health-authority/women-circle/SOURCE_BRIEF.md
+Disallow: /dorina-mental-health-authority/women-circle/SAFETY_ETHICS_REFERRAL_PROTOCOL.md

@@ -63,3 +63,19 @@ Record privately:
 - any safety event
 - any referral event
 - what to change next time
+
+## LinkedIn, comments, and DM response pathway
+
+The first sensitive disclosure may arrive online before any circle starts. Dorina should keep written replies short, warm, and within wellbeing education.
+
+### Public comment
+- Acknowledge without asking for personal details in public.
+- Example: “Thank you for sharing. I’m glad this resonated. If you want to discuss the right format, message me privately and we can see the appropriate next step.”
+
+### Private message
+- Ask what format they are looking for: circle, private consultation, or hosted event.
+- Do not diagnose, interpret trauma history, or give treatment instructions in writing.
+- If the person describes immediate danger, self-harm risk, active abuse, or overwhelming symptoms, guide them toward a local emergency/resource pathway and a qualified professional.
+
+### Closing referral line
+“From what you shared, it sounds like a more specialized support path would be the right next step. I encourage you to contact a qualified professional or a trusted local support service, and I’m happy to share general referral options if available.”
