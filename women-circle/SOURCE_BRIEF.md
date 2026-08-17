@@ -9,7 +9,7 @@ Dorina wants to create a women's circle / empowerment program with Nadine and Do
 - Co-lead / collaborator: Nadine — details `[UNKNOWN]`.
 - Likely location: Lebanon / Beirut context from Dorina project records, but exact venue `[UNKNOWN]`.
 - Languages: Dorina works Arabic + English + French per Brain record; exact workshop language mix `[UNKNOWN]`.
-- Positioning must remain non-clinical unless regulated credentials are later verified.
+- Positioning should lead with practical wellbeing education, empowerment, emotional awareness, stress literacy, and referral-aware facilitation.
 
 ## Hard boundary
-This is a wellbeing / empowerment / stress-literacy program. It is not therapy, diagnosis, trauma treatment, crisis care, or clinical counselling.
+This is a wellbeing, empowerment, and stress-literacy program. The program stays in the lane of education, self-awareness, practical regulation tools, supportive group practice, and referral-aware facilitation.

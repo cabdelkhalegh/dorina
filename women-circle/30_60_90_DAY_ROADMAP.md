@@ -3,7 +3,7 @@
 ## Days 1–7 — Lock the pilot
 - Confirm Dorina/Nadine roles and credentials.
 - Choose pilot format, date, language, venue, participant cap.
-- Finalize non-clinical positioning.
+- Finalize the affirmative public positioning and scope statement.
 - Build referral list.
 - Draft flyer and WhatsApp copy.
 - Build intake/feedback forms.
@@ -39,7 +39,7 @@
 ## Bar for success
 The project is ready to scale only when:
 - at least one pilot ran safely
-- participants understood it is non-clinical
+- participants understood the practical wellbeing scope
 - no major safety protocol gaps appeared
 - feedback shows tools were useful
 - Dorina and Nadine can repeat the session without improvising everything

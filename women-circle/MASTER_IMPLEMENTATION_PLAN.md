@@ -10,27 +10,18 @@ Keep this as a working name until Dorina and Nadine approve the language.
 ## 2. One-line concept
 A safe, practical women-only circle led by Dorina and Nadine combining gentle yoga, stress-management education, emotional-trigger awareness, and simple daily tools that help women understand their reactions, regulate stress, and feel more in control of daily life.
 
-## 3. Safe public positioning
+## 3. Strong public positioning
 Use this wording:
-> A non-clinical wellbeing and empowerment circle for women, focused on stress literacy, emotional awareness, gentle movement, daily self-regulation tools, and supportive community.
+> A practical wellbeing and empowerment circle for women, focused on stress literacy, emotional awareness, gentle movement, daily self-regulation tools, and supportive community.
 
-Do **not** use as public lead wording unless a licensed clinician is formally attached:
-- trauma healing
-- trauma therapy
-- therapy circle
-- psychotherapy
-- clinical treatment
-- diagnosis
-- PTSD treatment
-- crisis support
-- subconscious trauma release
-
-Safer replacement:
-- trauma-informed awareness
-- understanding how past experiences can shape daily reactions
-- nervous-system-friendly stress tools
-- emotional trigger awareness
-- referral-aware wellbeing education
+Lead with assertive, affirmative phrases:
+- women’s empowerment through daily emotional-awareness tools
+- stress management women can use in normal days and difficult days
+- understanding how past experiences can shape today’s reactions
+- nervous-system-friendly grounding and breath practices
+- emotional-trigger awareness with practical response tools
+- a supportive women-only space for clarity, calm, and self-leadership
+- referral-aware facilitation with respect for each participant’s privacy and dignity
 
 ## 4. Program objectives
 By the end of the pilot, participants should be able to:
@@ -72,7 +63,7 @@ These cases need referral pathways, not workshop promises.
 ### Option C — 8-week mid-term program
 - 8 weekly sessions, 2 hours each
 - 10–14 participants
-- Goal: deeper practice, still non-clinical
+- Goal: deeper practice with the same practical wellbeing scope
 
 Recommended path: **A → B → C**. Do not launch the 8-week program before running one short pilot.
 
@@ -114,7 +105,7 @@ Recommended path: **A → B → C**. Do not launch the 8-week program before run
 ### Dorina
 - Lead facilitator for emotional awareness, stress literacy, NLP/coaching-informed tools.
 - Opens and closes sessions.
-- Manages non-clinical boundary and referral protocol.
+- Protects the program scope and referral protocol.
 
 ### Nadine
 - Role `[UNKNOWN]` until confirmed.
@@ -147,7 +138,7 @@ Recommended path: **A → B → C**. Do not launch the 8-week program before run
 ### Phase 2 — Recruitment, 10–14 days
 - Announce to warm network first.
 - Cap pilot at 12–18 women.
-- Use short screening questions: goals, language, movement limitations, emergency contact optional, whether they understand it is non-clinical.
+- Use short screening questions: goals, language, movement limitations, emergency contact optional, whether they understand the practical wellbeing scope.
 - Confirm participants privately.
 
 ### Phase 3 — Pilot delivery, 1 day or 4 weeks
@@ -196,5 +187,5 @@ Track practical metrics, not medical outcomes:
 3. Pick language: Arabic, English, French, or mixed.
 4. Confirm whether this is free, donation-based, or paid.
 5. Choose date, venue, and participant cap.
-6. Approve public positioning and non-clinical disclaimer.
+6. Approve public positioning and the scope statement.
 7. Build flyer + intake form + facilitator script.

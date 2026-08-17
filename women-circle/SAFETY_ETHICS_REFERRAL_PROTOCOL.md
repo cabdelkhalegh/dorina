@@ -1,10 +1,10 @@
 # Safety, Ethics, and Referral Protocol — Women in Power Circle
 
-## Binding rule
-This program is non-clinical. It must not diagnose, treat, process trauma, or replace therapy. Facilitators can teach stress-literacy, emotional-awareness, grounding, gentle movement, and referral literacy.
+## Binding scope
+This program teaches stress literacy, emotional awareness, grounding, gentle movement, daily regulation tools, and referral literacy. Facilitators keep the work practical, private, and choice-based, with clear pathways to qualified support when a participant needs deeper help.
 
 ## Opening script
-Welcome. This is a women-only wellbeing and empowerment circle. It is not therapy, diagnosis, or crisis support. You are never required to share personal details. You can pass on any exercise, step out, or ask for support at any time. We respect confidentiality, but we cannot promise secrecy if someone is at risk of serious harm. Our focus is practical tools for daily life.
+Welcome. This is a women-only wellbeing and empowerment circle focused on practical tools for daily life. You choose what you share, and you can pass on any exercise, step out, or ask for support at any time. We respect confidentiality, with care and safety guiding the space if someone may be at risk of serious harm.
 
 ## Group agreements
 1. Confidentiality: do not repeat personal stories outside the room.
@@ -20,19 +20,19 @@ Welcome. This is a women-only wellbeing and empowerment circle. It is not therap
 - self-harm or suicidal language
 - panic, dissociation, freezing, inability to reorient
 - abuse disclosure with immediate danger
-- request for therapy, diagnosis, medication advice
+- request for specialist personal guidance, diagnosis, or medication advice
 - participant becomes overwhelmed by an exercise
 - participant asks facilitator to keep a serious safety secret
 
 ## What facilitators say
-“I’m really glad you told us. This space is not designed to give crisis or clinical support, and you deserve proper help. Let’s pause the exercise and speak privately about safe next steps and professional support.”
+“I’m really glad you told us. You deserve the right level of support. Let’s pause the exercise and speak privately about safe next steps and qualified professional resources.”
 
-## What facilitators do not say
-- “You are healed.”
-- “This technique will release your trauma.”
-- “You don’t need therapy.”
-- “Tell the group what happened.”
-- “We can treat this here.”
+## Facilitator language discipline
+Use grounded, practical wording:
+- “This tool can help you pause and notice what is happening.”
+- “You can keep this private.”
+- “You deserve qualified support for anything that feels too heavy for this group space.”
+- “Let’s return to the breath, the body, and the present moment.”
 
 ## Referral preparation
 Before the pilot, prepare a local list with:
@@ -52,7 +52,7 @@ Do not print or share numbers until verified from current official/local sources
 
 ## Data handling
 - Keep intake forms private.
-- Do not collect diagnosis or trauma details.
+- Collect only practical participation needs; keep personal history private.
 - Delete unnecessary personal details after the program.
 
 ## Facilitator debrief after every session
