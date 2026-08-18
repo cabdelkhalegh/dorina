@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dorina Identity Lab — logo directions &amp; applications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--forest:#0F382F;--green:#437C5C;--cream:#F5F2EC;--paper:#FBF9F4;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;--gold:#C59A54;--line:#DDD5C8;--mint:#8FC8AF;
+    --serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--ar:"IBM Plex Sans Arabic",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+  .wrap{max-width:72rem;margin:0 auto;padding:3rem 1.4rem 6rem;display:flex;flex-direction:column;gap:3rem}
+  header h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--forest);margin:.2rem 0 .4rem;line-height:1.05}
+  .eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+  .lede{color:var(--soft);max-width:46rem}
+  h2{font-family:var(--serif);font-weight:500;font-size:1.9rem;color:var(--forest);margin:0;padding-bottom:.5rem;border-bottom:2px solid var(--forest)}
+  h3{font-size:1rem;font-weight:700;margin:0}
+  .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:1.2rem}
+  .tile{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(23,22,19,.05),0 10px 26px -18px rgba(23,22,19,.3)}
+  .tile .art{display:flex;align-items:center;justify-content:center;padding:2rem;min-height:190px}
+  .tile .art.dark{background:var(--forest)}
+  .tile .cap{padding:.9rem 1.1rem 1.1rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.3rem}
+  .cap small{color:var(--muted);font-size:.8rem;line-height:1.5}
+  .pill{align-self:flex-start;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;background:#DAE9DD;color:#1E5240}
+  section{display:flex;flex-direction:column;gap:1.2rem}
+  .app{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .app .label{padding:.7rem 1.1rem;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  .note{font-size:.88rem;color:var(--soft);background:#F0E7D2;border-left:3px solid var(--gold);padding:.8rem 1rem;border-radius:0 4px 4px 0}
+  /* application mockups */
+  .navmock{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:var(--cream)}
+  .navmock .brand{display:flex;align-items:center;gap:.65rem;font-family:var(--serif);font-size:1.25rem;color:var(--forest);letter-spacing:.04em}
+  .navmock nav{display:flex;gap:1.3rem;font-size:.85rem;color:var(--soft)}
+  .banner{position:relative;background:linear-gradient(100deg,#0F382F 0%,#14453a 55%,#1a5347 100%);aspect-ratio:4/1;display:flex;align-items:center;padding:0 4%}
+  .banner .txt{color:var(--cream);display:flex;flex-direction:column;gap:.3rem}
+  .banner .txt b{font-family:var(--serif);font-weight:500;font-size:clamp(1rem,2.6vw,1.9rem);letter-spacing:.03em}
+  .banner .txt span{font-size:clamp(.6rem,1.3vw,.85rem);letter-spacing:.22em;text-transform:uppercase;color:var(--mint)}
+  .banner svg{position:absolute;right:4%;top:50%;transform:translateY(-50%);opacity:.92}
+  .cardmock{background:var(--forest);aspect-ratio:3/4.2;max-width:250px;margin:1.5rem auto;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.6rem 1.2rem;color:var(--cream);text-align:center}
+  .cardmock .t{font-family:var(--ar);font-weight:700;font-size:1.15rem}
+  .cardmock .s{font-family:var(--serif);font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+  .cardmock ol{margin:0;padding:0;list-style:none;font-size:.72rem;color:#cfe3d6;display:flex;flex-direction:column;gap:.4rem}
+  .favrow{display:flex;align-items:center;gap:1.6rem;padding:1.6rem;flex-wrap:wrap}
+  .favrow .f{display:flex;flex-direction:column;align-items:center;gap:.45rem;font-size:.7rem;color:var(--muted)}
+  .favrow .box{background:var(--forest);border-radius:22%;display:flex;align-items:center;justify-content:center}
+  footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1.2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Style-lab · identity board · mockup only — nothing here is production</div>
+    <h1>Dorina Identity Lab</h1>
+    <p class="lede">Expanded logo directions and in-context applications, per AK's request for more design before choosing. Real brand typography loads on this page (Cormorant Garamond · Inter · IBM Plex Sans Arabic). AK's writing-style reference will be folded in when shared.</p>
+  </header>
+
+  <section>
+    <h2>Directions — the mark</h2>
+    <div class="board">
+
+      <div class="tile">
+        <div class="art">
+          <svg viewBox="0 0 100 100" width="130"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5.2" fill="#C59A54"/></svg>
+        </div>
+        <div class="cap"><span class="pill">A · recommended</span><h3>The Open Circle</h3><small>The unclosed ring — every circle has a door. The gold signal sits in the opening: noticing it is what completes the circle. One gesture that holds CIRCLE, DESK, and the choice-based safety promise.</small></div>
+      </div>
+
+      <div class="tile">
+        <div class="art dark">
+          <svg viewBox="0 0 100 100" width="130"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5.2" fill="#C59A54"/><text x="50" y="63" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="38" fill="#F5F2EC">D</text></svg>
+        </div>
+        <div class="cap"><span class="pill">A2</span><h3>Open Circle · monogram</h3><small>Same ring carrying the serif D — for avatars and seals where the name isn't beside it. Reversed on forest.</small></div>
+      </div>
+
+      <div class="tile">
+        <div class="art">
+          <svg viewBox="0 0 100 100" width="130"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5.2" fill="#C59A54"/><text x="50" y="62" text-anchor="middle" font-family="IBM Plex Sans Arabic,sans-serif" font-weight="600" font-size="34" fill="#0F382F">د</text></svg>
+        </div>
+        <div class="cap"><span class="pill">A3 · bilingual</span><h3>Open Circle · دال</h3><small>The Arabic dāl inside the ring — an identity that leads Arabic-first for the Lebanon launch. Pairs 1:1 with A2 (D) so both scripts share one system.</small></div>
+      </div>
+
+      <div class="tile">
+        <div class="art">
+          <svg viewBox="0 0 100 100" width="130" id="seven"></svg>
+        </div>
+        <div class="cap"><span class="pill">D</span><h3>The Seven Days</h3><small>Seven points forming the circle; the seventh — gold — is the practice that continues after the room. Quieter, more abstract; strong as a pattern/motif even if not the master mark.</small></div>
+      </div>
+
+      <div class="tile">
+        <div class="art">
+          <svg viewBox="0 0 120 120" width="130"><circle cx="60" cy="60" r="50" fill="none" stroke="#0F382F" stroke-width="2.4"/><circle cx="60" cy="60" r="43" fill="none" stroke="#C59A54" stroke-width="1"/><text x="60" y="76" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="44" letter-spacing="2" fill="#0F382F">DS</text></svg>
+        </div>
+        <div class="cap"><span class="pill">B</span><h3>The Seal</h3><small>Engraved double-ring monogram — classic printed authority. Best on certificates and workbook covers; least distinctive as an avatar.</small></div>
+      </div>
+
+      <div class="tile">
+        <div class="art">
+          <svg viewBox="0 0 340 80" width="290"><text x="10" y="52" font-family="Cormorant Garamond,Georgia,serif" font-size="44" fill="#0F382F">Dorina Salman<tspan fill="#C59A54" font-size="50">.</tspan></text></svg>
+        </div>
+        <div class="cap"><span class="pill">C</span><h3>The Signal in the Name</h3><small>Wordmark ending in the gold point. Elegant and minimal; weak at small sizes, gives programs nothing to inherit.</small></div>
+      </div>
+
+    </div>
+    <p class="note"><b>How to choose:</b> A is the working recommendation because it scales from favicon to flyer and both programs inherit it. A2/A3 are its avatar forms, not competitors. D can live alongside A as a pattern. B and C are true alternatives.</p>
+  </section>
+
+  <section>
+    <h2>Applications — the mark at work</h2>
+
+    <div class="app">
+      <div class="label">Site navigation — replaces the placeholder "D"</div>
+      <div class="navmock">
+        <span class="brand">
+          <svg viewBox="0 0 100 100" width="30"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+          Dorina Salman
+        </span>
+        <nav><span>Home</span><span>Circle</span><span>Consultation</span><span>Hosted</span><span>About</span><span>Contact</span></nav>
+      </div>
+    </div>
+
+    <div class="app">
+      <div class="label">LinkedIn banner refresh — 1584 × 396</div>
+      <div class="banner">
+        <div class="txt">
+          <span>Stress management · Resilience · Healthier workplaces</span>
+          <b>Workplace wellbeing, made practical.</b>
+          <span style="letter-spacing:.14em">Arabic · English · French</span>
+        </div>
+        <svg viewBox="0 0 100 100" width="110"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="5" stroke-linecap="round" opacity=".9"/><circle cx="71.86" cy="23.96" r="5" fill="#C59A54"/></svg>
+      </div>
+    </div>
+
+    <div class="app">
+      <div class="label">My Bad-Day Card — participant take-home (A6)</div>
+      <div class="cardmock">
+        <svg viewBox="0 0 100 100" width="44"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5.2" fill="#C59A54"/></svg>
+        <div>
+          <div class="t">بطاقة يومي الصعب</div>
+          <div class="s">My Bad-Day Card</div>
+        </div>
+        <ol>
+          <li>ثلاث أدوات تُعيدني إلى جسدي</li>
+          <li>شخصان أستطيع الطلب منهما</li>
+          <li>أصغر خطوة مفيدة التالية</li>
+          <li>يمكنني التوقّف وطلب الدعم</li>
+        </ol>
+        <div class="s" style="font-size:.6rem;letter-spacing:.2em">THE CIRCLE METHOD · DORINA</div>
+      </div>
+    </div>
+
+    <div class="app">
+      <div class="label">Favicon &amp; avatar scale test</div>
+      <div class="favrow">
+        <span class="f"><span class="box" style="width:64px;height:64px"><svg viewBox="0 0 100 100" width="44"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="8" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="7" fill="#C59A54"/></svg></span>64 · WhatsApp</span>
+        <span class="f"><span class="box" style="width:32px;height:32px"><svg viewBox="0 0 100 100" width="22"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="10" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="8" fill="#C59A54"/></svg></span>32 · favicon</span>
+        <span class="f"><span class="box" style="width:16px;height:16px"><svg viewBox="0 0 100 100" width="12"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F5F2EC" stroke-width="13" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="10" fill="#C59A54"/></svg></span>16 · tab</span>
+        <span class="f"><svg viewBox="0 0 260 260" width="120"><circle cx="130" cy="130" r="112" fill="none" stroke="#437C5C" stroke-width="1.2" opacity=".7"/><defs><path id="arcT" d="M 130 130 m -92 0 a 92 92 0 1 1 184 0" fill="none"/></defs><text font-family="Inter,sans-serif" font-size="15.5" letter-spacing="4" fill="#437C5C"><textPath href="#arcT" startOffset="50%" text-anchor="middle">WOMEN IN POWER CIRCLE</textPath></text><path d="M 162.57 98.43 A 38 38 0 1 1 143.62 82.52" fill="none" stroke="#0F382F" stroke-width="5.6" stroke-linecap="round"/><circle cx="154.43" cy="88.89" r="5.6" fill="#C59A54"/><text x="130" y="196" text-anchor="middle" font-family="IBM Plex Sans Arabic,sans-serif" font-weight="600" font-size="19" fill="#0F382F">دائرة قوّة للنساء</text></svg><br>Program badge — light</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Mockup board only. Production pages unchanged. Next inputs: AK's direction pick (or adjustments) and the writing-style reference AK will share; then the chosen direction ships as SVG/PNG to <code>assets/brand/</code> with the one-page brand book.
+  </footer>
+</div>
+<script>
+  // Direction D: seven points on the ring, the seventh gold, gap preserved at the 2 o'clock position
+  (function(){
+    var svg = document.getElementById('seven'); if(!svg) return;
+    var NS='http://www.w3.org/2000/svg', cx=50, cy=50, r=34;
+    // 7 dots evenly spaced, rotated so one lands exactly at the signal position (-50deg)
+    for (var k=0;k<7;k++){
+      var deg = -50 + k*(360/7), rad = deg*Math.PI/180;
+      var x = cx + r*Math.cos(rad), y = cy + r*Math.sin(rad);
+      var c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx',x.toFixed(2)); c.setAttribute('cy',y.toFixed(2));
+      c.setAttribute('r', k===0 ? 6 : 4.6);
+      c.setAttribute('fill', k===0 ? '#C59A54' : '#0F382F');
+      svg.appendChild(c);
+    }
+  })();
+</script>
+</body>
+</html>
