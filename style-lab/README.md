@@ -4,16 +4,17 @@ Private mockup board for selecting the visual direction of the big Mental Health
 
 ## Current recommended board
 
+- `authority-motion-loop.html` — motion/reality pass using the reference-system design-loop, with ambient motion, live status, animated evidence rail, interactive mode switching, hover states, and progress animation.
+
+## V3 motion variants
+
+- **1 · Editorial Authority + Motion** — warm reading surface with animated evidence/status layer.
+- **2 · Precision OS + Motion** — dark internal command system with live operational feel.
+- **3 · Luxury Boardroom + Motion** — premium client-review feel with less density and more polish.
+
+## Earlier boards
+
 - `authority-design-loop.html` — reference-system / design-loop v2 using Claude, Linear, and Superhuman principles.
-
-## V2 variants
-
-- **1 · Editorial Authority** — Claude-inspired parchment + dark evidence rail. Best for trust and long reading.
-- **2 · Precision OS** — Linear-inspired dark command system. Best for internal dashboard credibility.
-- **3 · Luxury Boardroom** — Superhuman-inspired premium gradient-to-white. Best for polished client review.
-
-## Earlier board
-
 - `authority-theme-mockups.html` — first rough mockup board with A/B/C/D variants.
 
 ## Guardrail
