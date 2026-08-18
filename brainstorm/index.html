@@ -338,55 +338,32 @@
   // summary
   function buildSummary(){
     var f=S.fields,L=isAr();
-    function line(en,ar,val){return val?((L?ar:en)+': '+val+'\
-'):''}
+    function line(en,ar,val){return val?((L?ar:en)+': '+val+'\n'):''}
     var out='';
-    out+=(L?'# جلسة عصف ذهني — دورينا سلمان\
-':'# Brainstorm session — Dorina Salman\
-');
+    out+=(L?'# جلسة عصف ذهني — دورينا سلمان\n':'# Brainstorm session — Dorina Salman\n');
     out+=line('Date','التاريخ',new Date().toLocaleDateString(L?'ar-LB':'en-GB'));
     out+=line('Topic','الموضوع',f['setup.topic']);
     out+=line('Participants','المشاركون',f['setup.people']);
     out+=line('Success looks like','النجاح يعني',f['setup.goal']);
     out+=line('Applies first at','يُطبَّق أولاً في',f['setup.where']);
-    out+='\
-'+(L?'## أسئلة «كيف يمكننا»':'## How-might-we questions')+'\
-';
-    if(f['frame.q1'])out+='1. '+f['frame.q1']+'\
-';
-    if(f['frame.q2'])out+='2. '+f['frame.q2']+'\
-';
-    out+='\
-'+(L?'## كل الأفكار (':'## All ideas (')+S.ideas.length+')\
-';
-    S.ideas.forEach(function(i){out+='- '+(i.star?'★ ':'')+i.text+(i.votes?('  [+'+i.votes+']'):'')+'\
-'});
+    out+='\n'+(L?'## أسئلة «كيف يمكننا»':'## How-might-we questions')+'\n';
+    if(f['frame.q1'])out+='1. '+f['frame.q1']+'\n';
+    if(f['frame.q2'])out+='2. '+f['frame.q2']+'\n';
+    out+='\n'+(L?'## كل الأفكار (':'## All ideas (')+S.ideas.length+')\n';
+    S.ideas.forEach(function(i){out+='- '+(i.star?'★ ':'')+i.text+(i.votes?('  [+'+i.votes+']'):'')+'\n'});
     var starred=S.ideas.filter(function(i){return i.star});
-    out+='\
-'+(L?'## القرارات':'## Decisions')+'\
-';
+    out+='\n'+(L?'## القرارات':'## Decisions')+'\n';
     starred.forEach(function(i){
       var d=S.decisions[i.id]||{};
-      out+='\
-★ '+i.text+'\
-';
-      if(d.impact)out+=(L?'   الأثر: ':'   impact: ')+d.impact+'/5\
-';
-      if(d.effort)out+=(L?'   الجهد: ':'   effort: ')+d.effort+'/5\
-';
-      if(d.step)out+=(L?'   الخطوة الأولى: ':'   first step: ')+d.step+'\
-';
-      if(d.owner)out+=(L?'   المسؤولة: ':'   owner: ')+d.owner+'\
-';
-      if(d.when)out+=(L?'   الموعد: ':'   by: ')+d.when+'\
-';
+      out+='\n★ '+i.text+'\n';
+      if(d.impact)out+=(L?'   الأثر: ':'   impact: ')+d.impact+'/5\n';
+      if(d.effort)out+=(L?'   الجهد: ':'   effort: ')+d.effort+'/5\n';
+      if(d.step)out+=(L?'   الخطوة الأولى: ':'   first step: ')+d.step+'\n';
+      if(d.owner)out+=(L?'   المسؤولة: ':'   owner: ')+d.owner+'\n';
+      if(d.when)out+=(L?'   الموعد: ':'   by: ')+d.when+'\n';
     });
-    if(f['close.parking'])out+='\
-'+(L?'## موقف الأفكار':'## Parking lot')+'\
-'+f['close.parking']+'\
-';
-    if(f['close.next'])out+='\
-'+line('Next session','الجلسة القادمة',f['close.next']);
+    if(f['close.parking'])out+='\n'+(L?'## موقف الأفكار':'## Parking lot')+'\n'+f['close.parking']+'\n';
+    if(f['close.next'])out+='\n'+line('Next session','الجلسة القادمة',f['close.next']);
     return out;
   }
   function renderSummary(){document.getElementById('summary').textContent=buildSummary()}
