@@ -4,7 +4,8 @@ Private mockup board for selecting the visual direction of the big Mental Health
 
 ## Current recommended board
 
-- `authority-workflow-loop.html` — Mobbin-style product workflow prototype: document library → evidence/source review → blocking decision → named approval → audit/export state. This is the current candidate for review.
+- `authority-old-design-workflow.html` — current candidate: uses AK’s attached old design language (forest sidebar, cream canvas, editorial serif hierarchy) plus the Mobbin-style workflow fixes: document library → evidence/source review → blocking decision → named approval → audit/export state.
+- `authority-workflow-loop.html` — previous Mobbin-style workflow prototype; structurally useful but less faithful to the old visual design.
 
 ## What it fixes
 
