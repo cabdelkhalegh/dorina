@@ -6,11 +6,11 @@ Make Dorina’s LinkedIn profile, posts, and Featured link the first step in one
 
 **useful LinkedIn idea → Dorina-led landing page → discovery inquiry → right-fit format → CIRCLE delivery → seven-day integration → feedback → next useful post/program**
 
-The public brand is Dorina’s. Nadine is mentioned only for a specific event when she is confirmed as occasional support; she is not part of the standing headline, profile position, Featured title, or method ownership.
+The public brand is Dorina’s alone.
 
 ## Canonical landing page
 
-<https://cabdelkhalegh.github.io/dorina-mental-health-authority/women-circle/landing.html>
+<https://cabdelkhalegh.github.io/dorina/women-circle/landing.html>
 
 Use this exact URL in the profile website field, Featured section, posts, comments, and direct replies. Do not send public traffic to the implementation hub or raw documents.
 
@@ -119,7 +119,7 @@ Arabic:
 
 For the live URL, append the anchor after the page URL, for example:
 
-`https://cabdelkhalegh.github.io/dorina-mental-health-authority/women-circle/landing.html#tools`
+`https://cabdelkhalegh.github.io/dorina/women-circle/landing.html#tools`
 
 ## Ready-to-use launch posts
 
@@ -299,7 +299,6 @@ Before adding the link broadly or publishing the first-circle invitation, confir
 - [ ] The portrait and bilingual toggle work.
 - [ ] The inquiry composer works, or the approved contact endpoint replaces it.
 - [ ] Date, venue/online format, price, and participant cap are confirmed before they appear.
-- [ ] Nadine is mentioned only if she is confirmed for that specific event.
 - [ ] The participant materials and seven-day messages are ready.
 - [ ] The local support/referral list is current before live delivery.
 - [ ] Feedback and public-quote permission are separate.

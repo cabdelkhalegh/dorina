@@ -1,7 +1,7 @@
 # 30-60-90 Day Roadmap — Women in Power Circle
 
 ## Days 1–7 — Lock the pilot
-- Confirm Dorina/Nadine roles and credentials.
+- Confirm Dorina's delivery role and format ownership.
 - Choose pilot format, date, language, venue, participant cap.
 - Finalize the affirmative public positioning and scope statement.
 - Build referral list.
@@ -18,7 +18,7 @@
 ## Days 22–30 — Run and review pilot
 - Deliver pilot.
 - Collect feedback.
-- Hold Dorina/Nadine debrief within 48 hours.
+- Hold Dorina's debrief within 48 hours.
 - Decide what to keep, cut, and improve.
 - Approve public photos/testimonials if any.
 
@@ -42,4 +42,4 @@ The project is ready to scale only when:
 - participants understood the practical wellbeing scope
 - no major safety protocol gaps appeared
 - feedback shows tools were useful
-- Dorina and Nadine can repeat the session without improvising everything
+- Dorina can repeat the session without improvising everything

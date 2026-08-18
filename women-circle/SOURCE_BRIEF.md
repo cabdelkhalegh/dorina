@@ -13,3 +13,6 @@ Dorina wants to create a women's circle / empowerment program with Nadine and Do
 
 ## Hard boundary
 This is a wellbeing, empowerment, and stress-literacy program. The program stays in the lane of education, self-awareness, practical regulation tools, supportive group practice, and referral-aware facilitation.
+
+## Decision update — 2026-08-18
+AK decision: the program is **Dorina-only**. Nadine is removed from the program entirely — no public mention, no delivery role. The original brief above is retained as the historical record.

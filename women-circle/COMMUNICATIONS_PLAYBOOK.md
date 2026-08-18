@@ -1,7 +1,7 @@
 # Communications Playbook — Women in Power Circle
 
-## 1. Internal message to Dorina and Nadine
-Dorina, Nadine — the strongest framing is clear and positive: a practical women’s wellbeing circle for stress literacy, emotional awareness, gentle movement, daily regulation tools, and supportive community. We can say that past experiences can affect daily reactions, while keeping the exercises private, grounded, and practical. The pilot should be small, warm, safe, and useful.
+## 1. Internal message to Dorina
+Dorina — the strongest framing is clear and positive: a practical women’s wellbeing circle for stress literacy, emotional awareness, gentle movement, daily regulation tools, and supportive community. We can say that past experiences can affect daily reactions, while keeping the exercises private, grounded, and practical. The pilot should be small, warm, safe, and useful.
 
 Decision needed:
 A. 3-hour pilot first  
@@ -11,7 +11,7 @@ C. 8-week program later after pilot proof
 ## 2. Public announcement — English
 **Women in Power Circle**
 
-A women-only wellbeing circle with Dorina Salman and Nadine, created for women who want a calmer, more grounded way to understand stress, emotions, triggers, and daily pressure.
+A women-only wellbeing circle with Dorina Salman, created for women who want a calmer, more grounded way to understand stress, emotions, triggers, and daily pressure.
 
 The session combines gentle movement, stress-management tools, emotional awareness, and practical exercises you can use in normal days and difficult days.
 
@@ -45,7 +45,7 @@ Limited seats to keep the circle safe and personal.
 الأماكن محدودة للحفاظ على خصوصية وأمان الدائرة.
 
 ## 4. WhatsApp invitation
-Hi [Name], Dorina and Nadine are preparing a small women-only wellbeing circle about stress, emotions, triggers, gentle movement, and practical daily tools. It is a warm practical space for awareness, calm, and empowerment, with seats kept limited. Would you like me to send you the details?
+Hi [Name], Dorina is preparing a small women-only wellbeing circle about stress, emotions, triggers, gentle movement, and practical daily tools. It is a warm practical space for awareness, calm, and empowerment, with seats kept limited. Would you like me to send you the details?
 
 ## 5. Registration confirmation
 Thank you for registering for Women in Power Circle. Your seat is reserved.
@@ -64,7 +64,7 @@ Reminder for tomorrow’s Women in Power Circle. Please arrive 10 minutes early,
 Thank you for joining Women in Power Circle. We hope you left with tools you can use in daily life. We would appreciate your private feedback here: [FORM LINK]. If you want to be informed about the next circle, reply YES.
 
 ## 8. Partner outreach message
-Hello [Name], Dorina Salman and Nadine are launching a small women-only wellbeing circle focused on stress literacy, emotional awareness, gentle movement, and daily self-regulation tools. The format is practical, privacy-respecting, and designed for a small supportive group.
+Hello [Name], Dorina Salman is launching a small women-only wellbeing circle focused on stress literacy, emotional awareness, gentle movement, and daily self-regulation tools. The format is practical, privacy-respecting, and designed for a small supportive group.
 
 We are looking for aligned venues / communities for a small pilot with 12–18 women. Would you be open to a short call to explore hosting or supporting one pilot session?
 
@@ -82,7 +82,7 @@ No. Movement is gentle and beginner-friendly.
 The facilitators can help you identify appropriate next steps and qualified support resources in your location.
 
 ## 10. Approval rule
-No public post, flyer, landing page, or WhatsApp blast goes out until Dorina and Nadine approve:
+No public post, flyer, landing page, or WhatsApp blast goes out until Dorina approves:
 - name
 - date/location/price
 - credentials wording

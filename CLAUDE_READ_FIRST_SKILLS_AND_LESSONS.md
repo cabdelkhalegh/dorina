@@ -208,7 +208,7 @@ Canonical working folder from now on:
 
 Previous mirror only:
 
-`C:\Users\DELL\Documents\dorina-mental-health-authority-site`
+`C:\Users\DELL\Documents\dorina-site`
 
 Do not split work across both folders unless intentionally syncing.
 

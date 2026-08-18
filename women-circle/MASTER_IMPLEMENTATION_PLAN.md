@@ -4,7 +4,7 @@
 
 Dorina Salman builds a recognisable women’s wellbeing practice in Lebanon by teaching one practical signature sequence—the CIRCLE Method—consistently from LinkedIn content to inquiry, delivery, seven-day follow-up, feedback, and the next repeatable program.
 
-This is a **Dorina-led brand and service system**. Nadine may support a specific session when useful and after her exact role is confirmed; the public identity, method, participant relationship, and follow-up remain with Dorina.
+This is a **Dorina-led brand and service system**. The public identity, method, participant relationship, and follow-up remain with Dorina.
 
 ## 2. Non-negotiable public position
 
@@ -55,7 +55,7 @@ Use:
 - a private wellbeing consultation;
 - a choice-based women-only circle.
 
-Do not invent credentials or expand Nadine’s role before it is confirmed.
+Do not invent credentials.
 
 ## 3. Audience and customer jobs
 
@@ -157,7 +157,7 @@ Use a comfortable counted breath with an unforced, slightly longer exhale. Use i
 
 ### 7.3 Gentle breath-led movement
 
-Offer seated and standing versions of simple shoulder, spine, hand, and foot movements. Keep range comfortable, intensity low, and participation optional. If Nadine supports this segment, confirm her exact role before naming it publicly.
+Offer seated and standing versions of simple shoulder, spine, hand, and foot movements. Keep range comfortable, intensity low, and participation optional.
 
 ### 7.4 Emotion naming
 
@@ -315,13 +315,6 @@ Arabic:
 - approves any public feedback quote;
 - protects the agreed practical-wellbeing scope.
 
-### Nadine — punctual support only
-
-- joins only when a specific format needs additional support;
-- is named on a specific event only after her role and relevant background are confirmed;
-- does not appear in the master headline, standing profile position, or signature-method ownership;
-- does not become a required dependency for Dorina to publish, inquire, follow up, or repeat the program.
-
 ### Host or assistant
 
 - handles room, registration, attendance, water, materials, access needs, and consent administration;
@@ -406,7 +399,6 @@ Use them to support the general direction of stress-management skills, emotional
 
 - Dorina approves the name, public promise, CIRCLE wording, and Arabic.
 - Confirm the first format, date, venue, price, and cap.
-- Confirm Nadine’s role for that event, if any.
 - Choose the primary inquiry channel.
 - Verify the local support/referral list.
 
@@ -473,7 +465,6 @@ The landing page can be reviewed now. Do not run a broad public campaign until t
 - first date and location/online format;
 - price or free status;
 - participant cap;
-- Nadine’s specific event role, if any;
 - accessibility and movement questions for intake;
 - current local support/referral contacts;
 - photo and quote permission process.
