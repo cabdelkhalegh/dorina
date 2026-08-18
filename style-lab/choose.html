@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dorina — choose your look · اختاري إطلالتك</title>
+<link rel="icon" type="image/svg+xml" href="/dorina/assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--forest:#0F382F;--green:#437C5C;--ivory:#F5F1E8;--paper:#FBF9F4;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;--gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6}
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  .en,.ar-t{display:revert}
+  body.ar .en{display:none}
+  body:not(.ar) .ar-t{display:none}
+  .wrap{max-width:66rem;margin:0 auto;padding:2.2rem 1.2rem 5rem;display:flex;flex-direction:column;gap:2rem}
+  header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.6rem;color:var(--forest);font-weight:700;letter-spacing:.08em;font-size:.85rem}
+  .lang{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:.5rem 1rem;cursor:pointer;font:inherit;font-weight:600;color:var(--forest)}
+  h1{font-family:"Cormorant Garamond",serif;font-weight:500;color:var(--forest);font-size:clamp(2rem,6vw,3.2rem);line-height:1.06;margin:.4rem 0 .3rem}
+  body.ar h1{font-family:"IBM Plex Sans Arabic",sans-serif;font-weight:600}
+  .lede{color:var(--soft);max-width:44rem;margin:0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(17.5rem,1fr));gap:1.3rem}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 2px 5px rgba(23,22,19,.05),0 20px 44px -26px rgba(23,22,19,.35);display:flex;flex-direction:column;transition:outline-color .15s}
+  .card.picked{outline:3px solid var(--gold);outline-offset:2px}
+  .thumb{aspect-ratio:16/12;overflow:hidden;border-bottom:1px solid var(--line);background:#EEE9DD}
+  .thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+  .body h2{font-family:"Cormorant Garamond",serif;font-weight:600;color:var(--forest);margin:0;font-size:1.45rem}
+  body.ar .body h2{font-family:"IBM Plex Sans Arabic",sans-serif}
+  .body p{margin:0;font-size:.9rem;color:var(--soft);flex:1}
+  .row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem}
+  .btn{border-radius:999px;padding:.6rem 1.05rem;font-weight:700;font-size:.78rem;letter-spacing:.05em;cursor:pointer;text-decoration:none;text-align:center;border:1px solid var(--forest)}
+  .view{background:transparent;color:var(--forest)}
+  .pick{background:var(--forest);color:var(--ivory);border:none;font:inherit;font-weight:700;font-size:.78rem;letter-spacing:.05em}
+  .pick:hover{background:#14453A}
+  .num{font-size:.68rem;font-weight:800;letter-spacing:.18em;color:var(--gold2)}
+  .done{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--forest);color:var(--ivory);padding:1rem 1.4rem;border-radius:12px;box-shadow:0 18px 50px -12px rgba(15,56,47,.6);max-width:92vw;width:34rem;transition:transform .3s;z-index:9}
+  .done.show{transform:translateX(-50%) translateY(0)}
+  .done b{color:#F3EFE4}
+  .done .msg{font-size:.85rem;color:#CFE0D5;margin-top:.3rem}
+  .done .actions{display:flex;gap:.6rem;margin-top:.75rem;flex-wrap:wrap}
+  .done button,.done a{border-radius:999px;padding:.5rem .95rem;font-weight:700;font-size:.76rem;cursor:pointer;border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;text-decoration:none;font-family:inherit}
+  .done .primary{background:#F3EFE4;color:var(--forest);border:none}
+  footer{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="brand">
+      <svg viewBox="0 0 100 100" width="26" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+      DORINA SALMAN
+    </span>
+    <button class="lang" onclick="document.body.classList.toggle('ar');document.documentElement.dir=document.body.classList.contains('ar')?'rtl':'ltr'">
+      <span class="en">العربية</span><span class="ar-t">English</span>
+    </button>
+  </header>
+
+  <div>
+    <h1><span class="en">Choose your look, Dorina</span><span class="ar-t">اختاري إطلالتكِ يا دورينا</span></h1>
+    <p class="lede">
+      <span class="en">Three complete looks for your website — same content, three moods. Open each one full-screen, feel it on your phone, then tap “This is the one”. Your choice is copied as a message you can send back in one tap.</span>
+      <span class="ar-t">ثلاث إطلالات كاملة لموقعكِ — المحتوى نفسه بثلاثة أجواء. افتحي كل واحدة بملء الشاشة، جرّبيها على هاتفكِ، ثم اضغطي «هذه هي». يُنسخ اختياركِ كرسالة جاهزة تُرسلينها بضغطة واحدة.</span>
+    </p>
+  </div>
+
+  <div class="cards">
+    <div class="card" id="card-hybrid">
+      <div class="thumb"><img src="/dorina/style-lab/thumbs/hybrid.jpg" alt="Hybrid look"></div>
+      <div class="body">
+        <span class="num">01 · <span class="en">RECOMMENDED</span><span class="ar-t">المُقترح</span></span>
+        <h2><span class="en">Ivory &amp; Forest</span><span class="ar-t">عاجيّ وأخضر غامق</span></h2>
+        <p><span class="en">A warm ivory site with deep-forest moments — the opening screen and footer in green, gold as the thread. Calm, premium, balanced.</span><span class="ar-t">موقع عاجيّ دافئ مع لحظات خضراء عميقة — الشاشة الأولى والتذييل بالأخضر، والذهبي خيطٌ يربط الكل. هادئ وفاخر ومتوازن.</span></p>
+        <div class="row">
+          <a class="btn view" href="/dorina/style-lab/home-with-identity-hybrid.html" target="_blank"><span class="en">Open full page</span><span class="ar-t">افتحي الصفحة كاملة</span></a>
+          <button class="pick" onclick="pick('hybrid')"><span class="en">This is the one ✓</span><span class="ar-t">هذه هي ✓</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-ivory">
+      <div class="thumb"><img src="/dorina/style-lab/thumbs/ivory.jpg" alt="Ivory look"></div>
+      <div class="body">
+        <span class="num">02</span>
+        <h2><span class="en">All Ivory</span><span class="ar-t">عاجيّ بالكامل</span></h2>
+        <p><span class="en">The lightest look — everything on warm ivory, green as ink and buttons. Soft, airy, morning-light feeling.</span><span class="ar-t">الإطلالة الأفتح — كل شيء على عاجيّ دافئ، والأخضر للنص والأزرار. ناعمة، مضيئة، بإحساس ضوء الصباح.</span></p>
+        <div class="row">
+          <a class="btn view" href="/dorina/style-lab/home-with-identity-ivory.html" target="_blank"><span class="en">Open full page</span><span class="ar-t">افتحي الصفحة كاملة</span></a>
+          <button class="pick" onclick="pick('ivory')"><span class="en">This is the one ✓</span><span class="ar-t">هذه هي ✓</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-forest">
+      <div class="thumb"><img src="/dorina/style-lab/thumbs/forest.jpg" alt="Forest look"></div>
+      <div class="body">
+        <span class="num">03</span>
+        <h2><span class="en">Deep Forest</span><span class="ar-t">أخضر ليليّ عميق</span></h2>
+        <p><span class="en">The dramatic look — the whole site on deep green, ivory writing, gold details. Evening, intimate, bold.</span><span class="ar-t">الإطلالة الجريئة — الموقع كله على أخضر عميق، الكتابة عاجيّة والتفاصيل ذهبية. مسائيّة، حميمة، واثقة.</span></p>
+        <div class="row">
+          <a class="btn view" href="/dorina/style-lab/home-with-identity.html" target="_blank"><span class="en">Open full page</span><span class="ar-t">افتحي الصفحة كاملة</span></a>
+          <button class="pick" onclick="pick('forest')"><span class="en">This is the one ✓</span><span class="ar-t">هذه هي ✓</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="en">Nothing is final until you choose — and anything can be adjusted after you pick (colors, photo, words). · Your tap only prepares a message; nothing is sent automatically.</span>
+    <span class="ar-t">لا شيء نهائي قبل اختياركِ — وكل شيء قابل للتعديل بعده (الألوان، الصورة، الكلمات). · الضغط يجهّز رسالة فقط؛ لا يُرسَل أي شيء تلقائياً.</span>
+  </footer>
+</div>
+
+<div class="done" id="done">
+  <b><span class="en">Beautiful choice ✓</span><span class="ar-t">اختيار جميل ✓</span></b>
+  <div class="msg" id="doneMsg"></div>
+  <div class="actions">
+    <button class="primary" onclick="copyMsg()"><span class="en">Copy my choice</span><span class="ar-t">انسخي اختياري</span></button>
+    <button onclick="shareMsg()"><span class="en">Share…</span><span class="ar-t">مشاركة…</span></button>
+    <button onclick="document.getElementById('done').classList.remove('show')"><span class="en">Close</span><span class="ar-t">إغلاق</span></button>
+  </div>
+</div>
+
+<script>
+  var names = {hybrid:{en:"01 — Ivory & Forest (recommended)",ar:"٠١ — عاجيّ وأخضر غامق (المُقترح)"},
+               ivory:{en:"02 — All Ivory",ar:"٠٢ — عاجيّ بالكامل"},
+               forest:{en:"03 — Deep Forest",ar:"٠٣ — أخضر ليليّ عميق"}};
+  var current = null;
+  function isAr(){return document.body.classList.contains('ar')}
+  function msg(){
+    if(!current) return "";
+    return isAr()
+      ? "اخترتُ إطلالة الموقع: " + names[current].ar + " 🌿"
+      : "I choose the website look: " + names[current].en + " 🌿";
+  }
+  function pick(k){
+    current = k;
+    document.querySelectorAll('.card').forEach(function(c){c.classList.remove('picked')});
+    document.getElementById('card-'+k).classList.add('picked');
+    document.getElementById('doneMsg').textContent = msg();
+    document.getElementById('done').classList.add('show');
+    try{localStorage.setItem('dorina-look-choice', k)}catch(e){}
+  }
+  function copyMsg(){
+    navigator.clipboard && navigator.clipboard.writeText(msg());
+  }
+  function shareMsg(){
+    if(navigator.share){navigator.share({text: msg()}).catch(function(){})}
+    else copyMsg();
+  }
+  try{var saved=localStorage.getItem('dorina-look-choice'); if(saved && names[saved]){pick(saved); document.getElementById('done').classList.remove('show')}}catch(e){}
+</script>
+</body>
+</html>

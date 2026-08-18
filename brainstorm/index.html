@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Brainstorm Studio · استوديو العصف الذهني — Dorina Salman</title>
+<link rel="icon" type="image/svg+xml" href="/dorina/assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--forest:#0F382F;--forest2:#14453A;--green:#437C5C;--mint:#8FC8AF;--ivory:#F5F1E8;--paper:#FFFDF7;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;--gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8;--rose:#E7C6CD}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6}
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  body.ar .en{display:none}
+  body:not(.ar) .ar-t{display:none}
+  .serif{font-family:"Cormorant Garamond",serif}
+  body.ar .serif{font-family:"IBM Plex Sans Arabic",sans-serif}
+
+  /* header band */
+  .band{background:radial-gradient(120% 160% at 82% 0%,#1C4A3E 0%,#0F382F 60%,#0B2C25 100%);color:#F3EFE4;padding:1rem 0 2rem}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.1rem}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0 1.4rem}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.08em;font-size:.8rem;color:#F3EFE4;text-decoration:none}
+  .lang{border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;border-radius:999px;padding:.45rem .95rem;cursor:pointer;font:inherit;font-weight:600}
+  h1{font-weight:500;font-size:clamp(1.9rem,5.5vw,3rem);line-height:1.06;margin:0 0 .4rem}
+  .sub{color:#CFE0D5;max-width:42rem;margin:0;font-size:.95rem}
+  .privacy{margin-top:.9rem;font-size:.78rem;color:var(--mint)}
+
+  /* steps nav */
+  .steps{display:flex;gap:.45rem;flex-wrap:wrap;margin:1.3rem 0 0}
+  .step-btn{border:1px solid rgba(243,239,228,.35);background:transparent;color:#E8E2D2;border-radius:999px;padding:.45rem .9rem;font:inherit;font-size:.78rem;font-weight:600;cursor:pointer}
+  .step-btn.active{background:#F3EFE4;color:var(--forest);border-color:#F3EFE4}
+  .step-btn .n{color:var(--gold);font-weight:800;margin-inline-end:.35rem}
+
+  main{padding:1.6rem 0 4rem}
+  .panel{display:none;flex-direction:column;gap:1.1rem}
+  .panel.active{display:flex}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.7rem;box-shadow:0 2px 5px rgba(23,22,19,.04)}
+  h2{font-weight:600;color:var(--forest);margin:0;font-size:1.5rem}
+  h3{margin:0;font-size:.95rem;color:var(--forest)}
+  .hint{font-size:.85rem;color:var(--muted);margin:0}
+  label{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2)}
+  input[type=text],textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:.7rem .85rem;background:#fff;color:var(--ink);width:100%}
+  textarea{min-height:70px;resize:vertical}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.9rem}
+  .btn{border-radius:999px;padding:.65rem 1.15rem;font:inherit;font-weight:700;font-size:.8rem;cursor:pointer;border:1px solid var(--forest);background:var(--forest);color:var(--ivory)}
+  .btn.ghost{background:transparent;color:var(--forest)}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:#2A1F0E}
+  .btn:disabled{opacity:.45;cursor:default}
+  .navrow{display:flex;justify-content:space-between;gap:.7rem;margin-top:.4rem}
+
+  /* prompt cards */
+  .prompts{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.8rem}
+  .prompt{background:var(--ivory);border:1px dashed var(--gold);border-radius:10px;padding:.85rem .95rem;font-size:.88rem;color:var(--soft)}
+  .prompt b{color:var(--forest);display:block;margin-bottom:.2rem;font-size:.8rem;letter-spacing:.04em}
+
+  /* ideas */
+  .addrow{display:flex;gap:.6rem}
+  .addrow input{flex:1}
+  .ideas{display:flex;flex-direction:column;gap:.5rem;padding:0;margin:0;list-style:none}
+  .idea{display:flex;align-items:flex-start;gap:.6rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.6rem .75rem}
+  .idea .txt{flex:1;font-size:.92rem}
+  .idea button{border:none;background:transparent;cursor:pointer;font-size:1rem;padding:.15rem .3rem;color:var(--muted)}
+  .idea .star{color:#C9C2B2}
+  .idea.starred{border-color:var(--gold);background:#FCF6EA}
+  .idea.starred .star{color:var(--gold2)}
+  .votebar{display:flex;gap:.2rem}
+  .vote{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--green);background:transparent;color:var(--green);font-weight:800;cursor:pointer;font-size:.8rem;line-height:1}
+  .count{font-size:.75rem;color:var(--muted);align-self:center;min-width:5.5rem;text-align:end}
+
+  /* timer */
+  .timer{display:flex;align-items:center;gap:.7rem;background:var(--forest);color:#F3EFE4;border-radius:12px;padding:.8rem 1rem}
+  .timer .t{font-variant-numeric:tabular-nums;font-weight:800;font-size:1.5rem;min-width:4.4rem}
+  .timer button{border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;border-radius:999px;padding:.4rem .8rem;font:inherit;font-size:.75rem;font-weight:700;cursor:pointer}
+  .timer .gold-dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+
+  /* decisions */
+  .decision{border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;background:#fff;display:flex;flex-direction:column;gap:.6rem}
+  .scale{display:flex;gap:.3rem}
+  .scale button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--ivory);cursor:pointer;font-weight:700;color:var(--soft)}
+  .scale button.sel{background:var(--forest);border-color:var(--forest);color:#F3EFE4}
+
+  /* export */
+  pre.summary{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1rem;font-family:ui-monospace,Consolas,monospace;font-size:.8rem;max-height:340px;overflow:auto}
+  .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--forest);color:#F3EFE4;padding:.7rem 1.2rem;border-radius:999px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
+  .toast.show{opacity:1}
+  footer{border-top:1px solid var(--line);padding:1rem 0 2rem;font-size:.78rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="/dorina/">
+        <svg viewBox="0 0 100 100" width="26" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+        DORINA SALMAN
+      </a>
+      <button class="lang" id="langBtn"><span class="en">العربية</span><span class="ar-t">English</span></button>
+    </div>
+    <h1 class="serif"><span class="en">Brainstorm Studio</span><span class="ar-t">استوديو العصف الذهني</span></h1>
+    <p class="sub">
+      <span class="en">A guided session for you and your co-coach: five steps from open question to decided next moves. Everything you type stays on this device until you export it.</span>
+      <span class="ar-t">جلسة موجّهة لكِ ولشريكتكِ في التدريب: خمس خطوات من السؤال المفتوح إلى الخطوات المقرَّرة. كل ما تكتبانه يبقى على هذا الجهاز حتى تصدّراه.</span>
+    </p>
+    <p class="privacy">🔒 <span class="en">Nothing uploads automatically — export at the end and send it back.</span><span class="ar-t">لا يُرفَع شيء تلقائياً — صدّري النتيجة في النهاية وأرسليها.</span></p>
+    <nav class="steps" id="steps"></nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- STEP 1 · SETUP -->
+  <section class="panel" data-step="0">
+    <div class="card">
+      <h2 class="serif"><span class="en">1 · Set the session</span><span class="ar-t">١ · تجهيز الجلسة</span></h2>
+      <p class="hint"><span class="en">Two minutes. A session with a named outcome produces twice the ideas.</span><span class="ar-t">دقيقتان فقط. الجلسة ذات الهدف الواضح تنتج ضعف الأفكار.</span></p>
+      <div class="grid2">
+        <div><label><span class="en">Topic — what are we exploring?</span><span class="ar-t">الموضوع — ما الذي نستكشفه؟</span></label>
+          <input type="text" id="f-topic" data-k="setup.topic" placeholder="e.g. The first Women in Power Circle · مثال: أول دائرة قوّة للنساء"></div>
+        <div><label><span class="en">Who is in the session?</span><span class="ar-t">من يشارك في الجلسة؟</span></label>
+          <input type="text" id="f-people" data-k="setup.people" placeholder="Dorina + …"></div>
+        <div><label><span class="en">Success — what decision or output would make this session a win?</span><span class="ar-t">النجاح — أي قرار أو نتيجة تجعل الجلسة ناجحة؟</span></label>
+          <textarea id="f-goal" data-k="setup.goal" placeholder="e.g. 3 chosen ideas, each with a first step · مثال: ٣ أفكار مختارة مع خطوة أولى لكل منها"></textarea></div>
+        <div><label><span class="en">Where will this apply first?</span><span class="ar-t">أين سيُطبَّق هذا أولاً؟</span></label>
+          <textarea id="f-where" data-k="setup.where" placeholder="e.g. pilot circle in Beirut · مثال: الدائرة التجريبية في بيروت"></textarea></div>
+      </div>
+      <div class="navrow"><span></span><button class="btn" onclick="go(1)"><span class="en">Next → Frame the question</span><span class="ar-t">التالي ← صياغة السؤال</span></button></div>
+    </div>
+  </section>
+
+  <!-- STEP 2 · FRAME -->
+  <section class="panel" data-step="1">
+    <div class="card">
+      <h2 class="serif"><span class="en">2 · Frame the question</span><span class="ar-t">٢ · صياغة السؤال</span></h2>
+      <p class="hint"><span class="en">Turn the topic into one or two “How might we…?” questions — specific, positive, open. A good frame is half the session.</span><span class="ar-t">حوّلي الموضوع إلى سؤال أو سؤالين بصيغة «كيف يمكننا…؟» — محدّد، إيجابي، مفتوح. الصياغة الجيدة نصف الجلسة.</span></p>
+      <div class="prompts">
+        <div class="prompt"><b><span class="en">Test the frame</span><span class="ar-t">اختبري الصياغة</span></b><span class="en">Does it invite many answers? Could a shy participant answer it? Is it about them, not us?</span><span class="ar-t">هل يفتح السؤال عدة إجابات؟ هل تستطيع مشارِكة خجولة الإجابة عنه؟ هل هو عنهنّ لا عنّا؟</span></div>
+        <div class="prompt"><b><span class="en">Example</span><span class="ar-t">مثال</span></b><span class="en">“How might we make the first circle feel safe for a woman who has never joined one?”</span><span class="ar-t">«كيف يمكننا أن نجعل الدائرة الأولى آمنة لامرأة لم تجرّب أي دائرة من قبل؟»</span></div>
+      </div>
+      <div><label><span class="en">How might we… (question 1)</span><span class="ar-t">كيف يمكننا… (السؤال ١)</span></label>
+        <textarea id="f-hmw1" data-k="frame.q1"></textarea></div>
+      <div><label><span class="en">How might we… (question 2 — optional)</span><span class="ar-t">كيف يمكننا… (السؤال ٢ — اختياري)</span></label>
+        <textarea id="f-hmw2" data-k="frame.q2"></textarea></div>
+      <div class="navrow"><button class="btn ghost" onclick="go(0)">←</button><button class="btn" onclick="go(2)"><span class="en">Next → Open the ideas</span><span class="ar-t">التالي ← فتح الأفكار</span></button></div>
+    </div>
+  </section>
+
+  <!-- STEP 3 · DIVERGE -->
+  <section class="panel" data-step="2">
+    <div class="card">
+      <h2 class="serif"><span class="en">3 · Diverge — quantity before quality</span><span class="ar-t">٣ · التوسّع — الكمية قبل الجودة</span></h2>
+      <p class="hint"><span class="en">Ten minutes, no judging, no “but”. Aim for 20 ideas. Wild is welcome — you will filter later, not now.</span><span class="ar-t">عشر دقائق، بلا حكم وبلا «لكن». الهدف ٢٠ فكرة. الأفكار الجريئة مرحّب بها — الغربلة لاحقاً لا الآن.</span></p>
+      <div class="timer">
+        <span class="gold-dot"></span>
+        <span class="t" id="timerT">10:00</span>
+        <button onclick="timerStart(600)"><span class="en">Start 10 min</span><span class="ar-t">ابدئي ١٠ دقائق</span></button>
+        <button onclick="timerStart(300)"><span class="en">5 min</span><span class="ar-t">٥ دقائق</span></button>
+        <button onclick="timerStop()"><span class="en">Stop</span><span class="ar-t">إيقاف</span></button>
+      </div>
+      <div class="prompts">
+        <div class="prompt"><b><span class="en">If nothing limited us…</span><span class="ar-t">لو لم يكن هناك أي قيد…</span></b><span class="en">What would the ideal version look like?</span><span class="ar-t">كيف ستبدو النسخة المثالية؟</span></div>
+        <div class="prompt"><b><span class="en">Reverse it</span><span class="ar-t">اعكسي السؤال</span></b><span class="en">How could we guarantee it fails? Flip each answer into an idea.</span><span class="ar-t">كيف نضمن فشله؟ ثم اقلبي كل إجابة إلى فكرة.</span></div>
+        <div class="prompt"><b><span class="en">Her eyes</span><span class="ar-t">بعينيها</span></b><span class="en">What would a hesitant first-time participant ask for?</span><span class="ar-t">ماذا ستطلب مشارِكة مترددة تأتي لأول مرة؟</span></div>
+        <div class="prompt"><b><span class="en">Borrow &amp; adapt</span><span class="ar-t">استعيري وكيّفي</span></b><span class="en">What works in a totally different field (restaurants, gyms, weddings) that we could adapt?</span><span class="ar-t">ما الذي ينجح في مجال مختلف تماماً (مطاعم، نوادٍ، أعراس) ويمكن تكييفه؟</span></div>
+        <div class="prompt"><b><span class="en">Smaller / bigger</span><span class="ar-t">أصغر / أكبر</span></b><span class="en">What is the 10-minute version? The 10-week version?</span><span class="ar-t">ما نسخة الـ١٠ دقائق؟ وما نسخة الـ١٠ أسابيع؟</span></div>
+        <div class="prompt"><b><span class="en">Partner's lens</span><span class="ar-t">عدسة الشريكة</span></b><span class="en">What does your co-coach see that you don't? Ask her directly.</span><span class="ar-t">ما الذي تراه شريكتكِ ولا ترينه أنتِ؟ اسأليها مباشرة.</span></div>
+      </div>
+      <div class="addrow">
+        <input type="text" id="ideaInput" placeholder="Type an idea, press Enter · اكتبي فكرة واضغطي إدخال">
+        <button class="btn" onclick="addIdea()"><span class="en">Add</span><span class="ar-t">أضيفي</span></button>
+      </div>
+      <ul class="ideas" id="ideaList"></ul>
+      <p class="hint" id="ideaCount"></p>
+      <div class="navrow"><button class="btn ghost" onclick="go(1)">←</button><button class="btn" onclick="go(3)"><span class="en">Next → Choose together</span><span class="ar-t">التالي ← الاختيار معاً</span></button></div>
+    </div>
+  </section>
+
+  <!-- STEP 4 · CONVERGE -->
+  <section class="panel" data-step="3">
+    <div class="card">
+      <h2 class="serif"><span class="en">4 · Converge — vote and star</span><span class="ar-t">٤ · التقارب — تصويت واختيار</span></h2>
+      <p class="hint"><span class="en">Read every idea aloud. Each of you has 3 votes (+). Then star ★ the strongest 2–4 overall — the stars move to the decision step.</span><span class="ar-t">اقرآ كل الأفكار بصوت عالٍ. لكل واحدة منكما ٣ أصوات (+). ثم ضعا ★ على أقوى ٢–٤ أفكار — النجوم تنتقل إلى خطوة القرار.</span></p>
+      <ul class="ideas" id="voteList"></ul>
+      <div class="navrow"><button class="btn ghost" onclick="go(2)">←</button><button class="btn" onclick="go(4)"><span class="en">Next → Decide</span><span class="ar-t">التالي ← القرار</span></button></div>
+    </div>
+  </section>
+
+  <!-- STEP 5 · DECIDE -->
+  <section class="panel" data-step="4">
+    <div class="card">
+      <h2 class="serif"><span class="en">5 · Decide — from idea to first step</span><span class="ar-t">٥ · القرار — من الفكرة إلى الخطوة الأولى</span></h2>
+      <p class="hint"><span class="en">For each starred idea: impact and effort from 1–5, the smallest step within 7 days, who owns it. An idea without a step is a wish.</span><span class="ar-t">لكل فكرة مميّزة بنجمة: الأثر والجهد من ١–٥، وأصغر خطوة خلال ٧ أيام، ومن يملكها. الفكرة بلا خطوة تبقى أمنية.</span></p>
+      <div id="decisions"></div>
+      <div><label><span class="en">Parking lot — good things for another day</span><span class="ar-t">موقف الأفكار — أشياء جيدة ليوم آخر</span></label>
+        <textarea id="f-parking" data-k="close.parking"></textarea></div>
+      <div><label><span class="en">Next session — when do you meet again?</span><span class="ar-t">الجلسة القادمة — متى تلتقيان مجدداً؟</span></label>
+        <input type="text" id="f-next" data-k="close.next"></div>
+      <div class="navrow"><button class="btn ghost" onclick="go(3)">←</button><button class="btn gold" onclick="go(5)"><span class="en">Finish → Export</span><span class="ar-t">إنهاء ← التصدير</span></button></div>
+    </div>
+  </section>
+
+  <!-- STEP 6 · EXPORT -->
+  <section class="panel" data-step="5">
+    <div class="card">
+      <h2 class="serif"><span class="en">6 · Export the session</span><span class="ar-t">٦ · تصدير الجلسة</span></h2>
+      <p class="hint"><span class="en">This summary is built from everything above. Copy it or download it, then send it back so we can work on it.</span><span class="ar-t">هذا الملخّص مبني على كل ما سبق. انسخيه أو نزّليه ثم أرسليه لنعمل عليه.</span></p>
+      <pre class="summary" id="summary"></pre>
+      <div class="navrow" style="justify-content:flex-start;gap:.6rem;flex-wrap:wrap">
+        <button class="btn" onclick="copySummary()"><span class="en">Copy summary</span><span class="ar-t">نسخ الملخّص</span></button>
+        <button class="btn ghost" onclick="downloadSummary()"><span class="en">Download .md</span><span class="ar-t">تنزيل الملف</span></button>
+        <button class="btn ghost" onclick="shareSummary()"><span class="en">Share…</span><span class="ar-t">مشاركة…</span></button>
+        <button class="btn ghost" onclick="resetAll()" style="border-color:#A94A3E;color:#A94A3E"><span class="en">New session</span><span class="ar-t">جلسة جديدة</span></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span class="en">Dorina Salman · Brainstorm Studio — private working tool. Sessions live in this browser only until exported.</span>
+  <span class="ar-t">دورينا سلمان · استوديو العصف الذهني — أداة عمل خاصة. تبقى الجلسات في هذا المتصفح فقط حتى تصديرها.</span>
+</div></footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY='dorina-brainstorm-v1';
+  var S=load();
+  function load(){try{return JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){return fresh()}}
+  function fresh(){return {lang:'en',step:0,fields:{},ideas:[],decisions:{}}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  function isAr(){return document.body.classList.contains('ar')}
+
+  // language
+  function applyLang(){
+    document.body.classList.toggle('ar', S.lang==='ar');
+    document.documentElement.dir = S.lang==='ar'?'rtl':'ltr';
+    document.documentElement.lang = S.lang==='ar'?'ar':'en';
+  }
+  document.getElementById('langBtn').onclick=function(){S.lang=(S.lang==='ar'?'en':'ar');save();applyLang();renderAll()};
+
+  // steps nav
+  var stepNames=[
+    {en:'Set up',ar:'التجهيز'},{en:'Frame',ar:'الصياغة'},{en:'Diverge',ar:'التوسّع'},
+    {en:'Converge',ar:'التقارب'},{en:'Decide',ar:'القرار'},{en:'Export',ar:'التصدير'}];
+  function renderSteps(){
+    var nav=document.getElementById('steps');nav.innerHTML='';
+    stepNames.forEach(function(s,i){
+      var b=document.createElement('button');b.className='step-btn'+(S.step===i?' active':'');
+      b.innerHTML='<span class="n">'+(i+1)+'</span>'+(isAr()?s.ar:s.en);
+      b.onclick=function(){go(i)};nav.appendChild(b);
+    });
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active', +p.dataset.step===S.step)});
+  }
+  window.go=function(i){S.step=i;save();renderSteps();if(i===4)renderDecisions();if(i===5)renderSummary();window.scrollTo({top:0,behavior:'smooth'})};
+
+  // generic fields
+  document.querySelectorAll('[data-k]').forEach(function(el){
+    el.value=S.fields[el.dataset.k]||'';
+    el.addEventListener('input',function(){S.fields[el.dataset.k]=el.value;save()});
+  });
+
+  // ideas
+  window.addIdea=function(){
+    var inp=document.getElementById('ideaInput');var t=inp.value.trim();if(!t)return;
+    S.ideas.push({id:Date.now()+''+Math.floor(Math.random()*999),text:t,votes:0,star:false});
+    inp.value='';save();renderIdeas();inp.focus();
+  };
+  document.getElementById('ideaInput').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();addIdea()}});
+  function renderIdeas(){
+    var ul=document.getElementById('ideaList');ul.innerHTML='';
+    S.ideas.forEach(function(it){
+      var li=document.createElement('li');li.className='idea';
+      li.innerHTML='<span class="txt"></span><button title="delete">✕</button>';
+      li.querySelector('.txt').textContent=it.text;
+      li.querySelector('button').onclick=function(){S.ideas=S.ideas.filter(function(x){return x.id!==it.id});save();renderIdeas();renderVotes()};
+      ul.appendChild(li);
+    });
+    var c=document.getElementById('ideaCount');
+    c.textContent=(isAr()?'عدد الأفكار: ':'Ideas so far: ')+S.ideas.length+(S.ideas.length<20?(isAr()?' — تابعا حتى ٢٠':' — keep going to 20'):' ✓');
+    renderVotes();
+  }
+  function renderVotes(){
+    var ul=document.getElementById('voteList');if(!ul)return;ul.innerHTML='';
+    S.ideas.slice().sort(function(a,b){return b.votes-a.votes||b.star-a.star}).forEach(function(it){
+      var li=document.createElement('li');li.className='idea'+(it.star?' starred':'');
+      li.innerHTML='<button class="star" title="star">★</button><span class="txt"></span>'+
+        '<span class="votebar"><button class="vote" title="+1">+</button><button class="vote" title="-1">−</button></span>'+
+        '<span class="count"></span>';
+      li.querySelector('.txt').textContent=it.text;
+      li.querySelector('.count').textContent=(isAr()?'أصوات: ':'votes: ')+it.votes;
+      var vb=li.querySelectorAll('.vote');
+      vb[0].onclick=function(){it.votes++;save();renderVotes()};
+      vb[1].onclick=function(){it.votes=Math.max(0,it.votes-1);save();renderVotes()};
+      li.querySelector('.star').onclick=function(){it.star=!it.star;save();renderVotes()};
+      ul.appendChild(li);
+    });
+  }
+
+  // decisions
+  function renderDecisions(){
+    var host=document.getElementById('decisions');host.innerHTML='';
+    var starred=S.ideas.filter(function(i){return i.star});
+    if(!starred.length){
+      host.innerHTML='<p class="hint">'+(isAr()?'لا توجد أفكار مميّزة بنجمة بعد — عودا إلى الخطوة ٤.':'No starred ideas yet — go back to step 4 and star the strongest ones.')+'</p>';
+      return;
+    }
+    starred.forEach(function(it){
+      var d=S.decisions[it.id]||(S.decisions[it.id]={impact:0,effort:0,step:'',owner:'',when:''});
+      var el=document.createElement('div');el.className='decision';
+      el.innerHTML='<h3></h3>'+
+        '<div class="grid2">'+
+        '<div><label>'+(isAr()?'الأثر (١–٥)':'Impact (1–5)')+'</label><div class="scale" data-f="impact"></div></div>'+
+        '<div><label>'+(isAr()?'الجهد (١–٥)':'Effort (1–5)')+'</label><div class="scale" data-f="effort"></div></div>'+
+        '</div>'+
+        '<div><label>'+(isAr()?'أصغر خطوة خلال ٧ أيام':'Smallest step within 7 days')+'</label><input type="text" class="stp"></div>'+
+        '<div class="grid2"><div><label>'+(isAr()?'المسؤولة':'Owner')+'</label><input type="text" class="own"></div>'+
+        '<div><label>'+(isAr()?'حتى متى؟':'By when?')+'</label><input type="text" class="whn"></div></div>';
+      el.querySelector('h3').textContent='★ '+it.text;
+      ['impact','effort'].forEach(function(f){
+        var sc=el.querySelector('[data-f='+f+']');
+        for(var n=1;n<=5;n++){(function(n){
+          var b=document.createElement('button');b.textContent=n;if(d[f]===n)b.className='sel';
+          b.onclick=function(){d[f]=n;save();renderDecisions()};sc.appendChild(b);
+        })(n)}
+      });
+      var stp=el.querySelector('.stp');stp.value=d.step;stp.oninput=function(){d.step=stp.value;save()};
+      var own=el.querySelector('.own');own.value=d.owner;own.oninput=function(){d.owner=own.value;save()};
+      var whn=el.querySelector('.whn');whn.value=d.when;whn.oninput=function(){d.when=whn.value;save()};
+      host.appendChild(el);
+    });
+  }
+
+  // summary
+  function buildSummary(){
+    var f=S.fields,L=isAr();
+    function line(en,ar,val){return val?((L?ar:en)+': '+val+'\\n'):''}
+    var out='';
+    out+=(L?'# جلسة عصف ذهني — دورينا سلمان\\n':'# Brainstorm session — Dorina Salman\\n');
+    out+=line('Date','التاريخ',new Date().toLocaleDateString(L?'ar-LB':'en-GB'));
+    out+=line('Topic','الموضوع',f['setup.topic']);
+    out+=line('Participants','المشاركون',f['setup.people']);
+    out+=line('Success looks like','النجاح يعني',f['setup.goal']);
+    out+=line('Applies first at','يُطبَّق أولاً في',f['setup.where']);
+    out+='\\n'+(L?'## أسئلة «كيف يمكننا»':'## How-might-we questions')+'\\n';
+    if(f['frame.q1'])out+='1. '+f['frame.q1']+'\\n';
+    if(f['frame.q2'])out+='2. '+f['frame.q2']+'\\n';
+    out+='\\n'+(L?'## كل الأفكار (':'## All ideas (')+S.ideas.length+')\\n';
+    S.ideas.forEach(function(i){out+='- '+(i.star?'★ ':'')+i.text+(i.votes?('  [+'+i.votes+']'):'')+'\\n'});
+    var starred=S.ideas.filter(function(i){return i.star});
+    out+='\\n'+(L?'## القرارات':'## Decisions')+'\\n';
+    starred.forEach(function(i){
+      var d=S.decisions[i.id]||{};
+      out+='\\n★ '+i.text+'\\n';
+      if(d.impact)out+=(L?'   الأثر: ':'   impact: ')+d.impact+'/5\\n';
+      if(d.effort)out+=(L?'   الجهد: ':'   effort: ')+d.effort+'/5\\n';
+      if(d.step)out+=(L?'   الخطوة الأولى: ':'   first step: ')+d.step+'\\n';
+      if(d.owner)out+=(L?'   المسؤولة: ':'   owner: ')+d.owner+'\\n';
+      if(d.when)out+=(L?'   الموعد: ':'   by: ')+d.when+'\\n';
+    });
+    if(f['close.parking'])out+='\\n'+(L?'## موقف الأفكار':'## Parking lot')+'\\n'+f['close.parking']+'\\n';
+    if(f['close.next'])out+='\\n'+line('Next session','الجلسة القادمة',f['close.next']);
+    return out;
+  }
+  function renderSummary(){document.getElementById('summary').textContent=buildSummary()}
+  window.copySummary=function(){navigator.clipboard&&navigator.clipboard.writeText(buildSummary()).then(function(){toast(isAr()?'نُسخ ✓':'Copied ✓')})};
+  window.downloadSummary=function(){
+    var blob=new Blob([buildSummary()],{type:'text/markdown'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='dorina-brainstorm-'+new Date().toISOString().slice(0,10)+'.md';a.click();
+  };
+  window.shareSummary=function(){
+    if(navigator.share){navigator.share({text:buildSummary()}).catch(function(){})}
+    else copySummary();
+  };
+  window.resetAll=function(){
+    var ok=confirm(isAr()?'بدء جلسة جديدة؟ سيُمسح كل شيء (صدّري أولاً).':'Start a new session? Everything clears (export first).');
+    if(ok){S=fresh();S.lang=isAr()?'ar':'en';save();location.reload()}
+  };
+
+  // timer
+  var tInt=null,tLeft=0;
+  function fmt(s){var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x}
+  window.timerStart=function(sec){
+    timerStop();tLeft=sec;document.getElementById('timerT').textContent=fmt(tLeft);
+    tInt=setInterval(function(){
+      tLeft--;document.getElementById('timerT').textContent=fmt(Math.max(0,tLeft));
+      if(tLeft<=0){timerStop();toast(isAr()?'انتهى الوقت — أكملا آخر فكرة ثم انتقلا':'Time! Finish the last idea and move on');}
+    },1000);
+  };
+  window.timerStop=function(){if(tInt){clearInterval(tInt);tInt=null}};
+
+  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show')},2200)}
+
+  function renderAll(){renderSteps();renderIdeas();if(S.step===4)renderDecisions();if(S.step===5)renderSummary()}
+  applyLang();renderAll();
+})();
+</script>
+</body>
+</html>
