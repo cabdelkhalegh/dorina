@@ -1,5 +1,7 @@
 # Dorina Salman — Brand Book (v1, approved 18 Aug 2026)
 
+**Site theme locked by Dorina, 18 Aug 2026: "01 · Ivory & Forest"** — ivory world, forest hero band and footer, gold as the thread. Shared pages carry the hybrid; the Women-Circle pages keep their immersive deep-forest room (re-hued from brown to the forest family). Source of truth: assets/dorina-platform.css.
+
 ## The system
 - **Primary lockup:** `dorina-lockup.svg` — Open Circle symbol + script signature. Use whenever space allows.
 - **Signature alone:** `dorina-signature.svg` — editorial contexts where the symbol appears elsewhere.
