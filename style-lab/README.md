@@ -2,6 +2,11 @@
 
 Private mockup board for selecting the visual direction of the big Mental Health Authority platform before changing the production `/authority-system/` pages.
 
+## Identity boards
+
+- `identity-lab-2.html` — CURRENT identity candidate board: signature-led system from AK's references (script signature mark, sage/off-pink lane palette, premium-rendered banner comps, applications). Awaiting AK's pick.
+- `identity-lab.html` — v1 geometric directions (Open Circle family, Seal, wordmark); the Open Circle symbol carries forward into v2 lockups.
+
 ## Current recommended board
 
 - `authority-old-design-workflow.html` — current candidate: uses AK’s attached old design language (forest sidebar, cream canvas, editorial serif hierarchy) plus the Mobbin-style workflow fixes: document library → evidence/source review → blocking decision → named approval → audit/export state.

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dorina Identity Lab v2 — signature system, premium rendering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Monsieur+La+Doulaise&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0F382F; --forest-2:#1C4A3E; --green:#437C5C; --mint:#8FC8AF;
+    --ivory:#F7F4ED; --cream:#F2EDE2; --sand:#EAE2D2;
+    --sage:#AFBBA1; --sage-deep:#8A9A7B; --sage-pale:#CDD5C2;
+    --rose:#E7C6CD; --rose-deep:#C98A96; --rose-pale:#F3E2E6;
+    --ink:#171613; --soft:#4C4A42; --muted:#807B6E;
+    --gold:#C59A54; --gold-2:#A87F3D;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --script1:"Monsieur La Doulaise",cursive;
+    --script2:"Mrs Saint Delafield",cursive;
+    --sans:"Inter",system-ui,sans-serif;
+    --ar:"IBM Plex Sans Arabic",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+  .wrap{max-width:76rem;margin:0 auto;padding:3rem 1.4rem 6rem;display:flex;flex-direction:column;gap:3.4rem}
+  header h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--forest);margin:.2rem 0 .4rem;line-height:1.05}
+  .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+  .lede{color:var(--soft);max-width:47rem}
+  h2{font-family:var(--serif);font-weight:500;font-size:1.9rem;color:var(--forest);margin:0;padding-bottom:.5rem;border-bottom:1px solid var(--gold)}
+  h3{font-size:.95rem;font-weight:600;margin:0}
+  section{display:flex;flex-direction:column;gap:1.3rem}
+  .cap{font-size:.82rem;color:var(--muted);line-height:1.55;max-width:44rem}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(21rem,1fr));gap:1.3rem}
+
+  .frame{border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(23,22,19,.06),0 24px 60px -30px rgba(23,22,19,.45);position:relative}
+  .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* signature hero — sage ground with frond shadows, per reference */
+  .hero-sig{background:linear-gradient(135deg,#B6C1A8 0%,#AFBBA1 45%,#A5B296 100%);min-height:340px;display:flex;align-items:center;justify-content:center;position:relative}
+  .frond{position:absolute;opacity:.14;filter:blur(7px)}
+  .sig{position:relative;text-align:center;padding:2rem}
+  .sig .name{font-family:var(--script1);font-size:clamp(3.4rem,9vw,6.2rem);color:#20241E;line-height:1;white-space:nowrap}
+  .sig svg.flourish{display:block;margin:-.4em auto 0;width:min(72%,430px)}
+  .sig .sub{margin-top:1.1rem;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:#3C4436}
+
+  .stagepad{padding:2.6rem 2rem;display:flex;align-items:center;justify-content:center;min-height:230px;position:relative}
+  .on-ivory{background:
+    radial-gradient(120% 140% at 85% 10%,rgba(255,252,242,.9) 0%,rgba(247,244,237,0) 55%),
+    linear-gradient(160deg,#FBF8F1 0%,#F4EFE4 100%)}
+  .on-forest{background:
+    radial-gradient(130% 150% at 80% 0%,#1C4A3E 0%,#0F382F 60%,#0B2C25 100%)}
+  .on-rose{background:
+    radial-gradient(110% 130% at 78% 12%,#F7E9EC 0%,#F0DBE0 48%,#E7C6CD 100%)}
+
+  .lockup{text-align:center}
+  .lockup .name1{font-family:var(--script1);font-size:clamp(2.6rem,6vw,4rem);line-height:1.05;white-space:nowrap}
+  .lockup .name2{font-family:var(--script2);font-size:clamp(2.8rem,6.4vw,4.4rem);line-height:1.05;white-space:nowrap}
+  .lockup .tag{margin-top:.8rem;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase}
+
+  .swatches{display:flex;flex-wrap:wrap;gap:.8rem}
+  .sw{display:flex;flex-direction:column;gap:.35rem;align-items:center;font-size:.68rem;color:var(--muted);font-family:ui-monospace,monospace}
+  .sw i{display:block;width:76px;height:52px;border-radius:6px;border:1px solid rgba(0,0,0,.07)}
+  .lane{background:#FDFBF6;border:1px solid var(--sand);border-radius:10px;padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.8rem}
+
+  /* premium banner comps */
+  .banner{aspect-ratio:4/1;position:relative;display:flex;align-items:center}
+  .banner .content{position:relative;z-index:2;margin-left:clamp(1.2rem,6%,4rem);display:flex;flex-direction:column;gap:.45rem;max-width:60%}
+  .b-corp{background:
+    radial-gradient(90% 160% at 100% 0%,rgba(255,250,238,.95) 0%,rgba(247,243,234,.0) 50%),
+    linear-gradient(120deg,#F8F5EE 0%,#F1ECDF 55%,#EBE4D2 100%)}
+  .b-corp .waves{position:absolute;inset:0;z-index:1}
+  .b-corp .name{font-family:var(--script1);font-size:clamp(1.8rem,4.6vw,3.6rem);color:var(--forest);line-height:1}
+  .b-corp .role{font-family:var(--serif);font-size:clamp(.9rem,2vw,1.5rem);color:var(--forest-2);letter-spacing:.03em}
+  .b-corp .langs{font-size:clamp(.55rem,1.1vw,.78rem);letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2)}
+  .rule-gold{width:130px;height:1px;background:linear-gradient(90deg,var(--gold),rgba(197,154,84,0));margin:.25rem 0}
+
+  .b-circle{background:
+    radial-gradient(100% 170% at 88% 0%,#FBF1F3 0%,rgba(243,226,230,0) 55%),
+    linear-gradient(115deg,#F6EBED 0%,#F0DCE1 50%,#E9CCD3 100%)}
+  .b-circle .petals{position:absolute;inset:0;z-index:1}
+  .b-circle .name{font-family:var(--script2);font-size:clamp(1.9rem,4.8vw,3.8rem);color:#5C3A44;line-height:1}
+  .b-circle .role{font-family:var(--serif);font-size:clamp(.85rem,1.9vw,1.4rem);color:#7A4E5A;font-style:italic}
+  .b-circle .ar-line{font-family:var(--ar);font-weight:600;font-size:clamp(.8rem,1.8vw,1.3rem);color:#5C3A44}
+
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.3rem;align-items:start}
+  .bizcard{aspect-ratio:1.75/1;border-radius:8px;background:
+    radial-gradient(120% 150% at 85% 0%,#1C4A3E 0%,#0F382F 65%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:var(--ivory);position:relative;overflow:hidden}
+  .bizcard .name{font-family:var(--script1);font-size:1.9rem;color:#F3EFE4}
+  .bizcard .role{font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mint)}
+  .avatar{width:120px;height:120px;border-radius:50%;background:radial-gradient(120% 140% at 70% 20%,#1C4A3E,#0F382F);display:flex;align-items:center;justify-content:center;margin:0 auto}
+  .avatar .ds{font-family:var(--script1);font-size:3.2rem;color:#F3EFE4;transform:translateY(-6px)}
+  .cover{aspect-ratio:3/4.1;max-width:230px;margin:0 auto;border-radius:8px;background:
+    linear-gradient(160deg,#F8F5EE 0%,#EFE8D8 100%);border:1px solid var(--sand);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.6rem 1.1rem;position:relative;overflow:hidden}
+  .cover .t{font-family:var(--serif);font-size:1.15rem;color:var(--forest);text-align:center;line-height:1.25}
+  .cover .sig-s{font-family:var(--script1);font-size:1.6rem;color:var(--forest)}
+  .note{font-size:.88rem;color:var(--soft);background:#F0E7D2;border-left:3px solid var(--gold);padding:.8rem 1rem;border-radius:0 4px 4px 0;max-width:none}
+  footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--sand);padding-top:1.2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Style-lab · identity board v2 · built from AK's references · mockup only</div>
+    <h1>The Signature System</h1>
+    <p class="lede">Reference honored: the handwritten signature becomes the personal mark; sage, off-white and off-pink join the palette as guidance; every surface below is rendered for the premium feel of the reference boards — layered light, organic shadow, gold hairlines, grain.</p>
+  </header>
+
+  <!-- ============ SIGNATURE HERO ============ -->
+  <section>
+    <h2>The mark — her name, in her hand</h2>
+    <div class="frame grain hero-sig">
+      <svg class="frond" style="left:-40px;top:-30px" width="360" height="360" viewBox="0 0 100 100"><g fill="#20241E"><path d="M50 5 C40 35 40 65 50 95 C60 65 60 35 50 5" transform="rotate(35 50 50)"/><path d="M50 5 C40 35 40 65 50 95 C60 65 60 35 50 5" transform="rotate(75 50 50) scale(.8)"/><path d="M50 5 C40 35 40 65 50 95 C60 65 60 35 50 5" transform="rotate(-5 50 50) scale(.9)"/></g></svg>
+      <svg class="frond" style="right:-60px;bottom:-70px;transform:rotate(160deg)" width="420" height="420" viewBox="0 0 100 100"><g fill="#20241E"><path d="M50 5 C40 35 40 65 50 95 C60 65 60 35 50 5" transform="rotate(35 50 50)"/><path d="M50 5 C40 35 40 65 50 95 C60 65 60 35 50 5" transform="rotate(85 50 50) scale(.75)"/></g></svg>
+      <div class="sig">
+        <div class="name">Dorina Salman</div>
+        <svg class="flourish" viewBox="0 0 430 26" fill="none">
+          <path d="M8 15 C 90 22 300 20 422 6" stroke="#20241E" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M330 13 C 360 16 395 12 422 6" stroke="#20241E" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+        </svg>
+        <div class="sub">Wellbeing Education &amp; Coaching</div>
+      </div>
+    </div>
+    <p class="cap">Sage ground with frond shadow, per the reference. The script is a live typeface (Monsieur La Doulaise) with a drawn flourish — reproducible at any size, and replaceable 1:1 with Dorina's true digitized signature if she signs on paper and we trace it.</p>
+  </section>
+
+  <!-- ============ SCRIPT VARIANTS ============ -->
+  <section>
+    <h2>Script voices &amp; grounds</h2>
+    <div class="grid2">
+      <div>
+        <div class="frame grain stagepad on-ivory">
+          <div class="lockup">
+            <div class="name1" style="color:var(--forest)">Dorina Salman</div>
+            <div class="tag" style="color:var(--gold-2)">Wellbeing · Coaching · العربية والإنجليزية والفرنسية</div>
+          </div>
+        </div>
+        <p class="cap">Voice 1 — Monsieur La Doulaise on warm ivory. Spencerian, thin, closest to the reference signature.</p>
+      </div>
+      <div>
+        <div class="frame grain stagepad on-forest">
+          <div class="lockup">
+            <div class="name2" style="color:#F3EFE4">Dorina Salman</div>
+            <div class="tag" style="color:var(--mint)">Women in Power Circle</div>
+          </div>
+        </div>
+        <p class="cap">Voice 2 — Mrs Saint Delafield reversed on forest. Slightly fuller stroke; carries better very small.</p>
+      </div>
+      <div>
+        <div class="frame grain stagepad on-rose">
+          <div class="lockup">
+            <div class="name1" style="color:#5C3A44">Dorina Salman</div>
+            <div class="tag" style="color:#A06B77">دائرة قوّة للنساء</div>
+          </div>
+        </div>
+        <p class="cap">The off-pink ground from the lotus reference — proposed as the <b>Women's Circle lane</b>, not the whole brand.</p>
+      </div>
+      <div>
+        <div class="frame grain stagepad on-ivory">
+          <div class="lockup" style="display:flex;align-items:center;gap:1.1rem;justify-content:center">
+            <svg viewBox="0 0 100 100" width="64"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="5.5" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5" fill="#C59A54"/></svg>
+            <div class="name1" style="font-size:2.6rem;color:var(--forest)">Dorina Salman</div>
+          </div>
+        </div>
+        <p class="cap">Signature + Open Circle as one lockup: the symbol survives where script can't (favicon, app icon, stamp), the signature carries the person.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PALETTE ============ -->
+  <section>
+    <h2>Palette — one house, two lanes</h2>
+    <div class="grid2">
+      <div class="lane">
+        <h3>Master house</h3>
+        <div class="swatches">
+          <span class="sw"><i style="background:#0F382F"></i>forest</span>
+          <span class="sw"><i style="background:#F7F4ED"></i>ivory</span>
+          <span class="sw"><i style="background:#C59A54"></i>gold</span>
+          <span class="sw"><i style="background:#171613"></i>ink</span>
+        </div>
+        <p class="cap">Everything shares these. The signature lives in forest or ink, never gold.</p>
+      </div>
+      <div class="lane">
+        <h3>Lane accents</h3>
+        <div class="swatches">
+          <span class="sw"><i style="background:#AFBBA1"></i>sage · calm</span>
+          <span class="sw"><i style="background:#8FC8AF"></i>mint · corp</span>
+          <span class="sw"><i style="background:#E7C6CD"></i>rose · circle</span>
+          <span class="sw"><i style="background:#C98A96"></i>rose deep</span>
+        </div>
+        <p class="cap">Corporate/DESK keeps forest + gold + mint. Women in Power Circle warms with sage + off-pink. Same house, recognizably different rooms — your "guidance, not the only direction" applied literally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREMIUM BANNERS ============ -->
+  <section>
+    <h2>Premium banner comps</h2>
+
+    <div class="frame grain banner b-corp">
+      <svg class="waves" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice">
+        <path d="M-50 420 C 250 300 350 380 620 330 C 500 400 200 430 -50 420 Z" fill="#0F382F" opacity=".96"/>
+        <path d="M-50 430 C 300 270 450 360 780 320 L 800 400 L -50 400 Z" fill="#43705C" opacity=".28"/>
+        <path d="M-60 300 C 240 210 420 300 700 260" stroke="#C59A54" stroke-width="1.4" fill="none" opacity=".8"/>
+        <path d="M-60 340 C 260 240 430 330 720 290" stroke="#C59A54" stroke-width=".7" fill="none" opacity=".45"/>
+        <g transform="translate(1440,60) rotate(18)" opacity=".16" filter="blur(1px)"><path d="M0 0 C-14 40 -14 80 0 130 C14 80 14 40 0 0" fill="#43705C"/><path d="M0 20 C-26 46 -30 70 -26 104" stroke="#43705C" stroke-width="5" fill="none"/></g>
+      </svg>
+      <div class="content">
+        <div class="name">Dorina Salman</div>
+        <div class="role">Workplace wellbeing, made practical.</div>
+        <div class="rule-gold"></div>
+        <div class="langs">Stress management · Resilience · Arabic · English · French</div>
+      </div>
+    </div>
+    <p class="cap">Corporate lane — the live LinkedIn banner's spirit, elevated: signature as the name, forest wave with gold hairlines, soft window light, grain.</p>
+
+    <div class="frame grain banner b-circle">
+      <svg class="petals" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMid slice">
+        <g transform="translate(1330,400)" opacity=".5">
+          <path d="M0 0 C -120 -60 -120 -220 0 -300 C 120 -220 120 -60 0 0" fill="#DCA7B2" opacity=".55"/>
+          <path d="M0 0 C -200 -40 -230 -180 -140 -260 C -40 -220 -10 -90 0 0" fill="#D598A6" opacity=".4"/>
+          <path d="M0 0 C 200 -40 230 -180 140 -260 C 40 -220 10 -90 0 0" fill="#D598A6" opacity=".4"/>
+          <circle cx="0" cy="-300" r="7" fill="#C59A54" opacity=".9"/>
+        </g>
+        <path d="M-60 330 C 300 260 500 330 820 300" stroke="#C59A54" stroke-width="1" fill="none" opacity=".55"/>
+      </svg>
+      <div class="content">
+        <div class="name">Dorina Salman</div>
+        <div class="role">Read the signal. Name the feeling. Choose your next move.</div>
+        <div class="rule-gold" style="background:linear-gradient(90deg,#C98A96,rgba(201,138,150,0))"></div>
+        <div class="ar-line">دائرة قوّة للنساء · اقرئي الإشارة. سمّي الشعور.</div>
+      </div>
+    </div>
+    <p class="cap">Circle lane — the lotus reference translated into the house language: abstract petals rising from the corner, rose grounds, the promise line bilingual. Premium without the stock-photo moon.</p>
+  </section>
+
+  <!-- ============ APPLICATIONS ============ -->
+  <section>
+    <h2>Applications</h2>
+    <div class="apps">
+      <div>
+        <div class="frame grain bizcard">
+          <svg style="position:absolute;right:-30px;top:-30px;opacity:.14" width="200" height="200" viewBox="0 0 100 100"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="4" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="4.4" fill="#C59A54"/></svg>
+          <div class="name">Dorina Salman</div>
+          <div class="role">Wellbeing Education &amp; Coaching</div>
+        </div>
+        <p class="cap">Business card front — forest, signature reversed, ghosted symbol.</p>
+      </div>
+      <div>
+        <div class="avatar frame"><span class="ds">DS</span></div>
+        <p class="cap" style="text-align:center;margin-top:.8rem">Avatar / WhatsApp — script DS monogram on forest.</p>
+      </div>
+      <div>
+        <div class="cover frame grain">
+          <svg width="42" viewBox="0 0 100 100"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5.2" fill="#C59A54"/></svg>
+          <div class="t">The CIRCLE Method<br><span style="font-style:italic;font-size:.95rem;color:var(--green)">participant workbook</span></div>
+          <div class="sig-s">Dorina Salman</div>
+        </div>
+        <p class="cap" style="text-align:center;margin-top:.8rem">Workbook cover — ivory, serif title, signature as the maker's mark.</p>
+      </div>
+    </div>
+    <p class="note"><b>Portrait received</b> (the cream-blazer headshot — it's excellent and grades perfectly into both lanes). Please drop the original file into <code>C:\Users\DELL\Documents\Dorina\assets\</code> so production can use it at full quality; chat images can't be saved at source resolution.</p>
+  </section>
+
+  <footer>
+    Identity Lab v2 · built from AK's shared references (signature card, lotus cover, premium banner comps) · colors used as guidance per instruction · mockup only — production untouched. Approve a direction here (or mix: e.g. Voice 1 + Open Circle + two-lane palette) and it ships to assets/brand/ with the brand book.
+  </footer>
+</div>
+</body>
+</html>
