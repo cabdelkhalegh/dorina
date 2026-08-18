@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 130" role="img" aria-label="Dorina Salman signature">
+  <!-- Text form: requires 'Monsieur La Doulaise' loaded on the page. For print, convert to outlines or replace with Dorina's traced signature. -->
+  <text x="12" y="82" font-family="'Monsieur La Doulaise', cursive" font-size="74" fill="#0F382F">Dorina Salman</text>
+  <path d="M 16 100 C 100 110 320 106 448 88" stroke="#0F382F" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <path d="M 356 96 C 386 100 421 95 448 88" stroke="#0F382F" stroke-width="3" stroke-linecap="round" fill="none" opacity=".85"/>
+</svg>

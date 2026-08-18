@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@500;600&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0}
+  .banner{width:1584px;height:396px;position:relative;overflow:hidden;font-family:"Inter",sans-serif;
+    background:
+      radial-gradient(90% 160% at 100% 0%,rgba(255,250,238,.95) 0%,rgba(247,243,234,0) 50%),
+      linear-gradient(120deg,#F8F5EE 0%,#F1ECDF 55%,#EBE4D2 100%)}
+  .banner::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+  svg.waves{position:absolute;inset:0}
+  .content{position:absolute;left:96px;top:50%;transform:translateY(-52%);display:flex;flex-direction:column;gap:10px;z-index:2}
+  .name{font-family:"Monsieur La Doulaise",cursive;font-size:96px;line-height:1;color:#0F382F}
+  .role{font-family:"Cormorant Garamond",serif;font-size:38px;color:#1C4A3E;letter-spacing:.02em}
+  .rule{width:170px;height:1.5px;background:linear-gradient(90deg,#C59A54,rgba(197,154,84,0));margin:6px 0 2px}
+  .langs{font-size:19px;letter-spacing:.3em;text-transform:uppercase;color:#A87F3D;font-weight:500}
+  .mark{position:absolute;right:110px;top:70px;z-index:2;opacity:.95}
+</style>
+</head>
+<body>
+<div class="banner">
+  <svg class="waves" viewBox="0 0 1584 396" preserveAspectRatio="none">
+    <path d="M-50 416 C 250 296 350 376 620 326 C 500 396 200 426 -50 416 Z" fill="#0F382F" opacity=".96"/>
+    <path d="M-50 426 C 300 266 450 356 780 316 L 800 396 L -50 396 Z" fill="#43705C" opacity=".28"/>
+    <path d="M-60 296 C 240 206 420 296 700 256" stroke="#C59A54" stroke-width="1.4" fill="none" opacity=".8"/>
+    <path d="M-60 336 C 260 236 430 326 720 286" stroke="#C59A54" stroke-width=".7" fill="none" opacity=".45"/>
+    <g transform="translate(1420,50) rotate(18)" opacity=".15"><path d="M0 0 C-14 40 -14 80 0 130 C14 80 14 40 0 0" fill="#43705C"/><path d="M0 20 C-26 46 -30 70 -26 104" stroke="#43705C" stroke-width="5" fill="none"/></g>
+  </svg>
+  <div class="content">
+    <div class="name">Dorina Salman</div>
+    <div class="role">Workplace wellbeing, made practical.</div>
+    <div class="rule"></div>
+    <div class="langs">Stress management · Resilience · Arabic · English · French</div>
+  </div>
+  <svg class="mark" viewBox="0 0 100 100" width="150">
+    <path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+    <circle cx="71.86" cy="23.96" r="5" fill="#C59A54"/>
+  </svg>
+</div>
+</body>
+</html>
