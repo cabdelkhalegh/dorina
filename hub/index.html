@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Dorina's Hub · لوحة دورينا</title>
+<link rel="icon" type="image/svg+xml" href="/dorina/assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<style>
+  :root{--forest:#0F382F;--forest2:#14453A;--green:#437C5C;--mint:#8FC8AF;--ivory:#F5F1E8;--paper:#FFFDF7;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;--gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8;--rose:#E7C6CD}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ivory);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6}
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  body.ar .en{display:none}
+  body:not(.ar) .ar-t{display:none}
+  .serif{font-family:"Cormorant Garamond",serif}
+  body.ar .serif{font-family:"IBM Plex Sans Arabic",sans-serif}
+
+  .band{background:radial-gradient(120% 160% at 82% 0%,#1C4A3E 0%,#0F382F 60%,#0B2C25 100%);color:#F3EFE4;padding:1rem 0 1.8rem;position:relative;overflow:hidden}
+  .band::after{content:"";position:absolute;bottom:-70px;inset-inline-end:-40px;width:240px;height:240px;opacity:.1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 79.14 32.49 A 34 34 0 1 1 62.18 18.25' fill='none' stroke='%23F3EFE4' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='71.86' cy='23.96' r='4' fill='%23C59A54'/%3E%3C/svg%3E") no-repeat center/contain;pointer-events:none}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.1rem}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0 1.2rem;gap:.8rem}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.08em;font-size:.8rem;color:#F3EFE4;text-decoration:none}
+  .lang{border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;border-radius:999px;padding:.45rem .95rem;cursor:pointer;font:inherit;font-weight:600}
+  .sig{font-family:"Monsieur La Doulaise",cursive;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1;color:#F3EFE4}
+  .sub{color:#CFE0D5;max-width:44rem;margin:.4rem 0 0;font-size:.95rem}
+  .privacy{margin-top:.8rem;font-size:.76rem;color:var(--mint)}
+
+  /* progress hero */
+  .progress-row{display:flex;align-items:center;gap:1.2rem;margin-top:1.2rem;flex-wrap:wrap}
+  .pct{font-family:"Cormorant Garamond",serif;font-size:3rem;line-height:1;color:var(--gold)}
+  body.ar .pct{font-family:"IBM Plex Sans Arabic",sans-serif;font-weight:600}
+  .bar{flex:1;min-width:220px;height:10px;border-radius:99px;background:rgba(243,239,228,.18);overflow:hidden}
+  .bar i{display:block;height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--gold),#E3BE7E);transition:width .8s cubic-bezier(.2,.7,.2,1)}
+  .plabel{font-size:.78rem;color:#CFE0D5;letter-spacing:.08em;text-transform:uppercase}
+
+  main{padding:1.8rem 0 4rem;display:flex;flex-direction:column;gap:2.4rem}
+  h2{font-weight:600;color:var(--forest);margin:0;font-size:1.55rem;padding-bottom:.4rem;border-bottom:1px solid var(--gold)}
+  .hint{font-size:.86rem;color:var(--muted);margin:.4rem 0 0}
+  section{display:flex;flex-direction:column;gap:1rem}
+
+  /* link cards */
+  .links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr));gap:.9rem}
+  .lcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.05rem;display:flex;flex-direction:column;gap:.45rem;box-shadow:0 2px 5px rgba(23,22,19,.04);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+  .lcard:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(15,56,47,.4)}
+  .lcard .t{font-weight:700;color:var(--forest);font-size:.98rem;display:flex;align-items:center;gap:.5rem}
+  .lcard .d{font-size:.8rem;color:var(--muted);flex:1}
+  .badge{font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .5rem;border-radius:99px;white-space:nowrap}
+  .badge.pub{background:#DAE9DD;color:#1E5240}
+  .badge.priv{background:#F0E7D2;color:#7A5A1E}
+  .lrow{display:flex;gap:.45rem;flex-wrap:wrap}
+  .mini{border:1px solid var(--line);background:transparent;color:var(--forest);border-radius:999px;padding:.34rem .75rem;font:inherit;font-size:.72rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+  .mini.solid{background:var(--forest);color:#F3EFE4;border-color:var(--forest)}
+  .mini:hover{border-color:var(--gold2);color:var(--gold2)}
+  .mini.solid:hover{color:#F3EFE4;border-color:var(--forest)}
+
+  /* goals */
+  .phase{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .phase-h{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.85rem 1.05rem;background:linear-gradient(0deg,rgba(15,56,47,.05),rgba(15,56,47,.05));cursor:pointer}
+  .phase-h b{color:var(--forest);font-size:.95rem}
+  .phase-h .cnt{font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  .goals{padding:.4rem 1.05rem .8rem;display:none;flex-direction:column}
+  .phase.open .goals{display:flex}
+  .goal{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem 0;border-bottom:1px solid #EFEAE0;cursor:pointer}
+  .goal:last-child{border-bottom:none}
+  .tick{width:21px;height:21px;border-radius:6px;border:1.6px solid #B9B29F;flex:none;margin-top:2px;display:grid;place-items:center;color:transparent;font-size:.8rem;font-weight:800;transition:all .2s}
+  .goal.done .tick{background:var(--forest);border-color:var(--forest);color:#F3EFE4}
+  .goal .gt{font-size:.9rem;color:var(--ink)}
+  .goal.done .gt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(122,117,106,.5)}
+  .goal .who{font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);margin-inline-start:auto;white-space:nowrap;padding-top:.2rem}
+
+  /* decisions */
+  .dcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.05rem 1.15rem;display:flex;flex-direction:column;gap:.6rem}
+  .dcard.decided{border-color:var(--gold);background:#FCF8EE}
+  .dcard h3{margin:0;font-size:1rem;color:var(--forest)}
+  .dcard .q{font-size:.86rem;color:var(--soft);margin:0}
+  .opts{display:flex;gap:.45rem;flex-wrap:wrap}
+  .opt{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.42rem .85rem;font:inherit;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--soft)}
+  .opt.sel{background:var(--forest);color:#F3EFE4;border-color:var(--forest)}
+  .dnote{font:inherit;border:1px solid var(--line);border-radius:8px;padding:.55rem .7rem;background:#fff;color:var(--ink);width:100%;font-size:.85rem}
+  .dstate{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2)}
+
+  .sharebar{position:sticky;bottom:0;background:rgba(15,56,47,.96);backdrop-filter:blur(10px);border-radius:14px 14px 0 0;padding:.9rem 1.1rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;color:#F3EFE4;box-shadow:0 -14px 40px -20px rgba(15,56,47,.7)}
+  .sharebar .s{font-size:.82rem;color:#CFE0D5;flex:1;min-width:200px}
+  .btn{border-radius:999px;padding:.6rem 1.1rem;font:inherit;font-weight:700;font-size:.78rem;cursor:pointer;border:1px solid rgba(243,239,228,.45);background:transparent;color:#F3EFE4}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:#2A1F0E}
+  .toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--forest);color:#F3EFE4;padding:.65rem 1.15rem;border-radius:999px;font-size:.84rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:9}
+  .toast.show{opacity:1}
+  footer{border-top:1px solid var(--line);padding:1rem 0 2rem;font-size:.76rem;color:var(--muted)}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="/dorina/">
+        <svg viewBox="0 0 100 100" width="26" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+        DORINA SALMAN
+      </a>
+      <button class="lang" id="langBtn"><span class="en">العربية</span><span class="ar-t">English</span></button>
+    </div>
+    <div class="sig">Dorina's Hub</div>
+    <p class="sub">
+      <span class="en">Everything in one place — your pages, your tools, your goals, and the decisions waiting for you. Private to you; nothing here uploads anywhere.</span>
+      <span class="ar-t">كل شيء في مكان واحد — صفحاتكِ، أدواتكِ، أهدافكِ، والقرارات التي تنتظركِ. خاص بكِ؛ لا يُرفَع أي شيء من هنا إلى أي مكان.</span>
+    </p>
+    <div class="progress-row">
+      <span class="pct" id="pct">0%</span>
+      <div class="bar"><i id="barfill"></i></div>
+      <span class="plabel"><span class="en" id="plabel-en">toward launch</span><span class="ar-t" id="plabel-ar">نحو الانطلاق</span></span>
+    </div>
+    <p class="privacy">🔒 <span class="en">Your ticks, answers and notes live only in this browser.</span><span class="ar-t">علاماتكِ وإجاباتكِ وملاحظاتكِ تبقى في هذا المتصفح فقط.</span></p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ============ LINKS ============ -->
+  <section>
+    <h2 class="serif"><span class="en">Your places</span><span class="ar-t">أماكنكِ</span></h2>
+    <p class="hint"><span class="en">Green badge = client-facing — share those freely. Gold badge = yours only.</span><span class="ar-t">الشارة الخضراء = للعميلات — شاركيها بحرية. الذهبية = لكِ فقط.</span></p>
+    <div class="links-grid" id="links"></div>
+  </section>
+
+  <!-- ============ GOALS ============ -->
+  <section>
+    <h2 class="serif"><span class="en">Your goals</span><span class="ar-t">أهدافكِ</span></h2>
+    <p class="hint"><span class="en">Tap to tick. Items marked TEAM are already done for you.</span><span class="ar-t">اضغطي للتعليم. البنود المكتوب عليها TEAM أُنجزت لأجلكِ.</span></p>
+    <div id="phases"></div>
+  </section>
+
+  <!-- ============ DECISIONS ============ -->
+  <section>
+    <h2 class="serif"><span class="en">Decisions waiting for you</span><span class="ar-t">قرارات بانتظاركِ</span></h2>
+    <p class="hint"><span class="en">Answer in your own time. When you're ready, share them all with one tap at the bottom.</span><span class="ar-t">أجيبي على مهلكِ. وحين تجهزين، شاركيها كلها بضغطة واحدة في الأسفل.</span></p>
+    <div id="decisions" style="display:flex;flex-direction:column;gap:.9rem"></div>
+  </section>
+
+  <div class="sharebar">
+    <span class="s"><span class="en">Send your progress & decisions to Abdel</span><span class="ar-t">أرسلي تقدمكِ وقراراتكِ إلى عبد الخالق</span></span>
+    <button class="btn gold" onclick="shareSummary()"><span class="en">Share…</span><span class="ar-t">مشاركة…</span></button>
+    <button class="btn" onclick="copySummary()"><span class="en">Copy</span><span class="ar-t">نسخ</span></button>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <span class="en">Dorina Salman · private hub — the public pages carry the client experience; this page carries you.</span>
+  <span class="ar-t">دورينا سلمان · لوحة خاصة — الصفحات العامة للعميلات؛ وهذه الصفحة لكِ.</span>
+</div></footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY='dorina-hub-v1', BASE='https://cabdelkhalegh.github.io/dorina';
+  var S; try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+  S.goals=S.goals||{}; S.dec=S.dec||{}; S.lang=S.lang||'en';
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  function isAr(){return document.body.classList.contains('ar')}
+  function T(o){return isAr()?o.ar:o.en}
+
+  // ---------- language ----------
+  function applyLang(){document.body.classList.toggle('ar',S.lang==='ar');document.documentElement.dir=S.lang==='ar'?'rtl':'ltr';document.documentElement.lang=S.lang==='ar'?'ar':'en'}
+  document.getElementById('langBtn').onclick=function(){S.lang=S.lang==='ar'?'en':'ar';save();applyLang();renderAll()};
+
+  // ---------- links ----------
+  var LINKS=[
+    {en:'Home page',ar:'الصفحة الرئيسية',den:'Your front door — promise, portrait, three paths.',dar:'بوابتكِ — الوعد والصورة والمسارات الثلاثة.',url:BASE+'/',pub:1},
+    {en:'Women in Power Circle',ar:'دائرة قوّة للنساء',den:'The Circle page — method, journey, inquiry.',dar:'صفحة الدائرة — المنهج والرحلة وطلب التواصل.',url:BASE+'/women-circle/',pub:1},
+    {en:'Private consultation',ar:'الاستشارة الفردية',den:'The one-to-one path.',dar:'مسار الجلسات الفردية.',url:BASE+'/consultation/',pub:1},
+    {en:'Hosted circles',ar:'الدوائر المستضافة',den:'For communities and groups.',dar:'للمجتمعات والمجموعات.',url:BASE+'/hosted/',pub:1},
+    {en:'About you',ar:'عنكِ',den:'Your story and credentials, written properly.',dar:'قصتكِ واعتماداتكِ، مكتوبة كما يجب.',url:BASE+'/about/',pub:1},
+    {en:'Contact',ar:'التواصل',den:'Inquiry form → straight to your WhatsApp.',dar:'نموذج التواصل ← مباشرة إلى واتسابكِ.',url:BASE+'/contact/',pub:1},
+    {en:'Brainstorm Studio',ar:'استوديو العصف الذهني',den:'Run sessions with your co-coach; export the results.',dar:'جلسات مع شريكتكِ في التدريب؛ وصدّري النتائج.',url:BASE+'/brainstorm/',pub:0},
+    {en:'Authority platform',ar:'منصة الخطة الكبرى',den:'The full 12-month plan, library and decisions.',dar:'الخطة الكاملة لاثني عشر شهراً، المكتبة والقرارات.',url:BASE+'/authority-system/',pub:0},
+    {en:'Workshop blueprint',ar:'مخطط الورشة',den:'The DESK system: formats, run sheets, pricing logic.',dar:'نظام الورشات: الصيغ والجداول ومنطق التسعير.',url:BASE+'/authority-system/workshop-system-blueprint.html',pub:0},
+    {en:'Workshop exercises',ar:'تمارين الورشة',den:'All nine scripted exercises with facilitator cards.',dar:'التمارين التسعة كاملة مع بطاقات الميسِّرة.',url:BASE+'/authority-system/workshop-exercises-and-handouts.html',pub:0},
+    {en:'Print kit — Trigger Map',ar:'للطباعة — خريطة المحفّز',den:'A4 worksheet, Arabic + English.',dar:'ورقة عمل A4 بالعربية والإنكليزية.',url:BASE+'/assets/materials/trigger-map.pdf',pub:0},
+    {en:'Print kit — Support Map',ar:'للطباعة — خريطة الدعم',den:'The three rings with exact asks.',dar:'الدوائر الثلاث مع الطلبات المحددة.',url:BASE+'/assets/materials/support-map.pdf',pub:0},
+    {en:'Print kit — Bad-Day Card',ar:'للطباعة — بطاقة اليوم الصعب',den:'The take-home tool with the permission line.',dar:'أداة تُحمَل مع سطر الإذن.',url:BASE+'/assets/materials/bad-day-card.pdf',pub:0},
+    {en:'Print kit — Run sheet',ar:'للطباعة — خطة الجلسة',den:'Your 3-hour pilot, minute by minute.',dar:'جلستكِ التجريبية، دقيقة بدقيقة.',url:BASE+'/assets/materials/facilitator-run-sheet.pdf',pub:0},
+    {en:'Print kit — Seven days',ar:'للطباعة — الأيام السبعة',den:'The take-home practice week.',dar:'أسبوع الممارسة بعد الجلسة.',url:BASE+'/assets/materials/seven-day-integration.pdf',pub:0},
+    {en:'"The Circle, honestly" PDF',ar:'ملف «الدائرة بصراحة»',den:'One page that answers "what is this?" — for WhatsApp & LinkedIn.',dar:'صفحة واحدة تجيب «ما هذا؟» — للواتساب ولينكدإن.',url:BASE+'/assets/brand/circle-onepager.pdf',pub:0},
+    {en:'LinkedIn posts — weeks 1–2',ar:'منشورات لينكدإن — الأسبوعان ١-٢',den:'Six posts awaiting your approval, EN + AR.',dar:'ستة منشورات بانتظار موافقتكِ، عربي وإنكليزي.',url:'https://github.com/cabdelkhalegh/dorina/blob/main/women-circle/CONTENT_BATCH_WEEKS_1-2.md',pub:0},
+    {en:'Your LinkedIn profile',ar:'حسابكِ على لينكدإن',den:'Rebuilt and credential-verified.',dar:'أعيد بناؤه وتوثيق اعتماداته.',url:'https://www.linkedin.com/in/dorinasalman/',pub:0}
+  ];
+  function renderLinks(){
+    var host=document.getElementById('links');host.innerHTML='';
+    LINKS.forEach(function(l){
+      var c=document.createElement('div');c.className='lcard';
+      var badge=l.pub?'<span class="badge pub">'+(isAr()?'للعميلات':'Client-facing')+'</span>':'<span class="badge priv">'+(isAr()?'لكِ فقط':'Yours only')+'</span>';
+      c.innerHTML='<div class="t">'+T(l)+' '+badge+'</div><div class="d">'+(isAr()?l.dar:l.den)+'</div>'+
+        '<div class="lrow"><a class="mini solid" target="_blank" rel="noopener" href="'+l.url+'">'+(isAr()?'افتحي':'Open')+'</a>'+
+        '<button class="mini" data-copy="'+l.url+'">'+(isAr()?'انسخي الرابط':'Copy link')+'</button>'+
+        (l.pub?'<a class="mini" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(T(l)+' — '+l.url)+'">'+(isAr()?'شاركي واتساب':'Share on WhatsApp')+'</a>':'')+
+        '</div>';
+      host.appendChild(c);
+    });
+    host.querySelectorAll('[data-copy]').forEach(function(b){b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(b.dataset.copy).then(function(){toast(isAr()?'نُسخ ✓':'Copied ✓')})}});
+  }
+
+  // ---------- goals ----------
+  var PHASES=[
+    {en:'Built for you',ar:'أُنجز لأجلكِ',items:[
+      {id:'site',en:'Website live — 7 pages, your identity',ar:'الموقع مباشر — ٧ صفحات بهويتكِ',who:'TEAM',pre:1},
+      {id:'brand',en:'Logo & brand kit (the Open Circle + your signature)',ar:'الشعار وهوية العلامة (الدائرة المفتوحة + توقيعكِ)',who:'TEAM',pre:1},
+      {id:'wa',en:'WhatsApp wired across the site',ar:'واتساب موصول في كل الموقع',who:'TEAM',pre:1},
+      {id:'studio',en:'Brainstorm Studio ready',ar:'استوديو العصف الذهني جاهز',who:'TEAM',pre:1},
+      {id:'kit',en:'Workshop print kit — 5 tools',ar:'حقيبة الورشة للطباعة — ٥ أدوات',who:'TEAM',pre:1},
+      {id:'cv',en:'CV rebuilt & credential-verified',ar:'السيرة الذاتية مُعاد بناؤها وموثقة',who:'TEAM',pre:1},
+      {id:'li',en:'LinkedIn profile rebuilt',ar:'حساب لينكدإن أُعيد بناؤه',who:'TEAM',pre:1}
+    ]},
+    {en:'Open the doors',ar:'افتحي الأبواب',items:[
+      {id:'featured',en:'Add the Circle link + paragraph to LinkedIn (2 minutes)',ar:'أضيفي رابط الدائرة وفقرتها إلى لينكدإن (دقيقتان)',who:'YOU'},
+      {id:'posts',en:'Approve the six LinkedIn posts (weeks 1–2)',ar:'وافقي على المنشورات الستة (الأسبوعان ١-٢)',who:'YOU'},
+      {id:'portrait',en:'Send your portrait photo to Abdel (full quality)',ar:'أرسلي صورتكِ الشخصية لعبد الخالق (بجودة كاملة)',who:'YOU'},
+      {id:'verify',en:'Phone-verify the referral numbers (1564 · KAFA · ABAAD · Embrace clinic · IDRAAC)',ar:'تحققي هاتفياً من أرقام الدعم (1564 · كفى · أبعاد · احتضان · إدراك)',who:'YOU'}
+    ]},
+    {en:'The first circle',ar:'الدائرة الأولى',items:[
+      {id:'brainstorm1',en:'Run your first Brainstorm Studio session with your co-coach',ar:'أقيمي أول جلسة عصف ذهني مع شريكتكِ',who:'YOU'},
+      {id:'pilotplan',en:'Decide date, venue, price, and cap (12–18 women)',ar:'قرري التاريخ والمكان والسعر والعدد (١٢–١٨ امرأة)',who:'YOU'},
+      {id:'invite',en:'Invite your warm list first',ar:'ادعي دائرتكِ القريبة أولاً',who:'YOU'},
+      {id:'print',en:'Print the kit for every seat',ar:'اطبعي الحقيبة لكل مقعد',who:'YOU'},
+      {id:'pilot',en:'Run the pilot circle 🌿',ar:'أقيمي الدائرة التجريبية 🌿',who:'YOU'},
+      {id:'debrief',en:'Collect feedback & debrief within 48 hours',ar:'اجمعي الملاحظات وراجعي خلال ٤٨ ساعة',who:'YOU'}
+    ]},
+    {en:'Grow',ar:'انمي',items:[
+      {id:'publish',en:'Publish weeks 1–2 posts (3 per week)',ar:'انشري منشورات الأسبوعين (٣ أسبوعياً)',who:'YOU'},
+      {id:'paid',en:'First paid circle or consultation',ar:'أول دائرة أو استشارة مدفوعة',who:'YOU'},
+      {id:'second',en:'Second cohort — or the 4-week starter',ar:'الدفعة الثانية — أو برنامج الأسابيع الأربعة',who:'YOU'}
+    ]}
+  ];
+  PHASES.forEach(function(p){p.items.forEach(function(it){ if(it.pre && !(it.id in S.goals)) S.goals[it.id]=true })});
+
+  function renderGoals(){
+    var host=document.getElementById('phases');host.innerHTML='';
+    PHASES.forEach(function(p,pi){
+      var done=p.items.filter(function(it){return S.goals[it.id]}).length;
+      var el=document.createElement('div');el.className='phase'+((S.openPhase===undefined?1:S.openPhase)===pi||done<p.items.length&&pi===firstOpen()?'':'');
+      el.className='phase'+(pi===openPhase()?' open':'');
+      el.innerHTML='<div class="phase-h"><b>'+(pi+1)+' · '+T(p)+'</b><span class="cnt">'+done+' / '+p.items.length+'</span></div><div class="goals"></div>';
+      el.querySelector('.phase-h').onclick=function(){S.openPhase=(S.openPhase===pi?-1:pi);save();renderGoals()};
+      var g=el.querySelector('.goals');
+      p.items.forEach(function(it){
+        var row=document.createElement('div');row.className='goal'+(S.goals[it.id]?' done':'');
+        row.innerHTML='<span class="tick">✓</span><span class="gt">'+T(it)+'</span><span class="who">'+it.who+'</span>';
+        row.onclick=function(){S.goals[it.id]=!S.goals[it.id];save();renderGoals();renderProgress()};
+        g.appendChild(row);
+      });
+      host.appendChild(el);
+    });
+    renderProgress();
+  }
+  function openPhase(){ if(typeof S.openPhase==='number') return S.openPhase; return firstOpen() }
+  function firstOpen(){ for(var i=0;i<PHASES.length;i++){var p=PHASES[i]; if(p.items.some(function(it){return !S.goals[it.id]})) return i} return PHASES.length-1 }
+  function renderProgress(){
+    var all=0,done=0;PHASES.forEach(function(p){p.items.forEach(function(it){all++;if(S.goals[it.id])done++})});
+    var pct=Math.round(done/all*100);
+    document.getElementById('pct').textContent=pct+'%';
+    document.getElementById('barfill').style.width=pct+'%';
+  }
+
+  // ---------- decisions ----------
+  var DECISIONS=[
+    {id:'d-pilot',en:'The first circle — when, where, how much?',ar:'الدائرة الأولى — متى وأين وبكم؟',qen:'Write the date, the venue (or online), the price per seat, and the cap. This unlocks the launch posts.',qar:'اكتبي التاريخ والمكان (أو أونلاين)، سعر المقعد، والعدد الأقصى. هذا القرار يفتح منشورات الإطلاق.',type:'text',
+     phen:'e.g. Saturday 20 Sep, Beirut — Badaro, $35, 15 women',phar:'مثلاً: السبت ٢٠ أيلول، بيروت — بدارو، ٣٥$، ١٥ امرأة'},
+    {id:'d-posts',en:'The six LinkedIn posts',ar:'منشورات لينكدإن الستة',qen:'Read them (link in "Your places"). Publish as written, or with your edits?',qar:'اقرئيها (الرابط في «أماكنكِ»). ننشرها كما هي، أم بتعديلاتكِ؟',type:'choice',
+     opts:[{en:'Publish as written',ar:'انشروها كما هي'},{en:'I will send edits',ar:'سأرسل تعديلاتي'},{en:'Let me rewrite in my voice',ar:'سأعيد كتابتها بصوتي'}]},
+    {id:'d-renew',en:'Hypnotherapy & Time Line certificates',ar:'شهادتا التنويم وخط الزمن',qen:'Both lapsed (≈$95 + $125/year to renew). You cannot advertise hypnotherapy in Dubai either way — renewal only keeps the titles current on paper.',qar:'انتهت صلاحيتهما (نحو ٩٥$ + ١٢٥$ سنوياً للتجديد). لا يمكن الإعلان عن التنويم في دبي في الحالتين — التجديد يحفظ اللقب على الورق فقط.',type:'choice',
+     opts:[{en:'Renew both',ar:'جدّدي الاثنتين'},{en:'Renew later',ar:'التجديد لاحقاً'},{en:'Keep as "trained in" only',ar:'إبقاؤها «تدريب سابق» فقط'}]},
+    {id:'d-domain',en:'Your own domain name',ar:'نطاقكِ الخاص',qen:'dorinasalman.com and circlemethod.com are available (~$12/year each). Buy now or stay on the free address?',qar:'dorinasalman.com وcirclemethod.com متاحان (~١٢$ سنوياً لكل منهما). نشتري الآن أم نبقى على العنوان المجاني؟',type:'choice',
+     opts:[{en:'Buy dorinasalman.com',ar:'اشتروا dorinasalman.com'},{en:'Buy both',ar:'اشتروا الاثنين'},{en:'Stay free for now',ar:'المجاني يكفي حالياً'}]},
+    {id:'d-lang',en:'Which language leads your posts?',ar:'أي لغة تتصدر منشوراتكِ؟',qen:'The plan says Arabic-first for Lebanon reach, English kept for professional range. Comfortable?',qar:'الخطة تقترح العربية أولاً لوصول أوسع في لبنان، مع إبقاء الإنكليزية للمدى المهني. موافقة؟',type:'choice',
+     opts:[{en:'Arabic first',ar:'العربية أولاً'},{en:'English first',ar:'الإنكليزية أولاً'},{en:'Alternate them',ar:'بالتناوب'}]},
+    {id:'d-anything',en:'Anything you want changed?',ar:'أي شيء تريدين تغييره؟',qen:'The site, the words, the colors, the tools — this is yours. Say anything.',qar:'الموقع، الكلمات، الألوان، الأدوات — كله لكِ. قولي أي شيء.',type:'text',
+     phen:'Write freely…',phar:'اكتبي بحرية…'}
+  ];
+  function renderDecisions(){
+    var host=document.getElementById('decisions');host.innerHTML='';
+    DECISIONS.forEach(function(d){
+      var st=S.dec[d.id]||(S.dec[d.id]={choice:null,note:''});
+      var el=document.createElement('div');el.className='dcard'+((st.choice!==null&&st.choice!==undefined)||st.note?' decided':'');
+      var head='<div class="dstate">'+(((st.choice!==null&&st.choice!==undefined)||st.note)?(isAr()?'قُرِّر ✓':'Decided ✓'):(isAr()?'بانتظاركِ':'Waiting for you'))+'</div><h3>'+T(d)+'</h3><p class="q">'+(isAr()?d.qar:d.qen)+'</p>';
+      el.innerHTML=head;
+      if(d.type==='choice'){
+        var row=document.createElement('div');row.className='opts';
+        d.opts.forEach(function(o,i){
+          var b=document.createElement('button');b.className='opt'+(st.choice===i?' sel':'');b.textContent=T(o);
+          b.onclick=function(){st.choice=(st.choice===i?null:i);save();renderDecisions()};
+          row.appendChild(b);
+        });
+        el.appendChild(row);
+      }
+      var ta=document.createElement('textarea');ta.className='dnote';ta.rows=2;
+      ta.placeholder=d.type==='text'?(isAr()?d.phar:d.phen):(isAr()?'ملاحظة اختيارية…':'Optional note…');
+      ta.value=st.note;ta.oninput=function(){st.note=ta.value;save();el.classList.toggle('decided',(st.choice!==null&&st.choice!==undefined)||!!st.note)};
+      el.appendChild(ta);
+      host.appendChild(el);
+    });
+  }
+
+  // ---------- share ----------
+  function buildSummary(){
+    var L=isAr(),nl='\n';
+    var all=0,done=0;PHASES.forEach(function(p){p.items.forEach(function(it){all++;if(S.goals[it.id])done++})});
+    var out=(L?'لوحة دورينا — تحديث':'Dorina Hub — update')+nl;
+    out+=(L?'التقدم: ':'Progress: ')+Math.round(done/all*100)+'% ('+done+'/'+all+')'+nl+nl;
+    out+=(L?'القرارات:':'Decisions:')+nl;
+    DECISIONS.forEach(function(d){
+      var st=S.dec[d.id]||{};
+      var line='• '+T(d)+': ';
+      if(d.type==='choice'&&st.choice!==null&&st.choice!==undefined)line+=T(d.opts[st.choice]);
+      else if(st.note)line+='';
+      else line+=(L?'(لم يُقرَّر بعد)':'(not decided yet)');
+      if(st.note)line+=(st.choice!==null&&st.choice!==undefined&&d.type==='choice'?' — ':'')+st.note;
+      out+=line+nl;
+    });
+    return out;
+  }
+  window.copySummary=function(){navigator.clipboard&&navigator.clipboard.writeText(buildSummary()).then(function(){toast(isAr()?'نُسخ — أرسليه لعبد الخالق ✓':'Copied — send it to Abdel ✓')})};
+  window.shareSummary=function(){if(navigator.share){navigator.share({text:buildSummary()}).catch(function(){})}else copySummary()};
+
+  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(function(){el.classList.remove('show')},2400)}
+
+  function renderAll(){renderLinks();renderGoals();renderDecisions()}
+  applyLang();renderAll();
+})();
+</script>
+</body>
+</html>
