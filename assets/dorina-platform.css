@@ -44,8 +44,10 @@
 .hero .portrait{animation:riseIn .9s .2s cubic-bezier(.2,.7,.2,1) both,float 8s 1.2s ease-in-out infinite alternate}
 
 /* reveals: unified easing + stagger via --d set by JS */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
-.reveal.in{opacity:1;transform:none}
+html.js-anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js-anim .reveal.in{opacity:1;transform:none}
+html.js-anim .reveal.instant{transition:none}
+html:not(.js-anim) .reveal{opacity:1 !important;transform:none !important}
 
 /* interactive surfaces answer the hand */
 .card{transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,background .3s}
