@@ -108,55 +108,61 @@ post whose status is not exactly `approved`. There is no override flag.
 
 ---
 
-## 6 · Supabase + the scheduled job — makes it actually automatic
+## 6 · Supabase — ✅ DONE, backend is live
 
-**Decided:** LinkedIn only for now, fully automatic. Her approval in the Studio publishes
-the post at 09:30 GST without you in the loop.
+**Decided:** LinkedIn only for now, fully automatic.
 
-### 6a. Pick a project
+Applied to the existing shared project `trxifnxyrncsoxgklwcq` (migration
+`dorina_studio_init`) rather than creating an eighth project — that costs nothing and the
+`dorina_` prefix keeps her tables isolated. To move it to a dedicated project later: run
+`studio/supabase/schema.sql` there, then change `config.js` and the two `SUPABASE_*` secrets.
+Nothing else changes.
 
-You have seven Supabase projects and none of them is Dorina's. Two options:
+`studio/supabase/config.js` is already filled in and pushed, so the Studio is talking to it.
 
-- **New project** (recommended) — clean separation, her system can't be broken by a TiKiT
-  change. Check whether an eighth project adds cost on your plan first.
-- **A `dorina` schema inside an existing project** — free, and the schema keeps her tables
-  isolated. The risk is coupling: pausing or deleting that project silently breaks her
-  publishing.
+**Verified live:**
 
-Tell me which and I'll apply the schema.
+| Check | Result |
+|---|---|
+| Anonymous INSERT with the public key | ❌ rejected (RLS `42501`) — a stranger cannot approve a post |
+| Anonymous SELECT | returns `[]` — nothing leaks |
+| Magic link for a non-allow-listed email | `422` — no account is created |
+| Studio account strip | shows sign-in, no longer local mode |
 
-### 6b. Apply the schema
+### 6a. Three things left that need the dashboard (I can't reach it)
 
-`studio/supabase/schema.sql` creates the `dorina` schema: `post_approvals`, `publish_log`,
-`allowed_editors`, plus row-level security. Then:
+1. **Authentication → URL Configuration → Redirect URLs**: add
+   `https://cabdelkhalegh.github.io/dorina/studio/`
+   Without it, her magic link authenticates but bounces to the wrong place.
+2. **Add Dorina's real email** to the allow-list. RLS denies her everything until this
+   row exists, *even with a valid magic link*. Tell me her address and I'll insert it, or:
+   ```sql
+   insert into public.dorina_allowed_editors (email, label)
+   values ('her-address@example.com', 'Dorina') on conflict (email) do nothing;
+   ```
+3. **Authentication → Providers → Email**: confirm magic links are enabled.
 
-1. **Settings → API → Exposed schemas**: add `dorina` (without this, every call 404s).
-2. Add the two allow-listed emails (Dorina's and yours) to `dorina.allowed_editors`.
-3. **Authentication → Providers → Email**: enable magic links, and turn **off**
-   "Allow new users to sign up" — only the two allow-listed people should ever get in.
-4. **Authentication → URL Configuration**: add
-   `https://cabdelkhalegh.github.io/dorina/studio/` as a redirect URL.
-
-### 6c. Point the Studio at it
-
-Fill in `studio/supabase/config.js` with the project URL and the **publishable/anon** key.
-Both are safe to commit — RLS is what protects the data, and the anon key grants nothing
-without a signed-in allow-listed email. Commit and push.
-
-Dorina then opens the Studio once, enters her email, clicks the link she receives, and stays
-signed in on that device. The strip at the top of the page turns gold and says her approvals
-now publish automatically.
-
-### 6d. Add the GitHub secrets
+### 6b. Add the GitHub secrets
 
 **Settings → Secrets and variables → Actions** on `cabdelkhalegh/dorina`:
 
-| Secret | Where it comes from |
+| Secret | Value / where it comes from |
 |---|---|
-| `SUPABASE_URL` | Project settings → API |
+| `SUPABASE_URL` | `https://trxifnxyrncsoxgklwcq.supabase.co` |
 | `SUPABASE_SERVICE_KEY` | Project settings → API → **service_role** (never commit this) |
-| `LINKEDIN_ACCESS_TOKEN` | §1 above |
-| `LINKEDIN_PERSON_URN` | §1 above |
+| `LINKEDIN_ACCESS_TOKEN` | §1 above — paste it, never type it into chat |
+| `LINKEDIN_PERSON_URN` | printed by the **Verify LinkedIn connection** workflow |
+
+```bash
+gh secret set SUPABASE_URL --repo cabdelkhalegh/dorina --body "https://trxifnxyrncsoxgklwcq.supabase.co"
+gh secret set SUPABASE_SERVICE_KEY --repo cabdelkhalegh/dorina
+gh secret set LINKEDIN_ACCESS_TOKEN --repo cabdelkhalegh/dorina
+gh secret set LINKEDIN_PERSON_URN --repo cabdelkhalegh/dorina
+```
+
+Run **Verify LinkedIn connection** first — it proves the token works, confirms
+`w_member_social` was actually granted (the scope people most often miss), and prints the
+person URN. It never prints the token and never publishes anything.
 
 `.github/workflows/publish.yml` then runs **Tue/Wed/Thu at 05:30 UTC (09:30 GST)**. It
 checks the four secrets exist, warns if the LinkedIn token is near its 60-day expiry, and
