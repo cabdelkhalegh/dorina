@@ -108,15 +108,73 @@ post whose status is not exactly `approved`. There is no override flag.
 
 ---
 
+## 6 · Supabase + the scheduled job — makes it actually automatic
+
+**Decided:** LinkedIn only for now, fully automatic. Her approval in the Studio publishes
+the post at 09:30 GST without you in the loop.
+
+### 6a. Pick a project
+
+You have seven Supabase projects and none of them is Dorina's. Two options:
+
+- **New project** (recommended) — clean separation, her system can't be broken by a TiKiT
+  change. Check whether an eighth project adds cost on your plan first.
+- **A `dorina` schema inside an existing project** — free, and the schema keeps her tables
+  isolated. The risk is coupling: pausing or deleting that project silently breaks her
+  publishing.
+
+Tell me which and I'll apply the schema.
+
+### 6b. Apply the schema
+
+`studio/supabase/schema.sql` creates the `dorina` schema: `post_approvals`, `publish_log`,
+`allowed_editors`, plus row-level security. Then:
+
+1. **Settings → API → Exposed schemas**: add `dorina` (without this, every call 404s).
+2. Add the two allow-listed emails (Dorina's and yours) to `dorina.allowed_editors`.
+3. **Authentication → Providers → Email**: enable magic links, and turn **off**
+   "Allow new users to sign up" — only the two allow-listed people should ever get in.
+4. **Authentication → URL Configuration**: add
+   `https://cabdelkhalegh.github.io/dorina/studio/` as a redirect URL.
+
+### 6c. Point the Studio at it
+
+Fill in `studio/supabase/config.js` with the project URL and the **publishable/anon** key.
+Both are safe to commit — RLS is what protects the data, and the anon key grants nothing
+without a signed-in allow-listed email. Commit and push.
+
+Dorina then opens the Studio once, enters her email, clicks the link she receives, and stays
+signed in on that device. The strip at the top of the page turns gold and says her approvals
+now publish automatically.
+
+### 6d. Add the GitHub secrets
+
+**Settings → Secrets and variables → Actions** on `cabdelkhalegh/dorina`:
+
+| Secret | Where it comes from |
+|---|---|
+| `SUPABASE_URL` | Project settings → API |
+| `SUPABASE_SERVICE_KEY` | Project settings → API → **service_role** (never commit this) |
+| `LINKEDIN_ACCESS_TOKEN` | §1 above |
+| `LINKEDIN_PERSON_URN` | §1 above |
+
+`.github/workflows/publish.yml` then runs **Tue/Wed/Thu at 05:30 UTC (09:30 GST)**. It
+checks the four secrets exist, warns if the LinkedIn token is near its 60-day expiry, and
+publishes only what Dorina marked `approved`. A unique index makes double-posting the same
+post impossible.
+
+**Test it before trusting it:** Actions → *Publish approved posts* → **Run workflow** with
+`dry_run: true`. It will print exactly what it would send.
+
+---
+
 ## 5 · What is still manual, and why
 
-| Step | Why it isn't automated |
+| Step | Status |
 |---|---|
-| Approvals reaching the publisher | The site is static (GitHub Pages) — there's no server to store her taps. Her approvals live in her browser and come to you over WhatsApp. Fixing this properly means a small backend (Supabase/Vercel), which is a decision, not an oversight — see the note below. |
-| Publishing at an exact time | Nothing is scheduled yet. Either you run the command, or we add a cron/GitHub Action once tokens exist. |
+| Approvals reaching the publisher | **Automated** once §6 is configured. Until then the Studio runs in local mode and her answers reach you on WhatsApp — nothing breaks, it just isn't automatic. |
+| Publishing at an exact time | **Automated** — `.github/workflows/publish.yml`, Tue/Wed/Thu 09:30 GST. |
+| Instagram | **Blocked on the account.** Hers is personal, and Instagram forbids publishing from personal accounts. Send her `studio/INSTAGRAM_SWITCH.md` — bilingual, 10 minutes. Once she has switched and linked a Page, §2 applies and I turn the module on. |
 | LinkedIn carousels | Posted as a single lead card today. True LinkedIn carousels are *document* posts (a PDF), which is a second build step. |
-| Replying in the first hour | Deliberately human. It's the highest-leverage thing she does and it cannot be faked — see `PLAYBOOK.md §1`. |
-
-**If you want approvals to flow automatically**, the smallest honest version is: Supabase
-table + a GitHub Action on a schedule. You already have a Supabase connector. That turns
-steps 4–5 into "she taps approve, it posts at 09:30". Say the word and I'll build it.
+| Writing next week's posts | Still authored deliberately, not generated on a timer. The old OpenClaw nightly cron drafted unattended and left ~1,115 unreviewed drafts behind; for a client with compliance limits that pattern is a liability, not a feature. |
+| Replying in the first hour | **Deliberately human.** It's the highest-leverage thing she does and it cannot be faked — see `PLAYBOOK.md §1`. |

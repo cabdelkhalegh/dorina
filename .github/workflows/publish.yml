@@ -1,0 +1,95 @@
+name: Publish approved posts
+
+# 09:30 Gulf Standard Time = 05:30 UTC, on the three posting days.
+# Anything Dorina has NOT approved in the Studio is skipped — the publisher
+# enforces that, not this file.
+on:
+  schedule:
+    - cron: "30 5 * * 2,3,4"   # Tue / Wed / Thu
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Show what would be posted, send nothing"
+        type: boolean
+        default: true
+      only:
+        description: "Publish a single post id (optional)"
+        type: string
+        required: false
+
+concurrency:
+  group: dorina-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check the credentials exist
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+        run: |
+          missing=""
+          for v in SUPABASE_URL SUPABASE_SERVICE_KEY LINKEDIN_ACCESS_TOKEN LINKEDIN_PERSON_URN; do
+            [ -z "${!v}" ] && missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing"
+            echo "Add them under Settings → Secrets and variables → Actions. See studio/RUNBOOK.md."
+            exit 1
+          fi
+          echo "All four secrets present."
+
+      # LinkedIn access tokens last 60 days. Warn while there is still time to act.
+      - name: Warn if the LinkedIn token is close to expiry
+        continue-on-error: true
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: |
+          code=$(curl -s -o /tmp/li.json -w '%{http_code}' \
+            -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
+            https://api.linkedin.com/v2/userinfo)
+          if [ "$code" != "200" ]; then
+            echo "::warning::LinkedIn token check returned HTTP $code — it may have expired. Re-authorise per studio/RUNBOOK.md §1."
+          else
+            echo "LinkedIn token is still valid."
+          fi
+
+      - name: Publish
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          ARGS="--source supabase"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          if [ -n "${{ inputs.only }}" ]; then
+            ARGS="$ARGS --only ${{ inputs.only }}"
+          fi
+          echo "Running: python studio/publish.py $ARGS"
+          python studio/publish.py $ARGS | tee result.json
+
+      - name: Summarise
+        if: always()
+        run: |
+          {
+            echo "### Publish run"
+            echo ""
+            echo '```json'
+            head -c 4000 result.json 2>/dev/null || echo "no output"
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY

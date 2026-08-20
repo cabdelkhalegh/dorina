@@ -94,6 +94,15 @@
   .toast{position:fixed;inset-inline-start:50%;bottom:5.5rem;transform:translate(-50%,1rem);background:var(--forest);color:#F3EFE4;padding:.6rem 1.1rem;border-radius:999px;font-size:.84rem;font-weight:600;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:90}
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
+  /* account strip */
+  .acct{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:.8rem 1.1rem;margin:1.4rem 0 0;font-size:.86rem;color:var(--soft)}
+  .acct .dotix{width:.5rem;height:.5rem;border-radius:99px;background:var(--muted);flex:none}
+  .acct.live .dotix{background:var(--gold)}
+  .acct input{flex:1;min-width:11rem;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;font:inherit;font-size:.86rem;background:var(--ivory)}
+  .acct input:focus{outline:none;border-color:var(--gold)}
+  .acct .btn{padding:.5rem 1.1rem}
+  .acct .muted{color:var(--muted);font-size:.8rem}
+
   @media (max-width:860px){
     .pbody{grid-template-columns:1fr}
     .previews img{width:9rem}
@@ -122,6 +131,7 @@
   </div>
 </header>
 
+<div class="wrap" id="account"></div>
 <main class="wrap" id="posts"></main>
 
 <div class="sendbar">
@@ -135,6 +145,8 @@
 <div class="lightbox" id="lightbox"><img id="lightimg" alt=""></div>
 <div class="toast" id="toast"></div>
 
+<script src="supabase/config.js"></script>
+<script src="supabase/client.js"></script>
 <script>
 (function(){
   var KEY='dorina-studio-v1', WA='971543383932', BASE='../';
@@ -217,12 +229,17 @@
         b.onclick=function(){
           var a=b.getAttribute('data-a');
           st.status=(st.status===a?'waiting':a);
-          save();render();
+          save();sync(p,st);render();
         };
       });
       var ta=el.querySelector('.editbox');
       ta.value=st.note||'';
-      ta.oninput=function(){st.note=ta.value;save();updateBar()};
+      var noteTimer=null;
+      ta.oninput=function(){
+        st.note=ta.value;save();updateBar();
+        clearTimeout(noteTimer);
+        noteTimer=setTimeout(function(){sync(p,st)},700);
+      };
 
       el.querySelectorAll('.previews img').forEach(function(im){
         im.onclick=function(){
@@ -235,6 +252,7 @@
     });
 
     updateBar();
+    renderAccount();
     observeReveals();
   }
 
@@ -293,10 +311,69 @@
     });
   }
 
+  // ---------- backend sync (optional; local mode when not configured) ----------
+  var SY = window.DorinaSync;
+  var signedIn = null;
+
+  function sync(post, st){
+    if(!SY || !SY.configured() || !signedIn) return;
+    SY.push(post.id, st, {title:post.title, lang:post.lang}).catch(function(e){
+      toast(isAr()?'لم يُحفَظ على الخادم':'Could not save to the server');
+      renderAccount();
+    });
+  }
+
+  function renderAccount(){
+    var host=document.getElementById('account');
+    if(!SY || !SY.configured()){
+      host.innerHTML='<div class="acct"><span class="dotix"></span>'+
+        '<span>'+(isAr()
+          ? 'وضع محلي — قراراتكِ محفوظة على هذا الجهاز، وتصل إلى عبد الخالق عبر واتساب.'
+          : 'Local mode — your answers save on this device and reach Abdel on WhatsApp.')+'</span></div>';
+      return;
+    }
+    if(signedIn){
+      host.innerHTML='<div class="acct live"><span class="dotix"></span>'+
+        '<span>'+(isAr()?'متصلة باسم ':'Signed in as ')+'<b>'+esc(signedIn)+'</b> — '+
+        (isAr()?'ما توافقين عليه يُنشَر تلقائياً في موعده.':'what you approve publishes automatically at its time.')+'</span>'+
+        '<button class="btn" id="outBtn">'+(isAr()?'خروج':'Sign out')+'</button></div>';
+      document.getElementById('outBtn').onclick=function(){SY.signOut();signedIn=null;renderAccount()};
+      return;
+    }
+    host.innerHTML='<div class="acct"><span class="dotix"></span>'+
+      '<span>'+(isAr()?'سجّلي الدخول ليُنشَر ما توافقين عليه تلقائياً:':'Sign in so your approvals publish automatically:')+'</span>'+
+      '<input id="mail" type="email" placeholder="'+(isAr()?'بريدكِ الإلكتروني':'your email')+'">'+
+      '<button class="btn go" id="inBtn">'+(isAr()?'أرسلي رابط الدخول':'Email me a link')+'</button>'+
+      '<span class="muted">'+(isAr()?'أو تابعي محلياً وأرسلي عبر واتساب.':'or carry on locally and send on WhatsApp.')+'</span></div>';
+    document.getElementById('inBtn').onclick=function(){
+      var v=(document.getElementById('mail').value||'').trim();
+      if(!v) return;
+      SY.signIn(v).then(function(ok){
+        toast(ok ? (isAr()?'تفقّدي بريدكِ ✓':'Check your email ✓')
+                 : (isAr()?'هذا البريد غير مُصرَّح له':'That email is not on the list'));
+      });
+    };
+  }
+
   document.documentElement.classList.add('js-anim');
   applyLang();
-  fetch('content/queue.json').then(function(r){return r.json()}).then(function(j){Q=j;render()})
-    .catch(function(){document.getElementById('posts').innerHTML='<p style="color:var(--muted)">Queue could not load.</p>'});
+
+  fetch('content/queue.json').then(function(r){return r.json()}).then(function(j){
+    Q=j; render(); renderAccount();
+    if(!SY || !SY.configured()) return;
+    return SY.init().then(function(who){
+      signedIn=who; renderAccount();
+      if(!who) return;
+      // The server is the source of truth once she is signed in.
+      return SY.pull().then(function(remote){
+        if(!remote) return;
+        Object.keys(remote).forEach(function(id){ S.state[id]=remote[id]; });
+        save(); render();
+      });
+    });
+  }).catch(function(){
+    document.getElementById('posts').innerHTML='<p style="color:var(--muted)">Queue could not load.</p>';
+  });
 })();
 </script>
 </body>

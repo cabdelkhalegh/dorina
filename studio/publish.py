@@ -67,6 +67,52 @@ def http(url, method="GET", headers=None, body=None, timeout=45):
         raise RuntimeError("%s %s -> HTTP %s: %s" % (method, url, e.code, detail))
 
 
+SUPA_URL = os.environ.get("SUPABASE_URL", "").rstrip("/")
+SUPA_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "")
+
+
+def supa(path, method="GET", body=None, extra_headers=None):
+    if not SUPA_URL or not SUPA_KEY:
+        raise RuntimeError("SUPABASE_URL / SUPABASE_SERVICE_KEY not set")
+    h = {
+        "apikey": SUPA_KEY,
+        "Authorization": "Bearer " + SUPA_KEY,
+        "Accept-Profile": "dorina",
+        "Content-Profile": "dorina",
+    }
+    h.update(extra_headers or {})
+    return http(SUPA_URL + "/rest/v1/" + path, method, h, body)
+
+
+def load_approvals_supabase():
+    """{post_id: status} straight from the table the Studio writes to."""
+    rows = supa("post_approvals?select=post_id,status")
+    return {r["post_id"]: r.get("status", "waiting") for r in rows}
+
+
+def already_published(post_id, platform):
+    """The unique index makes double-posting impossible, but check first so a
+    re-run reports 'already published' instead of throwing a constraint error."""
+    try:
+        rows = supa("publish_log?select=id&status=eq.published"
+                    "&post_id=eq.%s&platform=eq.%s" % (post_id, platform))
+        return len(rows) > 0
+    except Exception:
+        return False
+
+
+def log_publish(post_id, platform, status, remote_id=None, detail=None):
+    if not (SUPA_URL and SUPA_KEY):
+        return
+    try:
+        supa("publish_log", "POST", {
+            "post_id": post_id, "platform": platform, "status": status,
+            "remote_id": remote_id, "detail": (detail or "")[:500],
+        }, {"Prefer": "return=minimal"})
+    except Exception as e:
+        print("warning: could not write publish_log: %s" % e, file=sys.stderr)
+
+
 def compose(post, queue):
     """Caption exactly as it will appear: body, hashtags, then the standing footer."""
     parts = [post["caption"]]
@@ -192,6 +238,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--approvals", help="JSON file of {post_id: status}")
+    ap.add_argument("--source", choices=["file", "supabase"], default="file",
+                    help="where approvals come from (supabase = what Dorina tapped)")
     ap.add_argument("--only")
     args = ap.parse_args()
 
@@ -199,11 +247,17 @@ def main():
         queue = json.load(f)
 
     approvals = {}
-    if args.approvals:
+    if args.source == "supabase":
+        approvals = load_approvals_supabase()
+        print("approvals from Supabase: %d row(s), %d approved"
+              % (len(approvals), sum(1 for v in approvals.values() if v == "approved")),
+              file=sys.stderr)
+    elif args.approvals:
         with io.open(args.approvals, encoding="utf-8") as f:
             approvals = json.load(f)
     elif not args.dry_run:
-        sys.exit("Refusing to publish without an --approvals file. Nothing goes out unapproved.")
+        sys.exit("Refusing to publish without approvals (--approvals FILE or --source supabase). "
+                 "Nothing goes out unapproved.")
 
     results = []
     for post in queue["posts"]:
@@ -221,13 +275,23 @@ def main():
                  "when": post["day"] + " " + post["time"], "approval": status}
 
         for platform in post["platforms"]:
+            if not args.dry_run and already_published(post["id"], platform):
+                entry[platform] = {"skipped": "already published"}
+                continue
             try:
                 if platform == "linkedin":
-                    entry["linkedin"] = publish_linkedin(post, caption, args.dry_run)
+                    out = publish_linkedin(post, caption, args.dry_run)
                 elif platform == "instagram":
-                    entry["instagram"] = publish_instagram(post, caption, args.dry_run)
+                    out = publish_instagram(post, caption, args.dry_run)
+                else:
+                    out = {"skipped": "unknown platform"}
+                entry[platform] = out
+                if not args.dry_run and out.get("posted"):
+                    log_publish(post["id"], platform, "published", out.get("id"))
             except Exception as e:
                 entry[platform] = {"error": str(e)}
+                if not args.dry_run:
+                    log_publish(post["id"], platform, "failed", None, str(e))
         results.append(entry)
 
     print(json.dumps(results, indent=2, ensure_ascii=False))
