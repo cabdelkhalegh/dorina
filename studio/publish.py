@@ -74,19 +74,14 @@ SUPA_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "")
 def supa(path, method="GET", body=None, extra_headers=None):
     if not SUPA_URL or not SUPA_KEY:
         raise RuntimeError("SUPABASE_URL / SUPABASE_SERVICE_KEY not set")
-    h = {
-        "apikey": SUPA_KEY,
-        "Authorization": "Bearer " + SUPA_KEY,
-        "Accept-Profile": "dorina",
-        "Content-Profile": "dorina",
-    }
+    h = {"apikey": SUPA_KEY, "Authorization": "Bearer " + SUPA_KEY}
     h.update(extra_headers or {})
     return http(SUPA_URL + "/rest/v1/" + path, method, h, body)
 
 
 def load_approvals_supabase():
     """{post_id: status} straight from the table the Studio writes to."""
-    rows = supa("post_approvals?select=post_id,status")
+    rows = supa("dorina_post_approvals?select=post_id,status")
     return {r["post_id"]: r.get("status", "waiting") for r in rows}
 
 
@@ -94,7 +89,7 @@ def already_published(post_id, platform):
     """The unique index makes double-posting impossible, but check first so a
     re-run reports 'already published' instead of throwing a constraint error."""
     try:
-        rows = supa("publish_log?select=id&status=eq.published"
+        rows = supa("dorina_publish_log?select=id&status=eq.published"
                     "&post_id=eq.%s&platform=eq.%s" % (post_id, platform))
         return len(rows) > 0
     except Exception:
@@ -105,7 +100,7 @@ def log_publish(post_id, platform, status, remote_id=None, detail=None):
     if not (SUPA_URL and SUPA_KEY):
         return
     try:
-        supa("publish_log", "POST", {
+        supa("dorina_publish_log", "POST", {
             "post_id": post_id, "platform": platform, "status": status,
             "remote_id": remote_id, "detail": (detail or "")[:500],
         }, {"Prefer": "return=minimal"})

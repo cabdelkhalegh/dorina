@@ -54,12 +54,7 @@ window.DorinaSync = (function () {
 
   function rest(path, opts) {
     opts = opts || {};
-    var h = {
-      apikey: CFG.key,
-      'Accept-Profile': 'dorina',
-      'Content-Profile': 'dorina',
-      'Content-Type': 'application/json'
-    };
+    var h = { apikey: CFG.key, 'Content-Type': 'application/json' };
     if (session && session.access_token) h.Authorization = 'Bearer ' + session.access_token;
     Object.keys(opts.headers || {}).forEach(function (k) { h[k] = opts.headers[k]; });
     return fetch(CFG.url + '/rest/v1/' + path, {
@@ -105,7 +100,7 @@ window.DorinaSync = (function () {
     /* {post_id: {status, note}} for everything on the server. */
     pull: function () {
       if (!configured() || !session) return Promise.resolve(null);
-      return rest('post_approvals?select=post_id,status,note').then(function (rows) {
+      return rest('dorina_post_approvals?select=post_id,status,note').then(function (rows) {
         var out = {};
         (rows || []).forEach(function (r) { out[r.post_id] = { status: r.status, note: r.note || '' }; });
         return out;
@@ -115,7 +110,7 @@ window.DorinaSync = (function () {
     /* Upsert one decision. */
     push: function (postId, state, meta) {
       if (!configured() || !session) return Promise.resolve(false);
-      return rest('post_approvals?on_conflict=post_id', {
+      return rest('dorina_post_approvals?on_conflict=post_id', {
         method: 'POST',
         headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
         body: [{
@@ -131,7 +126,7 @@ window.DorinaSync = (function () {
     /* What actually went out, so the Studio can show it. */
     log: function () {
       if (!configured() || !session) return Promise.resolve([]);
-      return rest('publish_log?select=post_id,platform,status,published_at&order=published_at.desc&limit=50')
+      return rest('dorina_publish_log?select=post_id,platform,status,published_at&order=published_at.desc&limit=50')
         .catch(function () { return []; });
     }
   };
