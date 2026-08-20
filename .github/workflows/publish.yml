@@ -16,6 +16,10 @@ on:
         description: "Publish a single post id (optional)"
         type: string
         required: false
+      approvals:
+        description: 'Approvals JSON, e.g. {"w1-tue-en":"approved"} — use this to publish without the Supabase backend'
+        type: string
+        required: false
 
 concurrency:
   group: dorina-publish
@@ -39,16 +43,29 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
         run: |
+          # LinkedIn is always required. Supabase is required only when approvals
+          # come from the backend — a manual run can supply them inline instead,
+          # so the whole system is usable before Supabase is set up.
           missing=""
-          for v in SUPABASE_URL SUPABASE_SERVICE_KEY LINKEDIN_ACCESS_TOKEN LINKEDIN_PERSON_URN; do
+          for v in LINKEDIN_ACCESS_TOKEN LINKEDIN_PERSON_URN; do
             [ -z "${!v}" ] && missing="$missing $v"
           done
           if [ -n "$missing" ]; then
             echo "::error::Missing repository secrets:$missing"
-            echo "Add them under Settings → Secrets and variables → Actions. See studio/RUNBOOK.md."
+            echo "Add them under Settings → Secrets and variables → Actions. See studio/RUNBOOK.md §1."
             exit 1
           fi
-          echo "All four secrets present."
+
+          if [ -z "${{ inputs.approvals }}" ]; then
+            for v in SUPABASE_URL SUPABASE_SERVICE_KEY; do
+              [ -z "${!v}" ] && missing="$missing $v"
+            done
+            if [ -n "$missing" ]; then
+              echo "::error::Approvals must come from somewhere. Either set$missing, or run this workflow manually with the 'approvals' input."
+              exit 1
+            fi
+          fi
+          echo "Credential check passed."
 
       # LinkedIn access tokens last 60 days. Warn while there is still time to act.
       - name: Warn if the LinkedIn token is close to expiry
@@ -72,16 +89,29 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
           PYTHONIOENCODING: utf-8
+          APPROVALS_JSON: ${{ inputs.approvals }}
+          ONLY_ID: ${{ inputs.only }}
         run: |
-          ARGS="--source supabase"
+          set -o pipefail
+          ARGS=""
+          if [ -n "$APPROVALS_JSON" ]; then
+            # Written via the environment, never interpolated into the shell.
+            printf '%s' "$APPROVALS_JSON" > approvals.json
+            python3 -c "import json;json.load(open('approvals.json'))" \
+              || { echo "::error::The approvals input is not valid JSON."; exit 1; }
+            ARGS="--approvals approvals.json"
+          else
+            ARGS="--source supabase"
+          fi
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
-          if [ -n "${{ inputs.only }}" ]; then
-            ARGS="$ARGS --only ${{ inputs.only }}"
+          if [ -n "$ONLY_ID" ]; then
+            ARGS="$ARGS --only $ONLY_ID"
           fi
           echo "Running: python studio/publish.py $ARGS"
           python studio/publish.py $ARGS | tee result.json
+          rm -f approvals.json
 
       - name: Summarise
         if: always()

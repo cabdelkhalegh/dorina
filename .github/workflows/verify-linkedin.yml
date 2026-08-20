@@ -1,0 +1,87 @@
+name: Verify LinkedIn connection
+
+# Run this once after adding LINKEDIN_ACCESS_TOKEN.
+# It proves the token works and prints the person URN you still need — without
+# ever printing the token itself. Nothing is published by this workflow.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call LinkedIn as the connected member
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$LINKEDIN_ACCESS_TOKEN" ]; then
+            echo "::error::LINKEDIN_ACCESS_TOKEN is not set. Add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+          code=$(curl -s -o /tmp/me.json -w '%{http_code}' \
+            -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
+            https://api.linkedin.com/v2/userinfo)
+
+          {
+            echo "### LinkedIn connection check"
+            echo ""
+          } >> $GITHUB_STEP_SUMMARY
+
+          if [ "$code" != "200" ]; then
+            echo "::error::LinkedIn returned HTTP $code"
+            {
+              echo "❌ **HTTP $code** — the token is rejected."
+              echo ""
+              echo "Most likely causes:"
+              echo "- the token expired (they last 60 days)"
+              echo "- the app is missing the **Share on LinkedIn** product"
+              echo "- OAuth was completed without the \`openid profile w_member_social\` scopes"
+              echo ""
+              echo "Response:"
+              echo '```'
+              head -c 500 /tmp/me.json
+              echo '```'
+            } >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          NAME=$(python3 -c "import json;print(json.load(open('/tmp/me.json')).get('name',''))")
+          SUB=$(python3 -c "import json;print(json.load(open('/tmp/me.json')).get('sub',''))")
+
+          {
+            echo "✅ **Connected as:** $NAME"
+            echo ""
+            echo "**LINKEDIN_PERSON_URN** — add this as a repository secret:"
+            echo ""
+            echo '```'
+            echo "urn:li:person:$SUB"
+            echo '```'
+            echo ""
+            echo "This identifier is not a credential; the token itself was never printed."
+          } >> $GITHUB_STEP_SUMMARY
+
+          echo "Connected as $NAME"
+
+      - name: Check the posting scope is actually granted
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: |
+          # A deliberately malformed post: LinkedIn validates the SCOPE before the
+          # body, so 400/422 proves w_member_social is granted, while 403 proves it
+          # is not. Nothing is ever published by this call.
+          code=$(curl -s -o /tmp/scope.json -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
+            -H "X-Restli-Protocol-Version: 2.0.0" \
+            -H "Content-Type: application/json" \
+            --data '{}' \
+            https://api.linkedin.com/v2/ugcPosts)
+
+          if [ "$code" = "403" ]; then
+            echo "::error::w_member_social is NOT granted — re-run OAuth with that scope."
+            echo "❌ **w_member_social missing** — Dorina must re-authorise with \`w_member_social\`." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+          echo "✅ **Posting scope granted** (probe returned HTTP $code — rejected on body, not on permission)." >> $GITHUB_STEP_SUMMARY
