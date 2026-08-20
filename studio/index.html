@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Studio · استوديو النشر</title>
+<link rel="icon" type="image/svg+xml" href="/dorina/assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0F382F;--forest2:#1C4A3E;--deep:#0B2C25;--mint:#8FC8AF;
+    --ivory:#F5F1E8;--paper:#FFFDF7;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;
+    --gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8;--line2:#E7E0D2;
+    --ok:#2E6B4F;--hold:#9A6B2F;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--ivory);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  body.ar .en{display:none}
+  body:not(.ar) .ar-t{display:none}
+
+  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes sealIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+  @keyframes drift{from{transform:translate(-2%,1.5%)}to{transform:translate(2%,-1.5%)}}
+  html.js-anim .reveal{opacity:0}
+  html.js-anim .reveal.in{animation:riseIn .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+  html:not(.js-anim) .reveal{opacity:1!important}
+  @media (prefers-reduced-motion:reduce){html.js-anim .reveal{opacity:1}html.js-anim .reveal.in{animation:none}.amb{animation:none!important}}
+
+  header{position:relative;overflow:hidden;background:radial-gradient(140% 130% at 82% 0%,var(--forest2) 0%,var(--forest) 55%,var(--deep) 100%);color:#F3EFE4;padding:1.6rem 0 2.2rem}
+  .amb{position:absolute;inset:-20%;pointer-events:none;background:radial-gradient(circle at 28% 78%,rgba(143,200,175,.13),transparent 45%),radial-gradient(circle at 78% 12%,rgba(197,154,84,.15),transparent 40%);animation:drift 24s ease-in-out infinite alternate}
+  .wrap{max-width:70rem;margin:0 auto;padding:0 1.4rem;position:relative}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.12em;font-size:.72rem;color:#F3EFE4;text-decoration:none}
+  .lang{border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;border-radius:999px;padding:.4rem .9rem;cursor:pointer;font:inherit;font-size:.78rem;font-weight:600}
+  .lang:hover{border-color:var(--gold)}
+  .eyebrow{font-size:.64rem;font-weight:800;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-top:1.6rem}
+  h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(2rem,5vw,2.9rem);line-height:1.1;margin:.5rem 0 0}
+  body.ar h1{font-family:"IBM Plex Sans Arabic",sans-serif}
+  .lede{color:#BFD4C8;font-size:.95rem;margin:.6rem 0 0;max-width:44rem}
+  .counts{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}
+  .chip{border:1px solid rgba(243,239,228,.24);border-radius:999px;padding:.4rem .9rem;font-size:.78rem;color:#CFE0D5}
+  .chip b{color:var(--gold)}
+
+  main{padding:2rem 0 6rem}
+  .post{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin-bottom:1.5rem;overflow:hidden}
+  .post.approved{border-color:var(--gold)}
+  .phead{display:flex;align-items:center;gap:.8rem;padding:1rem 1.3rem;border-bottom:1px solid var(--line2);flex-wrap:wrap}
+  .ptitle{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--forest);flex:1;min-width:12rem}
+  body.ar .ptitle{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1.1rem}
+  .tag{font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:99px;white-space:nowrap}
+  .tag.li{background:#DDE7F1;color:#1B4D77}
+  .tag.ig{background:#F6E2E8;color:#8A3D57}
+  .tag.lang{background:#EFEAE0;color:#7A5A1E}
+  .when{font-size:.74rem;color:var(--muted);white-space:nowrap}
+  .state{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+  .state.approved{border-color:var(--gold);color:var(--gold2);animation:sealIn .4s cubic-bezier(.2,.7,.2,1)}
+  .state.edits{border-color:var(--hold);color:var(--hold)}
+  .state.held{border-color:#9A9384;color:#9A9384}
+
+  .pbody{display:grid;grid-template-columns:minmax(0,22rem) minmax(0,1fr);gap:1.5rem;padding:1.3rem}
+  .previews{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.4rem;scroll-snap-type:x mandatory}
+  .previews img{width:11rem;flex:none;border-radius:10px;border:1px solid var(--line);scroll-snap-align:start;background:var(--ivory);cursor:zoom-in;transition:transform .25s}
+  .previews img:hover{transform:translateY(-3px)}
+  .pmeta{font-size:.72rem;color:var(--muted);margin-top:.5rem}
+  .caption{white-space:pre-wrap;font-size:.9rem;color:var(--soft);background:var(--ivory);border:1px solid var(--line2);border-radius:12px;padding:.9rem 1rem;max-height:20rem;overflow:auto}
+  .tags{font-size:.8rem;color:var(--gold2);margin-top:.5rem}
+  .foot-note{font-size:.74rem;color:var(--muted);margin-top:.5rem;line-height:1.5;border-inline-start:2px solid var(--line);padding-inline-start:.7rem}
+
+  .acts{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 1.3rem 1.3rem}
+  .btn{border:1px solid var(--line);background:var(--paper);color:var(--soft);border-radius:999px;padding:.55rem 1.2rem;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;transition:transform .2s,border-color .2s,color .2s,background .2s}
+  .btn:hover{transform:translateY(-1px);border-color:var(--gold);color:var(--gold2)}
+  .btn.go{background:var(--forest);border-color:var(--forest);color:#F3EFE4}
+  .btn.go:hover{background:var(--forest2);color:#F3EFE4;border-color:var(--forest2)}
+  .btn.on{background:var(--gold);border-color:var(--gold);color:#2A1F0E}
+  .editbox{width:100%;margin:0 1.3rem 1.3rem;max-width:calc(100% - 2.6rem);border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;font:inherit;font-size:.86rem;background:var(--ivory);resize:vertical;min-height:3.4rem;display:none}
+  .editbox.show{display:block}
+  .editbox:focus{outline:none;border-color:var(--gold)}
+
+  .sendbar{position:sticky;bottom:0;background:rgba(15,56,47,.97);backdrop-filter:blur(8px);color:#F3EFE4;padding:.9rem 0;margin-top:1rem}
+  .sendrow{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .sendtxt{flex:1;min-width:12rem;font-size:.86rem;color:#CFE0D5}
+  .sendtxt b{color:var(--gold)}
+  .send{background:var(--gold);color:#2A1F0E;border:none;border-radius:999px;padding:.7rem 1.5rem;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}
+  .send.ghost{background:transparent;color:#CFE0D5;border:1px solid rgba(243,239,228,.3)}
+
+  .lightbox{position:fixed;inset:0;background:rgba(11,44,37,.94);display:none;align-items:center;justify-content:center;z-index:80;padding:2rem;cursor:zoom-out}
+  .lightbox.show{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;border-radius:12px}
+  .toast{position:fixed;inset-inline-start:50%;bottom:5.5rem;transform:translate(-50%,1rem);background:var(--forest);color:#F3EFE4;padding:.6rem 1.1rem;border-radius:999px;font-size:.84rem;font-weight:600;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:90}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:860px){
+    .pbody{grid-template-columns:1fr}
+    .previews img{width:9rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="amb"></div>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="/dorina/hub/">
+        <svg viewBox="0 0 100 100" width="22" height="22" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+        <span><span class="en">BACK TO YOUR HUB</span><span class="ar-t">العودة إلى لوحتكِ</span></span>
+      </a>
+      <button class="lang" id="langBtn" type="button"><span class="en">العربية</span><span class="ar-t">English</span></button>
+    </div>
+    <div class="eyebrow"><span class="en">Nothing publishes without you</span><span class="ar-t">لا يُنشَر شيء من دونكِ</span></div>
+    <h1><span class="en">The Studio</span><span class="ar-t">استوديو النشر</span></h1>
+    <p class="lede">
+      <span class="en">Every post is written, designed and scheduled for you. You read it, you approve it — or you ask for a change. Only what you approve goes out.</span>
+      <span class="ar-t">كل منشور مكتوب ومصمَّم ومجدول لأجلكِ. تقرئينه وتوافقين عليه — أو تطلبين تعديلاً. لا يخرج إلا ما توافقين عليه.</span>
+    </p>
+    <div class="counts" id="counts"></div>
+  </div>
+</header>
+
+<main class="wrap" id="posts"></main>
+
+<div class="sendbar">
+  <div class="wrap sendrow">
+    <div class="sendtxt" id="sendtxt"></div>
+    <button class="send" type="button" onclick="sendApprovals()"><span class="en">Send my answers to Abdel</span><span class="ar-t">أرسلي ردودي إلى عبد الخالق</span></button>
+    <button class="send ghost" type="button" onclick="copyApprovals()"><span class="en">Copy</span><span class="ar-t">انسخي</span></button>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox"><img id="lightimg" alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY='dorina-studio-v1', WA='971543383932', BASE='../';
+  var S; try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+  S.state=S.state||{}; S.lang=S.lang||'en';
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  function isAr(){return document.body.classList.contains('ar')}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  function toast(t){var e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(function(){e.classList.remove('show')},2400)}
+
+  var Q=null;
+
+  function applyLang(){
+    document.body.classList.toggle('ar',S.lang==='ar');
+    document.documentElement.dir=S.lang==='ar'?'rtl':'ltr';
+    document.documentElement.lang=S.lang==='ar'?'ar':'en';
+  }
+  document.getElementById('langBtn').onclick=function(){S.lang=S.lang==='ar'?'en':'ar';save();applyLang();render()};
+
+  var L={
+    waiting:{en:'Waiting for you',ar:'بانتظاركِ'},
+    approved:{en:'Approved ✓',ar:'مُعتمَد ✓'},
+    edits:{en:'Change requested',ar:'طلب تعديل'},
+    held:{en:'Held',ar:'مؤجَّل'},
+    approve:{en:'Approve — publish this',ar:'أوافق — انشروه'},
+    edit:{en:'Ask for a change',ar:'اطلبي تعديلاً'},
+    hold:{en:'Not yet',ar:'ليس بعد'},
+    editph:{en:'What should change? Write it in your own words…',ar:'ما الذي يجب تغييره؟ اكتبيه بكلماتكِ…'},
+    slides:{en:'slides — tap to enlarge',ar:'شرائح — انقري للتكبير'}
+  };
+  function t(k){return isAr()?L[k].ar:L[k].en}
+
+  function render(){
+    var host=document.getElementById('posts');host.innerHTML='';
+    if(!Q){host.innerHTML='<p style="color:var(--muted)">Loading…</p>';return}
+
+    Q.posts.forEach(function(p,pi){
+      var st=S.state[p.id]||(S.state[p.id]={status:'waiting',note:''});
+      var el=document.createElement('article');
+      el.className='post reveal'+(st.status==='approved'?' approved':'');
+      el.style.setProperty('--d',(pi*0.05)+'s');
+
+      var tags=p.platforms.map(function(pf){
+        return '<span class="tag '+(pf==='linkedin'?'li':'ig')+'">'+(pf==='linkedin'?'LinkedIn':'Instagram')+'</span>';
+      }).join('');
+      var stateCls=st.status==='approved'?'approved':(st.status==='edits'?'edits':(st.status==='held'?'held':''));
+
+      var head='<div class="phead">'+
+        '<span class="ptitle">'+esc(p.title)+'</span>'+tags+
+        '<span class="tag lang">'+(p.lang==='ar'?'AR':'EN')+'</span>'+
+        '<span class="when">'+esc(p.day)+' · '+esc(p.time)+'</span>'+
+        '<span class="state '+stateCls+'">'+t(st.status)+'</span>'+
+      '</div>';
+
+      var imgs=(p.graphics['ig-portrait']||[]).map(function(src){
+        return '<img loading="lazy" src="'+BASE+esc(src)+'" alt="">';
+      }).join('');
+      var note=isAr()?(p.note_instagram||''):(p.note_linkedin||p.note_instagram||'');
+
+      var cap=p.caption+(p.footer?('\n\n'+(p.lang==='ar'?Q.footer_ar:Q.footer_en)):'');
+
+      var body='<div class="pbody">'+
+        '<div><div class="previews">'+imgs+'</div>'+
+          '<div class="pmeta">'+(p.graphics['ig-portrait']||[]).length+' '+t('slides')+'</div></div>'+
+        '<div><div class="caption">'+esc(cap)+'</div>'+
+          '<div class="tags">'+esc(p.hashtags||'')+'</div>'+
+          (note?'<div class="foot-note">'+esc(note)+'</div>':'')+
+        '</div>'+
+      '</div>';
+
+      el.innerHTML=head+body+
+        '<div class="acts">'+
+          '<button class="btn go'+(st.status==='approved'?' on':'')+'" data-a="approved">'+t('approve')+'</button>'+
+          '<button class="btn'+(st.status==='edits'?' on':'')+'" data-a="edits">'+t('edit')+'</button>'+
+          '<button class="btn'+(st.status==='held'?' on':'')+'" data-a="held">'+t('hold')+'</button>'+
+        '</div>'+
+        '<textarea class="editbox'+(st.status==='edits'?' show':'')+'" placeholder="'+t('editph')+'"></textarea>';
+
+      el.querySelectorAll('[data-a]').forEach(function(b){
+        b.onclick=function(){
+          var a=b.getAttribute('data-a');
+          st.status=(st.status===a?'waiting':a);
+          save();render();
+        };
+      });
+      var ta=el.querySelector('.editbox');
+      ta.value=st.note||'';
+      ta.oninput=function(){st.note=ta.value;save();updateBar()};
+
+      el.querySelectorAll('.previews img').forEach(function(im){
+        im.onclick=function(){
+          document.getElementById('lightimg').src=im.src;
+          document.getElementById('lightbox').classList.add('show');
+        };
+      });
+
+      host.appendChild(el);
+    });
+
+    updateBar();
+    observeReveals();
+  }
+
+  function tally(){
+    var a=0,e=0,h=0,w=0;
+    (Q?Q.posts:[]).forEach(function(p){
+      var s=(S.state[p.id]||{}).status||'waiting';
+      if(s==='approved')a++; else if(s==='edits')e++; else if(s==='held')h++; else w++;
+    });
+    return {a:a,e:e,h:h,w:w,total:(Q?Q.posts.length:0)};
+  }
+
+  function updateBar(){
+    var c=tally();
+    document.getElementById('counts').innerHTML=
+      '<span class="chip"><b>'+c.total+'</b> '+(isAr()?'منشور جاهز':'posts ready')+'</span>'+
+      '<span class="chip"><b>'+c.a+'</b> '+(isAr()?'مُعتمَد':'approved')+'</span>'+
+      '<span class="chip"><b>'+c.e+'</b> '+(isAr()?'بحاجة تعديل':'need a change')+'</span>'+
+      '<span class="chip"><b>'+c.w+'</b> '+(isAr()?'بانتظاركِ':'waiting for you')+'</span>';
+    document.getElementById('sendtxt').innerHTML= isAr()
+      ? 'وافقتِ على <b>'+c.a+'</b> من <b>'+c.total+'</b>. لا يُنشَر إلا ما اعتمدتِه.'
+      : 'You have approved <b>'+c.a+'</b> of <b>'+c.total+'</b>. Only approved posts go out.';
+  }
+
+  function buildSummary(){
+    var L2=isAr(), nl='\n', c=tally();
+    var out=(L2?'استوديو دورينا — ردودي':"Dorina's Studio — my answers")+nl;
+    out+=(L2?'معتمَد: ':'Approved: ')+c.a+'/'+c.total+nl+nl;
+    Q.posts.forEach(function(p){
+      var st=S.state[p.id]||{};
+      var s=st.status||'waiting';
+      var label=s==='approved'?(L2?'موافقة':'APPROVED'):s==='edits'?(L2?'تعديل':'CHANGE'):s==='held'?(L2?'تأجيل':'HOLD'):(L2?'لم تُقرَّر':'not answered');
+      out+='• ['+label+'] '+p.title+' ('+(p.lang==='ar'?'AR':'EN')+' · '+p.day+')'+nl;
+      if(st.note) out+='   ↳ '+st.note+nl;
+    });
+    return out;
+  }
+  window.copyApprovals=function(){
+    if(navigator.clipboard) navigator.clipboard.writeText(buildSummary()).then(function(){toast(isAr()?'نُسخ ✓':'Copied ✓')});
+  };
+  window.sendApprovals=function(){
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(buildSummary()),'_blank','noopener');
+  };
+
+  document.getElementById('lightbox').onclick=function(){this.classList.remove('show')};
+
+  var io=null;
+  function observeReveals(){
+    var els=document.querySelectorAll('.reveal:not(.in)');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+    if(!io){io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.05,rootMargin:'0px 0px -6% 0px'})}
+    var vh=window.innerHeight||0;
+    els.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(vh<=0||r.top<vh) el.classList.add('in'); else io.observe(el);
+    });
+  }
+
+  document.documentElement.classList.add('js-anim');
+  applyLang();
+  fetch('content/queue.json').then(function(r){return r.json()}).then(function(j){Q=j;render()})
+    .catch(function(){document.getElementById('posts').innerHTML='<p style="color:var(--muted)">Queue could not load.</p>'});
+})();
+</script>
+</body>
+</html>

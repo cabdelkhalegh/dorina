@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<script id="card-data" type="application/json">{{DATA}}</script>
+<style>
+  :root{
+    --forest:#0F382F;--forest2:#1C4A3E;--deep:#0B2C25;--mint:#8FC8AF;
+    --ivory:#F5F1E8;--paper:#FFFDF7;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;
+    --gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden}
+  body{font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .card{position:relative;width:100%;height:100%;overflow:hidden;display:flex;flex-direction:column;
+        padding:5rem 4.5rem;background:var(--ivory);color:var(--ink)}
+  /* grounds */
+  .card.forest{background:radial-gradient(140% 120% at 82% 0%,var(--forest2) 0%,var(--forest) 55%,var(--deep) 100%);color:#F3EFE4}
+  .card.ivory{background:var(--ivory);color:var(--ink)}
+  .card.paper{background:var(--paper);color:var(--ink)}
+  .amb{position:absolute;inset:-15%;pointer-events:none}
+  .card.forest .amb{background:radial-gradient(circle at 28% 78%,rgba(143,200,175,.13),transparent 45%),radial-gradient(circle at 78% 12%,rgba(197,154,84,.15),transparent 40%)}
+  /* the open circle watermark */
+  .mark-bg{position:absolute;inset-inline-end:-7rem;bottom:-8rem;width:32rem;height:32rem;opacity:.12;pointer-events:none;z-index:0}
+  .card.ivory .mark-bg,.card.paper .mark-bg{opacity:.07}
+  .card>.head,.card>.body,.card>.foot{position:relative;z-index:1}
+
+  /* header */
+  .head{display:flex;align-items:center;gap:.9rem}
+  .head svg{width:2.1rem;height:2.1rem;flex:none}
+  .who{font-weight:700;letter-spacing:.14em;font-size:.95rem;text-transform:uppercase}
+  .card.forest .who{color:#F3EFE4}
+  .card.ivory .who,.card.paper .who{color:var(--forest)}
+
+  .body{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:2.5rem 0}
+  .eyebrow{font-size:.95rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .card.ivory .eyebrow,.card.paper .eyebrow{color:var(--gold2)}
+  .rule{width:5rem;height:2px;background:var(--gold);margin:1.6rem 0}
+
+  .lead{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.16;letter-spacing:-.01em;
+        font-size:4.6rem}
+  .lead.sm{font-size:3.6rem}
+  .lead.xs{font-size:2.9rem}
+  .card.forest .lead{color:#F5F1E8}
+  .card.ivory .lead,.card.paper .lead{color:var(--forest)}
+  .sub{font-size:1.45rem;line-height:1.6;margin-top:1.8rem;max-width:34ch}
+  .card.forest .sub{color:#BFD4C8}
+  .card.ivory .sub,.card.paper .sub{color:var(--soft)}
+
+  /* ladder / list */
+  .steps{display:flex;flex-direction:column;gap:1.15rem;margin-top:2.2rem}
+  .step{display:flex;align-items:center;gap:1.2rem}
+  .sn{font-family:"Cormorant Garamond",serif;font-size:1.9rem;width:2.6rem;flex:none;text-align:center;
+      color:var(--gold);opacity:.55}
+  .st{font-size:1.5rem;font-weight:500}
+  .card.forest .st{color:#CFE0D5}
+  .card.ivory .st,.card.paper .st{color:var(--soft)}
+  .step.on .sn{opacity:1}
+  .step.on .st{font-weight:700}
+  .card.forest .step.on .st{color:#F5F1E8}
+  .card.ivory .step.on .st,.card.paper .step.on .st{color:var(--forest)}
+  .step.on::before{content:"";position:absolute;inset-inline-start:-4.5rem;width:.5rem;height:2.4rem;background:var(--gold);border-radius:99px}
+  .step{position:relative}
+
+  /* footer */
+  .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem}
+  .handle{font-size:1.05rem;letter-spacing:.04em}
+  .card.forest .handle{color:#9DB5A9}
+  .card.ivory .handle,.card.paper .handle{color:var(--muted)}
+  .swipe{display:flex;align-items:center;gap:.6rem;font-size:1.05rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .swipe .ar{font-size:1.4rem;line-height:1}
+  .pill{border:1.5px solid var(--gold);color:var(--gold);border-radius:99px;padding:.55rem 1.4rem;font-size:1.05rem;font-weight:700;letter-spacing:.06em}
+  .disc{font-size:.92rem;line-height:1.45;max-width:46ch}
+  .card.forest .disc{color:#7E9A8B}
+  .card.ivory .disc,.card.paper .disc{color:#9A9384}
+
+  /* index dots */
+  .dots{display:flex;gap:.5rem;align-items:center}
+  .dot{width:.55rem;height:.55rem;border-radius:99px;background:currentColor;opacity:.25}
+  .dot.on{opacity:1;background:var(--gold)}
+
+  /* arabic */
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  body.ar .lead{font-family:"IBM Plex Sans Arabic",sans-serif;font-weight:600;line-height:1.4;font-size:3.5rem}
+  body.ar .lead.sm{font-size:2.9rem}
+  body.ar .lead.xs{font-size:2.4rem}
+  body.ar .sn{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1.5rem}
+  body.ar .eyebrow{letter-spacing:.06em}
+  body.ar .who{letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="amb"></div>
+  <svg class="mark-bg" viewBox="0 0 100 100" id="markbg" aria-hidden="true">
+    <path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="71.86" cy="23.96" r="4.2" fill="#C59A54"/>
+  </svg>
+
+  <div class="head">
+    <svg viewBox="0 0 100 100" id="markhead" aria-hidden="true">
+      <path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/>
+    </svg>
+    <span class="who">Dorina Salman</span>
+  </div>
+
+  <div class="body" id="body"></div>
+
+  <div class="foot">
+    <div>
+      <div class="handle" id="handle"></div>
+      <div class="disc" id="disc"></div>
+    </div>
+    <div id="footright"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var D=JSON.parse(document.getElementById('card-data').textContent);
+  var W=D.w||1080, H=D.h||1350;
+
+  // proportional type: 1080px-wide canvas == 16px root
+  document.documentElement.style.fontSize=(W/1080*16)+'px';
+  document.body.style.width=W+'px'; document.body.style.height=H+'px';
+
+  var ar = D.lang==='ar';
+  if(ar){ document.body.classList.add('ar'); document.documentElement.dir='rtl'; document.documentElement.lang='ar'; }
+
+  var card=document.getElementById('card');
+  card.classList.add(D.ground||'forest');
+
+  // mark colours follow the ground
+  var light = (D.ground||'forest')==='forest';
+  var stroke = light ? '#F3EFE4' : '#0F382F';
+  document.querySelector('#markhead path').setAttribute('stroke',stroke);
+  document.querySelector('#markbg path').setAttribute('stroke',stroke);
+
+  var body=document.getElementById('body');
+  function el(tag,cls,txt){var e=document.createElement(tag); if(cls)e.className=cls; if(txt!==undefined)e.textContent=txt; return e}
+
+  // ---- type sizing: shrink the lead as it gets longer ----
+  function leadClass(t){ var n=(t||'').length; if(n>150) return 'lead xs'; if(n>80) return 'lead sm'; return 'lead' }
+
+  if(D.eyebrow) body.appendChild(el('div','eyebrow',D.eyebrow));
+  if(D.lead){ body.appendChild(el('div','rule')); body.appendChild(el('div',leadClass(D.lead),D.lead)); }
+  if(D.sub) body.appendChild(el('div','sub',D.sub));
+
+  if(D.steps && D.steps.length){
+    var wrap=el('div','steps');
+    D.steps.forEach(function(s,i){
+      var row=el('div','step'+(s.on?' on':''));
+      row.appendChild(el('span','sn',s.n||String(i+1)));
+      row.appendChild(el('span','st',s.t));
+      wrap.appendChild(row);
+    });
+    body.appendChild(wrap);
+  }
+
+  document.getElementById('handle').textContent=D.handle||'';
+  document.getElementById('disc').textContent=D.disclaimer||'';
+
+  var fr=document.getElementById('footright');
+  if(D.swipe){
+    var s=el('div','swipe'); s.appendChild(el('span','',D.swipe));
+    s.appendChild(el('span','ar', ar?'←':'→'));
+    fr.appendChild(s);
+  } else if(D.pill){
+    fr.appendChild(el('div','pill',D.pill));
+  } else if(D.dots){
+    var d=el('div','dots');
+    for(var i=0;i<D.dots;i++){ d.appendChild(el('span','dot'+(i===(D.dotOn||0)?' on':''))) }
+    fr.appendChild(d);
+  }
+
+  // ---- overflow guard: shrink until the text fits the canvas ----
+  // Shrink only if the TEXT column overflows its own box. The watermark is
+  // absolutely positioned and deliberately bleeds off-canvas — it must never
+  // be treated as overflow.
+  var guard=0;
+  while(body.scrollHeight > body.clientHeight + 1 && guard < 40){
+    var fs=parseFloat(document.documentElement.style.fontSize);
+    document.documentElement.style.fontSize=(fs*0.96)+'px';
+    guard++;
+  }
+  document.documentElement.setAttribute('data-fit', guard===0?'native':'shrunk-'+guard);
+})();
+</script>
+</body>
+</html>

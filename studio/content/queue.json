@@ -1,0 +1,80 @@
+{
+  "_note": "The publishing queue. Captions are verbatim from women-circle/CONTENT_BATCH_WEEKS_1-2.md. Graphics paths point at build_graphics.py output. Nothing here publishes until status === 'approved' in the Studio.",
+  "link": "https://cabdelkhalegh.github.io/dorina/women-circle/",
+  "footer_en": "Educational content only — not therapy, diagnosis, or medical advice. In crisis, contact emergency services or a qualified professional.",
+  "footer_ar": "محتوى تثقيفي فقط — ليس علاجاً أو تشخيصاً أو نصيحة طبية. في الحالات الطارئة تواصلي مع خدمات الطوارئ أو مختصّ مؤهّل.",
+  "posts": [
+    {
+      "id": "w1-tue-en",
+      "deck": "p1",
+      "lang": "en",
+      "week": 1,
+      "day": "Tuesday",
+      "time": "09:30 GST",
+      "platforms": ["linkedin", "instagram"],
+      "title": "The position — launch story",
+      "graphics": {
+        "ig-portrait": ["assets/social/p1/ig-portrait/en-01.png", "assets/social/p1/ig-portrait/en-02.png", "assets/social/p1/ig-portrait/en-03.png", "assets/social/p1/ig-portrait/en-04.png"],
+        "li-square": ["assets/social/p1/li-square/en-01.png"]
+      },
+      "caption": "Many women notice pressure only after the moment has become too full: the fast answer, the tense jaw, the yes that should have been \"I need time.\"\n\nMy work starts earlier. I use a practical six-move sequence called the CIRCLE Method: come back to the body, identify the emotion, read the trigger, choose the response, link to support, and embed the practice.\n\nEach move produces something usable — a body cue, a Trigger Map, a boundary phrase, a Support Map, or a seven-day practice.\n\nWhere does pressure visit you first? I read every reply.",
+      "hashtags": "#WomensWellbeing #StressAwareness #CIRCLEMethod #Lebanon",
+      "footer": true,
+      "note_linkedin": "No link in the body — the Circle link lives in her Featured section (goal #1). Carousel goes up as a PDF document post.",
+      "note_instagram": "Carousel, 4 slides. Cover is built to be forwarded, not liked."
+    },
+    {
+      "id": "w1-tue-ar",
+      "deck": "p1",
+      "lang": "ar",
+      "week": 1,
+      "day": "Tuesday",
+      "time": "09:30 GST",
+      "platforms": ["instagram"],
+      "title": "الموقع — قصة الانطلاق",
+      "graphics": {
+        "ig-portrait": ["assets/social/p1/ig-portrait/ar-01.png", "assets/social/p1/ig-portrait/ar-02.png", "assets/social/p1/ig-portrait/ar-03.png", "assets/social/p1/ig-portrait/ar-04.png"],
+        "li-square": ["assets/social/p1/li-square/ar-01.png"]
+      },
+      "caption": "تلاحظ كثير من النساء الضغط بعد أن تصبح اللحظة ممتلئة أكثر من اللازم: جواب متسرّع، شدّ في الفك، أو موافقة كان من الأفضل أن تكون «أحتاج إلى وقت».\n\nيبدأ عملي في وقت أبكر. أستخدم منهجاً عملياً من ست خطوات اسمه CIRCLE: العودة إلى الجسد، تحديد الشعور، قراءة المحفّز، اختيار الاستجابة، ربط الحاجة بالدعم، ثم تثبيت الممارسة.\n\nتنتج كل خطوة أداة قابلة للاستخدام: إشارة جسدية، خريطة محفّز، عبارة حدود، خريطة دعم، أو ممارسة لسبعة أيام.\n\nأين يزوركِ الضغط أولاً؟ أقرأ كل ردّ.",
+      "hashtags": "#رفاه_النساء #وعي_بالضغط #منهج_CIRCLE #لبنان",
+      "footer": true,
+      "note_instagram": "منشور منفصل بالعربية — لا نخلط اللغتين في تعليق واحد."
+    },
+    {
+      "id": "w1-wed-en",
+      "deck": "p2",
+      "lang": "en",
+      "week": 1,
+      "day": "Wednesday",
+      "time": "09:30 GST",
+      "platforms": ["linkedin", "instagram"],
+      "title": "The body signal",
+      "graphics": {
+        "ig-portrait": ["assets/social/p2/ig-portrait/en-01.png", "assets/social/p2/ig-portrait/en-02.png", "assets/social/p2/ig-portrait/en-03.png", "assets/social/p2/ig-portrait/en-04.png"],
+        "li-square": ["assets/social/p2/li-square/en-01.png"]
+      },
+      "caption": "The first sign of pressure is rarely a thought.\n\nIt's the jaw that sets. The shoulders that climb. The pace that quickens while the to-do list stands still.\n\nThe C in the CIRCLE Method — come back to the body — is the smallest move of the six, and the one everything else depends on. You can't name what you haven't noticed.\n\nToday, once, ask yourself: where does pressure visit me first?\n\nThat's it. That's the practice.",
+      "hashtags": "#BodyAwareness #StressLiteracy #CIRCLEMethod",
+      "footer": true,
+      "note_instagram": "Add a send prompt in the first comment: \"Send this to the woman who says yes too fast.\""
+    },
+    {
+      "id": "w1-wed-ar",
+      "deck": "p2",
+      "lang": "ar",
+      "week": 1,
+      "day": "Wednesday",
+      "time": "09:30 GST",
+      "platforms": ["instagram"],
+      "title": "إشارة الجسد",
+      "graphics": {
+        "ig-portrait": ["assets/social/p2/ig-portrait/ar-01.png", "assets/social/p2/ig-portrait/ar-02.png", "assets/social/p2/ig-portrait/ar-03.png", "assets/social/p2/ig-portrait/ar-04.png"],
+        "li-square": ["assets/social/p2/li-square/ar-01.png"]
+      },
+      "caption": "أول علامة للضغط نادراً ما تكون فكرة.\n\nإنها الفكّ الذي يشتد. الكتفان اللذان يرتفعان. الإيقاع الذي يتسارع بينما قائمة المهام واقفة مكانها.\n\nحرف C في منهج CIRCLE — العودة إلى الجسد — هو أصغر الخطوات الست، والخطوة التي يعتمد عليها كل ما بعدها. لا يمكنكِ تسمية ما لم تلاحظيه.\n\nاليوم، مرة واحدة، اسألي نفسكِ: أين يزورني الضغط أولاً؟\n\nهذا كل شيء. هذه هي الممارسة.",
+      "hashtags": "#وعي_بالجسد #ثقافة_الضغط #منهج_CIRCLE",
+      "footer": true
+    }
+  ]
+}
