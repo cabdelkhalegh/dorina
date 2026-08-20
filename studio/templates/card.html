@@ -19,8 +19,33 @@
   .card.forest{background:radial-gradient(140% 120% at 82% 0%,var(--forest2) 0%,var(--forest) 55%,var(--deep) 100%);color:#F3EFE4}
   .card.ivory{background:var(--ivory);color:var(--ink)}
   .card.paper{background:var(--paper);color:var(--ink)}
+  /* ---- depth stack: mesh → photo → scrim → grain → vignette ---- */
   .amb{position:absolute;inset:-15%;pointer-events:none}
   .card.forest .amb{background:radial-gradient(circle at 28% 78%,rgba(143,200,175,.13),transparent 45%),radial-gradient(circle at 78% 12%,rgba(197,154,84,.15),transparent 40%)}
+
+  /* A soft colour mesh in her palette. Seeded per card, so a deck never
+     repeats the same wash twice, but the same card renders identically. */
+  .mesh{position:absolute;inset:-25%;pointer-events:none;opacity:.9}
+
+  /* Optional photograph or generated texture behind the type. */
+  .photo{position:absolute;inset:0;background-size:cover;background-position:center;pointer-events:none}
+  .scrim{position:absolute;inset:0;pointer-events:none}
+  .card.forest .scrim{background:linear-gradient(180deg,rgba(11,44,37,.86) 0%,rgba(11,44,37,.72) 45%,rgba(11,44,37,.92) 100%)}
+  .card.ivory .scrim,.card.paper .scrim{background:linear-gradient(180deg,rgba(245,241,232,.9) 0%,rgba(245,241,232,.78) 45%,rgba(245,241,232,.94) 100%)}
+
+  /* Film grain — this is what stops a flat vector card reading as "made in code". */
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+    background-size:220px 220px}
+
+  .vig{position:absolute;inset:0;pointer-events:none}
+  .card.forest .vig{background:radial-gradient(120% 90% at 50% 40%,transparent 40%,rgba(6,28,23,.5) 100%)}
+  .card.ivory .vig,.card.paper .vig{background:radial-gradient(120% 90% at 50% 40%,transparent 45%,rgba(140,128,104,.16) 100%)}
+
+  /* Hairline frame — a small piece of couture that reads as "designed". */
+  .frame{position:absolute;inset:2.2rem;border:1px solid;pointer-events:none;opacity:.5}
+  .card.forest .frame{border-color:rgba(197,154,84,.42)}
+  .card.ivory .frame,.card.paper .frame{border-color:rgba(168,127,61,.34)}
   /* the open circle watermark */
   .mark-bg{position:absolute;inset-inline-end:-7rem;bottom:-8rem;width:32rem;height:32rem;opacity:.12;pointer-events:none;z-index:0}
   .card.ivory .mark-bg,.card.paper .mark-bg{opacity:.07}
@@ -92,7 +117,13 @@
 </head>
 <body>
 <div class="card" id="card">
+  <div class="mesh" id="mesh"></div>
+  <div class="photo" id="photo" style="display:none"></div>
+  <div class="scrim" id="scrim" style="display:none"></div>
   <div class="amb"></div>
+  <div class="vig"></div>
+  <div class="grain"></div>
+  <div class="frame" id="frame"></div>
   <svg class="mark-bg" viewBox="0 0 100 100" id="markbg" aria-hidden="true">
     <path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="3.2" stroke-linecap="round"/>
     <circle cx="71.86" cy="23.96" r="4.2" fill="#C59A54"/>
@@ -131,6 +162,32 @@
 
   var card=document.getElementById('card');
   card.classList.add(D.ground||'forest');
+
+  // ---- seeded colour mesh -------------------------------------------------
+  // Deterministic: the same card always renders the same wash, but different
+  // cards in a deck get different ones. No randomness, so builds are repeatable.
+  (function(){
+    var seed = 0, s = (D.seed || (D.eyebrow||'') + (D.lead||''));
+    for (var i=0;i<s.length;i++){ seed = (seed*31 + s.charCodeAt(i)) % 100000 }
+    function r(n){ seed = (seed*1103515245 + 12345) % 2147483648; return (seed/2147483648)*n }
+    var dark = (D.ground||'forest')==='forest';
+    var blobs = dark
+      ? [['rgba(143,200,175,.20)',52],['rgba(197,154,84,.17)',46],['rgba(60,120,98,.26)',60],['rgba(28,74,62,.30)',66]]
+      : [['rgba(197,154,84,.13)',52],['rgba(143,200,175,.14)',46],['rgba(15,56,47,.07)',58],['rgba(231,224,210,.5)',64]];
+    var parts = blobs.map(function(b){
+      return 'radial-gradient(circle at '+(8+r(84)).toFixed(1)+'% '+(8+r(84)).toFixed(1)+'%, '+b[0]+', transparent '+b[1]+'%)';
+    });
+    document.getElementById('mesh').style.background = parts.join(',');
+  })();
+
+  // ---- optional photograph / generated texture ---------------------------
+  if (D.bg) {
+    var ph=document.getElementById('photo');
+    ph.style.display='block';
+    ph.style.backgroundImage='url("'+D.bg+'")';
+    document.getElementById('scrim').style.display='block';
+  }
+  if (D.frame === false) document.getElementById('frame').style.display='none';
 
   // mark colours follow the ground
   var light = (D.ground||'forest')==='forest';

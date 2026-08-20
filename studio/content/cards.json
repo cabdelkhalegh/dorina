@@ -8,20 +8,56 @@
   },
   "ladder": {
     "en": [
-      { "n": "C", "t": "Come back to the body" },
-      { "n": "I", "t": "Identify the emotion" },
-      { "n": "R", "t": "Read the trigger" },
-      { "n": "C", "t": "Choose the response" },
-      { "n": "L", "t": "Link to support" },
-      { "n": "E", "t": "Embed the practice" }
+      {
+        "n": "C",
+        "t": "Come back to the body"
+      },
+      {
+        "n": "I",
+        "t": "Identify the emotion"
+      },
+      {
+        "n": "R",
+        "t": "Read the trigger"
+      },
+      {
+        "n": "C",
+        "t": "Choose the response"
+      },
+      {
+        "n": "L",
+        "t": "Link to support"
+      },
+      {
+        "n": "E",
+        "t": "Embed the practice"
+      }
     ],
     "ar": [
-      { "n": "C", "t": "العودة إلى الجسد" },
-      { "n": "I", "t": "تحديد الشعور" },
-      { "n": "R", "t": "قراءة المحفّز" },
-      { "n": "C", "t": "اختيار الاستجابة" },
-      { "n": "L", "t": "ربط الحاجة بالدعم" },
-      { "n": "E", "t": "تثبيت الممارسة" }
+      {
+        "n": "C",
+        "t": "العودة إلى الجسد"
+      },
+      {
+        "n": "I",
+        "t": "تحديد الشعور"
+      },
+      {
+        "n": "R",
+        "t": "قراءة المحفّز"
+      },
+      {
+        "n": "C",
+        "t": "اختيار الاستجابة"
+      },
+      {
+        "n": "L",
+        "t": "ربط الحاجة بالدعم"
+      },
+      {
+        "n": "E",
+        "t": "تثبيت الممارسة"
+      }
     ]
   },
   "decks": [
@@ -30,34 +66,87 @@
       "title": "Post 1 — The position (launch story)",
       "week": 1,
       "day": "Tuesday",
-      "formats": ["ig-portrait", "li-square"],
+      "formats": [
+        "ig-portrait",
+        "li-square"
+      ],
       "en": [
-        { "type": "cover", "ground": "forest", "eyebrow": "The CIRCLE Method",
+        {
+          "type": "cover",
+          "ground": "forest",
+          "eyebrow": "The CIRCLE Method",
           "lead": "Many women notice pressure only after the moment has become too full.",
-          "swipe": "Swipe", "disclaimer": true },
-        { "type": "slide", "ground": "ivory",
+          "swipe": "Swipe",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-forest.jpg"
+        },
+        {
+          "type": "slide",
+          "ground": "ivory",
           "lead": "The fast answer. The tense jaw. The yes that should have been “I need time.”",
-          "sub": "My work starts earlier than that.", "dots": 4, "dotOn": 1 },
-        { "type": "ladder", "ground": "paper", "eyebrow": "Six moves, in order",
+          "sub": "My work starts earlier than that.",
+          "dots": 4,
+          "dotOn": 1,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "ladder",
+          "ground": "paper",
+          "eyebrow": "Six moves, in order",
           "sub": "Each move produces something usable — a body cue, a Trigger Map, a boundary phrase, a Support Map, a seven-day practice.",
-          "dots": 4, "dotOn": 2 },
-        { "type": "cta", "ground": "forest", "eyebrow": "If this feels familiar",
-          "lead": "Meet the CIRCLE Method.", "sub": "Choose the path that fits you.",
-          "pill": "Link in bio", "disclaimer": true }
+          "dots": 4,
+          "dotOn": 2,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "cta",
+          "ground": "forest",
+          "eyebrow": "If this feels familiar",
+          "lead": "Meet the CIRCLE Method.",
+          "sub": "Choose the path that fits you.",
+          "pill": "Link in bio",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-forest.jpg"
+        }
       ],
       "ar": [
-        { "type": "cover", "ground": "forest", "eyebrow": "منهج CIRCLE",
+        {
+          "type": "cover",
+          "ground": "forest",
+          "eyebrow": "منهج CIRCLE",
           "lead": "تلاحظ كثير من النساء الضغط بعد أن تصبح اللحظة ممتلئة أكثر من اللازم.",
-          "swipe": "اسحبي", "disclaimer": true },
-        { "type": "slide", "ground": "ivory",
+          "swipe": "اسحبي",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-forest.jpg"
+        },
+        {
+          "type": "slide",
+          "ground": "ivory",
           "lead": "جواب متسرّع، شدّ في الفك، أو موافقة كان من الأفضل أن تكون «أحتاج إلى وقت».",
-          "sub": "يبدأ عملي في وقت أبكر من ذلك.", "dots": 4, "dotOn": 1 },
-        { "type": "ladder", "ground": "paper", "eyebrow": "ست خطوات بالترتيب",
+          "sub": "يبدأ عملي في وقت أبكر من ذلك.",
+          "dots": 4,
+          "dotOn": 1,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "ladder",
+          "ground": "paper",
+          "eyebrow": "ست خطوات بالترتيب",
           "sub": "تنتج كل خطوة أداة قابلة للاستخدام: إشارة جسدية، خريطة محفّز، عبارة حدود، خريطة دعم، أو ممارسة لسبعة أيام.",
-          "dots": 4, "dotOn": 2 },
-        { "type": "cta", "ground": "forest", "eyebrow": "إذا شعرتِ أن هذا يعبّر عنكِ",
-          "lead": "تعرّفي إلى منهج CIRCLE.", "sub": "واختاري المسار الأنسب لكِ.",
-          "pill": "الرابط في البايو", "disclaimer": true }
+          "dots": 4,
+          "dotOn": 2,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "cta",
+          "ground": "forest",
+          "eyebrow": "إذا شعرتِ أن هذا يعبّر عنكِ",
+          "lead": "تعرّفي إلى منهج CIRCLE.",
+          "sub": "واختاري المسار الأنسب لكِ.",
+          "pill": "الرابط في البايو",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-forest.jpg"
+        }
       ]
     },
     {
@@ -65,32 +154,87 @@
       "title": "Post 2 — The body signal",
       "week": 1,
       "day": "Wednesday",
-      "formats": ["ig-portrait", "li-square"],
+      "formats": [
+        "ig-portrait",
+        "li-square"
+      ],
       "en": [
-        { "type": "cover", "ground": "forest", "eyebrow": "C · come back to the body",
+        {
+          "type": "cover",
+          "ground": "forest",
+          "eyebrow": "C · come back to the body",
           "lead": "The first sign of pressure is rarely a thought.",
-          "swipe": "Swipe", "disclaimer": true },
-        { "type": "slide", "ground": "ivory",
+          "swipe": "Swipe",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-mint.jpg"
+        },
+        {
+          "type": "slide",
+          "ground": "ivory",
           "lead": "It’s the jaw that sets. The shoulders that climb. The pace that quickens while the to-do list stands still.",
-          "dots": 4, "dotOn": 1 },
-        { "type": "ladder", "ground": "paper", "eyebrow": "The smallest move of the six",
-          "on": 0, "sub": "You can’t name what you haven’t noticed.", "dots": 4, "dotOn": 2 },
-        { "type": "practice", "ground": "forest", "eyebrow": "Today, once",
+          "dots": 4,
+          "dotOn": 1,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "ladder",
+          "ground": "paper",
+          "eyebrow": "The smallest move of the six",
+          "on": 0,
+          "sub": "You can’t name what you haven’t noticed.",
+          "dots": 4,
+          "dotOn": 2,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "practice",
+          "ground": "forest",
+          "eyebrow": "Today, once",
           "lead": "Where does pressure visit me first?",
-          "sub": "That’s it. That’s the practice.", "pill": "Save this", "disclaimer": true }
+          "sub": "That’s it. That’s the practice.",
+          "pill": "Save this",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-mint.jpg"
+        }
       ],
       "ar": [
-        { "type": "cover", "ground": "forest", "eyebrow": "C · العودة إلى الجسد",
+        {
+          "type": "cover",
+          "ground": "forest",
+          "eyebrow": "C · العودة إلى الجسد",
           "lead": "أول علامة للضغط نادراً ما تكون فكرة.",
-          "swipe": "اسحبي", "disclaimer": true },
-        { "type": "slide", "ground": "ivory",
+          "swipe": "اسحبي",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-mint.jpg"
+        },
+        {
+          "type": "slide",
+          "ground": "ivory",
           "lead": "إنها الفكّ الذي يشتد. الكتفان اللذان يرتفعان. الإيقاع الذي يتسارع بينما قائمة المهام واقفة مكانها.",
-          "dots": 4, "dotOn": 1 },
-        { "type": "ladder", "ground": "paper", "eyebrow": "أصغر الخطوات الست",
-          "on": 0, "sub": "لا يمكنكِ تسمية ما لم تلاحظيه.", "dots": 4, "dotOn": 2 },
-        { "type": "practice", "ground": "forest", "eyebrow": "اليوم، مرة واحدة",
+          "dots": 4,
+          "dotOn": 1,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "ladder",
+          "ground": "paper",
+          "eyebrow": "أصغر الخطوات الست",
+          "on": 0,
+          "sub": "لا يمكنكِ تسمية ما لم تلاحظيه.",
+          "dots": 4,
+          "dotOn": 2,
+          "bg": "assets/social/textures/still-ivory.jpg"
+        },
+        {
+          "type": "practice",
+          "ground": "forest",
+          "eyebrow": "اليوم، مرة واحدة",
           "lead": "أين يزورني الضغط أولاً؟",
-          "sub": "هذا كل شيء. هذه هي الممارسة.", "pill": "احفظي هذا", "disclaimer": true }
+          "sub": "هذا كل شيء. هذه هي الممارسة.",
+          "pill": "احفظي هذا",
+          "disclaimer": true,
+          "bg": "assets/social/textures/still-mint.jpg"
+        }
       ]
     }
   ]

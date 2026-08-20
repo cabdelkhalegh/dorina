@@ -75,6 +75,14 @@ def build_card_data(card, deck, lang, defaults, ladder, w, h):
         "pill": card.get("pill"),
         "dots": card.get("dots"),
         "dotOn": card.get("dotOn", 0),
+        # Seeds the colour mesh. Deterministic per card so rebuilds are identical,
+        # but every card in a deck gets a different wash.
+        "seed": card.get("seed", "%s-%s-%s" % (deck["id"], lang, card.get("type", ""))),
+        # Chrome renders the card from a temp directory, so a repo-relative
+        # texture path has to become an absolute file URL or it silently 404s.
+        "bg": (("file:///" + os.path.join(REPO, card["bg"]).replace("\\", "/"))
+               if card.get("bg") else None),
+        "frame": card.get("frame", True),
     }
     if card.get("disclaimer"):
         data["disclaimer"] = defaults["disclaimer_ar"] if lang == "ar" else defaults["disclaimer_en"]
