@@ -129,18 +129,38 @@ Nothing else changes.
 | Magic link for a non-allow-listed email | `422` — no account is created |
 | Studio account strip | shows sign-in, no longer local mode |
 
-### 6a. Three things left that need the dashboard (I can't reach it)
+### 6a. How Dorina gets in — ✅ no dashboard step, no sign-in
 
-1. **Authentication → URL Configuration → Redirect URLs**: add
-   `https://cabdelkhalegh.github.io/dorina/studio/`
-   Without it, her magic link authenticates but bounces to the wrong place.
-2. **Add Dorina's real email** to the allow-list. RLS denies her everything until this
-   row exists, *even with a valid magic link*. Tell me her address and I'll insert it, or:
-   ```sql
-   insert into public.dorina_allowed_editors (email, label)
-   values ('her-address@example.com', 'Dorina') on conflict (email) do nothing;
-   ```
-3. **Authentication → Providers → Email**: confirm magic links are enabled.
+Magic-link sign-in needs a redirect URL allow-listed in the Supabase dashboard, which
+cannot be set from code — and it is friction for a non-technical user on a phone. So the
+Studio is reached by a **private link** instead:
+
+```
+https://cabdelkhalegh.github.io/dorina/studio/?k=<token>
+```
+
+Send her that link once. She opens it, and from then on it just works — no email, no code,
+no password. How it is kept safe:
+
+- the token is 192 bits of randomness, and only its **SHA-256 hash** is stored, so a
+  database dump does not grant access
+- it is **stripped from the URL** on first load and kept in local storage, so it does not
+  linger in history, referrers or screenshots
+- the public key alone grants nothing: RLS blocks direct table access, and every RPC
+  refuses a call without a valid token
+- **status values are validated server-side**, so a crafted call cannot write an arbitrary
+  state
+- links are revocable one at a time:
+  ```sql
+  update public.dorina_access_tokens set revoked_at = now() where id = 1;
+  ```
+
+Verified live: valid token writes and reads; a wrong token returns 401; an invalid status
+returns 400; direct table writes still return 401.
+
+Her email `ds848969@icloud.com` is already on the allow-list for the email path too —
+though the vault records that address as **unconfirmed**, so verify it with her before
+relying on it for anything that matters.
 
 ### 6b. Add the GitHub secrets
 

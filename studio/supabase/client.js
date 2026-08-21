@@ -1,17 +1,28 @@
-/* Dorina Studio — Supabase sync (no dependencies, no build step).
+/* Dorina Studio — backend sync. No dependencies, no build step.
  *
- * Why sign-in at all: the Studio page is public (unlisted), and approvals here
- * cause posts to publish automatically. So writes require a signed-in, allow-listed
- * email — enforced by RLS in the database, not by this file.
+ * Three modes, chosen automatically:
  *
- * If config.js is absent or blank, everything below no-ops and the Studio keeps
- * working exactly as before: local storage + the WhatsApp handoff.
+ *   link   — the page was opened with ?k=<token>. All reads and writes go
+ *            through security-definer RPCs that validate the token in the
+ *            database. This is Dorina's path: no sign-in, no email, no code.
+ *   email  — a magic-link session exists (kept for AK; needs the redirect URL
+ *            allow-listed in the Supabase dashboard).
+ *   local  — no backend configured or no token. The Studio still works fully;
+ *            decisions save on the device and reach AK over WhatsApp.
+ *
+ * Security notes:
+ *  - only the SHA-256 hash of the token is stored server-side
+ *  - the token is stripped from the URL on first load and kept in localStorage,
+ *    so it does not sit in history, referrers or screenshots
+ *  - the anon key alone grants nothing: RLS denies direct table access, and the
+ *    RPCs refuse any call without a valid token
  */
 window.DorinaSync = (function () {
   var CFG = window.DORINA_SUPABASE || {};
   var TOKKEY = 'dorina-studio-session';
+  var LINKKEY = 'dorina-studio-link';
   var session = null;
-  var listeners = [];
+  var linkToken = null;
 
   function configured() { return !!(CFG.url && CFG.key); }
 
@@ -25,11 +36,24 @@ window.DorinaSync = (function () {
       if (s) localStorage.setItem(TOKKEY, JSON.stringify(s));
       else localStorage.removeItem(TOKKEY);
     } catch (e) {}
-    listeners.forEach(function (f) { try { f(email()); } catch (e) {} });
   }
   function email() { return session && session.user && session.user.email; }
 
-  /* The magic-link redirect comes back as #access_token=...&refresh_token=... */
+  /* ---- private link ---------------------------------------------------- */
+  function captureLink() {
+    var m = /[?&]k=([A-Za-z0-9_-]{16,128})/.exec(location.search);
+    if (m) {
+      linkToken = m[1];
+      try { localStorage.setItem(LINKKEY, linkToken); } catch (e) {}
+      // Keep the token out of history, referrers and screenshots.
+      var clean = location.pathname + location.search.replace(/([?&])k=[^&]*/, '$1').replace(/[?&]$/, '');
+      history.replaceState(null, '', clean);
+      return;
+    }
+    try { linkToken = localStorage.getItem(LINKKEY) || null; } catch (e) { linkToken = null; }
+  }
+
+  /* ---- magic-link session (AK) ----------------------------------------- */
   function captureRedirect() {
     if (!location.hash || location.hash.indexOf('access_token') < 0) return false;
     var p = {};
@@ -38,27 +62,43 @@ window.DorinaSync = (function () {
     });
     if (!p.access_token) return false;
     history.replaceState(null, '', location.pathname + location.search);
-    return fetchUser(p.access_token, p.refresh_token);
-  }
-
-  function fetchUser(access, refresh) {
     return fetch(CFG.url + '/auth/v1/user', {
-      headers: { apikey: CFG.key, Authorization: 'Bearer ' + access }
+      headers: { apikey: CFG.key, Authorization: 'Bearer ' + p.access_token }
     }).then(function (r) { return r.ok ? r.json() : null; })
       .then(function (user) {
         if (!user) return false;
-        saveSession({ access_token: access, refresh_token: refresh, user: user });
+        saveSession({ access_token: p.access_token, refresh_token: p.refresh_token, user: user });
         return true;
       });
   }
 
-  function rest(path, opts) {
-    opts = opts || {};
+  function headers(extra) {
     var h = { apikey: CFG.key, 'Content-Type': 'application/json' };
     if (session && session.access_token) h.Authorization = 'Bearer ' + session.access_token;
-    Object.keys(opts.headers || {}).forEach(function (k) { h[k] = opts.headers[k]; });
+    Object.keys(extra || {}).forEach(function (k) { h[k] = extra[k]; });
+    return h;
+  }
+
+  function rpc(fn, args) {
+    return fetch(CFG.url + '/rest/v1/rpc/' + fn, {
+      method: 'POST', headers: headers(), body: JSON.stringify(args)
+    }).then(function (r) {
+      if (r.status === 401 || r.status === 403) {
+        // A revoked or wrong link should stop pretending to be connected.
+        try { localStorage.removeItem(LINKKEY); } catch (e) {}
+        linkToken = null;
+        throw new Error('link-rejected');
+      }
+      if (!r.ok) return r.text().then(function (t) { throw new Error(t.slice(0, 200)); });
+      return r.status === 204 ? null : r.json();
+    });
+  }
+
+  function rest(path, opts) {
+    opts = opts || {};
     return fetch(CFG.url + '/rest/v1/' + path, {
-      method: opts.method || 'GET', headers: h,
+      method: opts.method || 'GET',
+      headers: headers(opts.headers),
       body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function (r) {
       if (r.status === 401 || r.status === 403) { saveSession(null); throw new Error('not-authorised'); }
@@ -67,21 +107,36 @@ window.DorinaSync = (function () {
     });
   }
 
+  function mode() {
+    if (!configured()) return 'local';
+    if (linkToken) return 'link';
+    if (session) return 'email';
+    return 'local';
+  }
+
   return {
     configured: configured,
+    mode: mode,
     email: email,
-    onAuthChange: function (f) { listeners.push(f); },
+    hasLink: function () { return !!linkToken; },
 
-    /* Resolve to the signed-in email, or null. */
     init: function () {
-      if (!configured()) return Promise.resolve(null);
+      if (!configured()) return Promise.resolve('local');
+      captureLink();
       loadSession();
       var maybe = captureRedirect();
-      var p = (maybe && maybe.then) ? maybe : Promise.resolve(!!session);
-      return p.then(function () { return email() || null; });
+      var p = (maybe && maybe.then) ? maybe : Promise.resolve(true);
+      return p.then(function () {
+        // Prove the link still works before claiming to be connected.
+        if (linkToken) {
+          return rpc('dorina_get_approvals', { p_token: linkToken })
+            .then(function () { return 'link'; })
+            .catch(function () { return mode(); });
+        }
+        return mode();
+      });
     },
 
-    /* Sends the magic link. Resolves true if Supabase accepted the request. */
     signIn: function (addr) {
       if (!configured()) return Promise.resolve(false);
       return fetch(CFG.url + '/auth/v1/otp', {
@@ -89,27 +144,45 @@ window.DorinaSync = (function () {
         headers: { apikey: CFG.key, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: addr,
-          create_user: false,           // only pre-registered, allow-listed people
+          create_user: false,
           options: { email_redirect_to: location.origin + location.pathname }
         })
       }).then(function (r) { return r.ok; });
     },
 
-    signOut: function () { saveSession(null); },
+    signOut: function () {
+      saveSession(null);
+      try { localStorage.removeItem(LINKKEY); } catch (e) {}
+      linkToken = null;
+    },
 
-    /* {post_id: {status, note}} for everything on the server. */
+    /* {post_id: {status, note}} */
     pull: function () {
-      if (!configured() || !session) return Promise.resolve(null);
-      return rest('dorina_post_approvals?select=post_id,status,note').then(function (rows) {
+      var m = mode();
+      if (m === 'local') return Promise.resolve(null);
+      var p = (m === 'link')
+        ? rpc('dorina_get_approvals', { p_token: linkToken })
+        : rest('dorina_post_approvals?select=post_id,status,note');
+      return p.then(function (rows) {
         var out = {};
         (rows || []).forEach(function (r) { out[r.post_id] = { status: r.status, note: r.note || '' }; });
         return out;
       });
     },
 
-    /* Upsert one decision. */
     push: function (postId, state, meta) {
-      if (!configured() || !session) return Promise.resolve(false);
+      var m = mode();
+      if (m === 'local') return Promise.resolve(false);
+      if (m === 'link') {
+        return rpc('dorina_set_approval', {
+          p_token: linkToken,
+          p_post_id: postId,
+          p_status: state.status || 'waiting',
+          p_note: state.note || '',
+          p_title: (meta && meta.title) || null,
+          p_lang: (meta && meta.lang) || null
+        }).then(function () { return true; });
+      }
       return rest('dorina_post_approvals?on_conflict=post_id', {
         method: 'POST',
         headers: { Prefer: 'resolution=merge-duplicates,return=minimal' },
@@ -123,11 +196,13 @@ window.DorinaSync = (function () {
       }).then(function () { return true; });
     },
 
-    /* What actually went out, so the Studio can show it. */
     log: function () {
-      if (!configured() || !session) return Promise.resolve([]);
-      return rest('dorina_publish_log?select=post_id,platform,status,published_at&order=published_at.desc&limit=50')
-        .catch(function () { return []; });
+      var m = mode();
+      if (m === 'local') return Promise.resolve([]);
+      var p = (m === 'link')
+        ? rpc('dorina_get_log', { p_token: linkToken })
+        : rest('dorina_publish_log?select=post_id,platform,status,published_at&order=published_at.desc&limit=50');
+      return p.catch(function () { return []; });
     }
   };
 })();

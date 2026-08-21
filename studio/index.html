@@ -316,8 +316,9 @@
   var signedIn = null;
 
   function sync(post, st){
-    if(!SY || !SY.configured() || !signedIn) return;
-    SY.push(post.id, st, {title:post.title, lang:post.lang}).catch(function(e){
+    if(!SY || !SY.configured()) return;
+    if(SY.mode() === 'local') return;
+    SY.push(post.id, st, {title:post.title, lang:post.lang}).catch(function(){
       toast(isAr()?'لم يُحفَظ على الخادم':'Could not save to the server');
       renderAccount();
     });
@@ -330,6 +331,15 @@
         '<span>'+(isAr()
           ? 'وضع محلي — قراراتكِ محفوظة على هذا الجهاز، وتصل إلى عبد الخالق عبر واتساب.'
           : 'Local mode — your answers save on this device and reach Abdel on WhatsApp.')+'</span></div>';
+      return;
+    }
+    // Dorina's path: opened from her private link, nothing to sign into.
+    if(SY.mode && SY.mode()==='link'){
+      host.innerHTML='<div class="acct live"><span class="dotix"></span>'+
+        '<span>'+(isAr()
+          ? 'متصلة عبر رابطكِ الخاص — ما توافقين عليه يُنشَر تلقائياً في موعده.'
+          : 'Connected through your private link — what you approve publishes automatically at its time.')+
+        '</span></div>';
       return;
     }
     if(signedIn){
@@ -361,9 +371,10 @@
   fetch('content/queue.json').then(function(r){return r.json()}).then(function(j){
     Q=j; render(); renderAccount();
     if(!SY || !SY.configured()) return;
-    return SY.init().then(function(who){
-      signedIn=who; renderAccount();
-      if(!who) return;
+    return SY.init().then(function(m){
+      signedIn = (m === 'email') ? SY.email() : null;
+      renderAccount();
+      if(m === 'local') return;
       // The server is the source of truth once she is signed in.
       return SY.pull().then(function(remote){
         if(!remote) return;
