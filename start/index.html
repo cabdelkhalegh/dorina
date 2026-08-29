@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Start here · ابدئي من هنا</title>
+<link rel="icon" type="image/svg+xml" href="/dorina/assets/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0F382F;--forest2:#1C4A3E;--deep:#0B2C25;--mint:#8FC8AF;
+    --ivory:#F5F1E8;--paper:#FFFDF7;--ink:#171613;--soft:#4C4A42;--muted:#807B6E;
+    --gold:#C59A54;--gold2:#A87F3D;--line:#DDD5C8;--line2:#E7E0D2;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:var(--ivory);color:var(--ink);font-family:"Inter",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body.ar{font-family:"IBM Plex Sans Arabic",sans-serif}
+  body.ar .en{display:none}
+  body:not(.ar) .ar-t{display:none}
+
+  @keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes sigIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes drift{from{transform:translate(-2%,1.5%)}to{transform:translate(2%,-1.5%)}}
+  html.js-anim .reveal{opacity:0}
+  html.js-anim .reveal.in{animation:riseIn .65s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+  html:not(.js-anim) .reveal{opacity:1!important}
+  @media (prefers-reduced-motion:reduce){html.js-anim .reveal{opacity:1}html.js-anim .reveal.in{animation:none}.amb{animation:none!important}}
+
+  header{position:relative;overflow:hidden;color:#F3EFE4;padding:2rem 0 3.2rem;
+    background:radial-gradient(140% 130% at 82% 0%,var(--forest2) 0%,var(--forest) 55%,var(--deep) 100%)}
+  .amb{position:absolute;inset:-20%;pointer-events:none;animation:drift 24s ease-in-out infinite alternate;
+    background:radial-gradient(circle at 28% 78%,rgba(143,200,175,.13),transparent 45%),radial-gradient(circle at 78% 12%,rgba(197,154,84,.15),transparent 40%)}
+  .wrap{max-width:52rem;margin:0 auto;padding:0 1.4rem;position:relative}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.12em;font-size:.7rem;color:#F3EFE4;text-decoration:none}
+  .lang{border:1px solid rgba(243,239,228,.4);background:transparent;color:#F3EFE4;border-radius:999px;padding:.45rem 1rem;cursor:pointer;font:inherit;font-size:.8rem;font-weight:600}
+  .lang:hover{border-color:var(--gold)}
+  .eyebrow{font-size:.66rem;font-weight:800;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-top:2rem}
+  .sig{font-family:"Monsieur La Doulaise",cursive;font-size:clamp(3rem,9vw,4.6rem);line-height:1.05;margin-top:.4rem;
+       opacity:0;animation:sigIn .9s .15s cubic-bezier(.2,.7,.2,1) forwards}
+  body.ar .sig{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,7vw,3rem);font-weight:600}
+  .lede{color:#CFE0D5;font-size:1.02rem;margin:1rem 0 0;max-width:38rem}
+
+  main{padding:2.6rem 0 5rem}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:1.1rem;display:flex;gap:1.2rem;align-items:flex-start}
+  .n{flex:none;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--forest);color:#F3EFE4;
+     display:inline-flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:1.25rem;font-weight:600}
+  body.ar .n{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1rem}
+  .step h3{margin:.1rem 0 .4rem;font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600;color:var(--forest);line-height:1.25}
+  body.ar .step h3{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1.15rem}
+  .step p{margin:0;color:var(--soft);font-size:.94rem}
+  .step .why{margin-top:.55rem;font-size:.85rem;color:var(--muted);border-inline-start:2px solid var(--line);padding-inline-start:.75rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;background:var(--forest);color:#F3EFE4;
+       border-radius:999px;padding:.7rem 1.4rem;font-weight:700;font-size:.9rem;text-decoration:none;transition:transform .2s,background .2s}
+  .btn:hover{background:var(--forest2);transform:translateY(-2px)}
+  .btn.gold{background:var(--gold);color:#2A1F0E}
+  .btn.gold:hover{background:#D4A961}
+
+  h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.9rem;color:var(--forest);margin:2.6rem 0 .3rem;
+     padding-bottom:.5rem;border-bottom:1px solid var(--gold)}
+  body.ar h2{font-family:"IBM Plex Sans Arabic",sans-serif;font-size:1.4rem}
+  .sub{color:var(--muted);font-size:.9rem;margin:0 0 1.2rem}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.35rem;margin-bottom:.85rem}
+  .card b{color:var(--forest);font-size:1.02rem}
+  .card p{margin:.35rem 0 0;color:var(--soft);font-size:.9rem}
+  .card a{color:var(--gold2);font-weight:600}
+
+  .need{background:#FBF6EC;border:1px solid #E8D9BC;border-radius:14px;padding:1.2rem 1.35rem;margin-bottom:.85rem}
+  .need b{color:#7A5A1E}
+  .need p{margin:.35rem 0 0;color:var(--soft);font-size:.9rem}
+
+  .privacy{margin-top:2.4rem;background:radial-gradient(130% 160% at 80% 0%,var(--forest2),var(--forest) 70%);
+    color:#CFE0D5;border-radius:16px;padding:1.4rem 1.5rem;font-size:.92rem}
+  .privacy b{color:#F3EFE4;display:block;margin-bottom:.4rem;font-size:1rem}
+
+  footer{text-align:center;padding:2.5rem 1rem 3rem;color:var(--muted);font-size:.8rem}
+  footer svg{vertical-align:middle;margin-inline-end:.4rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="amb"></div>
+  <div class="wrap">
+    <div class="top">
+      <span class="brand">
+        <svg viewBox="0 0 100 100" width="22" height="22" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#F3EFE4" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>
+        <span>DORINA SALMAN</span>
+      </span>
+      <button class="lang" id="langBtn" type="button"><span class="en">العربية</span><span class="ar-t">English</span></button>
+    </div>
+
+    <div class="eyebrow"><span class="en">Everything is ready</span><span class="ar-t">كل شيء جاهز</span></div>
+    <div class="sig"><span class="en">Start here</span><span class="ar-t">ابدئي من هنا</span></div>
+    <p class="lede">
+      <span class="en">Your website, your tools and your workshop kit are built and live. This page walks you through it in three steps — nothing technical, nothing to install.</span>
+      <span class="ar-t">موقعكِ وأدواتكِ وحقيبة الورشة جاهزة ومباشرة. تشرح لكِ هذه الصفحة كل شيء في ثلاث خطوات — لا شيء تقني، ولا شيء لتثبيته.</span>
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h2><span class="en">Three steps, today</span><span class="ar-t">ثلاث خطوات، اليوم</span></h2>
+  <p class="sub"><span class="en">About fifteen minutes in total.</span><span class="ar-t">حوالي خمس عشرة دقيقة إجمالاً.</span></p>
+
+  <div class="step reveal">
+    <span class="n">1</span>
+    <div>
+      <h3><span class="en">Look at your website</span><span class="ar-t">اطّلعي على موقعكِ</span></h3>
+      <p>
+        <span class="en">Seven pages, in Arabic and English. Read it as a client would and tell Abdel anything that does not sound like you — the words are yours to change.</span>
+        <span class="ar-t">سبع صفحات بالعربية والإنكليزية. اقرئيها كما تقرأها عميلة، وأخبري عبد الخالق بأي شيء لا يشبه صوتكِ — الكلمات لكِ ويمكن تغييرها.</span>
+      </p>
+      <a class="btn" href="/dorina/" target="_blank" rel="noopener"><span class="en">Open my website</span><span class="ar-t">افتحي موقعي</span></a>
+    </div>
+  </div>
+
+  <div class="step reveal" style="--d:.06s">
+    <span class="n">2</span>
+    <div>
+      <h3><span class="en">Open your Hub</span><span class="ar-t">افتحي لوحتكِ</span></h3>
+      <p>
+        <span class="en">One private place holding every link, your progress, and the decisions waiting for you. Tick things off as you go; it remembers.</span>
+        <span class="ar-t">مكان خاص واحد يجمع كل الروابط، وتقدّمكِ، والقرارات التي تنتظركِ. ضعي علامة على ما تنجزينه؛ اللوحة تتذكّر.</span>
+      </p>
+      <a class="btn" href="/dorina/hub/" target="_blank" rel="noopener"><span class="en">Open my Hub</span><span class="ar-t">افتحي لوحتي</span></a>
+    </div>
+  </div>
+
+  <div class="step reveal" style="--d:.12s">
+    <span class="n">3</span>
+    <div>
+      <h3><span class="en">Approve your first posts</span><span class="ar-t">وافقي على منشوراتكِ الأولى</span></h3>
+      <p>
+        <span class="en">Six posts are written and designed for you, in both languages. Read each one, then Approve it, ask for a change, or hold it. Nothing is ever published without your approval.</span>
+        <span class="ar-t">ستة منشورات مكتوبة ومصمَّمة لكِ، باللغتين. اقرئي كل واحد ثم وافقي عليه، أو اطلبي تعديلاً، أو أجّليه. لا يُنشَر شيء أبداً من دون موافقتكِ.</span>
+      </p>
+      <div class="why">
+        <span class="en">Your private link was sent to you separately. Open it once and this device remembers it.</span>
+        <span class="ar-t">أُرسل إليكِ رابطكِ الخاص بشكل منفصل. افتحيه مرة واحدة وسيتذكّره هذا الجهاز.</span>
+      </div>
+      <a class="btn gold" id="studioLink" href="/dorina/studio/" target="_blank" rel="noopener"><span class="en">Open my Studio</span><span class="ar-t">افتحي الاستوديو</span></a>
+    </div>
+  </div>
+
+  <h2><span class="en">What else is yours</span><span class="ar-t">ما هو لكِ أيضاً</span></h2>
+  <p class="sub"><span class="en">All of it is ready to use today.</span><span class="ar-t">كل ذلك جاهز للاستخدام اليوم.</span></p>
+
+  <div class="card reveal">
+    <b><span class="en">The workshop kit — five printable tools</span><span class="ar-t">حقيبة الورشة — خمس أدوات للطباعة</span></b>
+    <p>
+      <span class="en">Trigger Map, Support Map, Bad-Day Card, your run sheet, and the seven-day practice. A4, Arabic and English, ready to print for every seat.</span>
+      <span class="ar-t">خريطة المحفّز، خريطة الدعم، بطاقة اليوم الصعب، خطة الجلسة، وممارسة الأيام السبعة. مقاس A4، بالعربية والإنكليزية، جاهزة للطباعة لكل مقعد.</span>
+    </p>
+    <p><a href="/dorina/hub/" target="_blank" rel="noopener"><span class="en">All five are in your Hub →</span><span class="ar-t">الخمسة جميعها في لوحتكِ ←</span></a></p>
+  </div>
+
+  <div class="card reveal" style="--d:.06s">
+    <b><span class="en">The Brainstorm Studio</span><span class="ar-t">استوديو العصف الذهني</span></b>
+    <p>
+      <span class="en">A step-by-step tool for running a planning session with your co-coach, in either language. It exports your notes at the end.</span>
+      <span class="ar-t">أداة خطوة بخطوة لإدارة جلسة تخطيط مع شريكتكِ، بأي من اللغتين. تصدّر ملاحظاتكِ في النهاية.</span>
+    </p>
+    <p><a href="/dorina/brainstorm/" target="_blank" rel="noopener"><span class="en">Open it →</span><span class="ar-t">افتحيه ←</span></a></p>
+  </div>
+
+  <div class="card reveal" style="--d:.12s">
+    <b><span class="en">Your brand</span><span class="ar-t">هويتكِ</span></b>
+    <p>
+      <span class="en">Your mark — the open circle with a single gold point — your signature, your colours, and a one-page explainer of the Circle you can send on WhatsApp.</span>
+      <span class="ar-t">علامتكِ — الدائرة المفتوحة بنقطة ذهبية واحدة — وتوقيعكِ وألوانكِ، وصفحة واحدة تشرح الدائرة يمكنكِ إرسالها عبر واتساب.</span>
+    </p>
+    <p><a href="/dorina/assets/brand/circle-onepager.pdf" target="_blank" rel="noopener"><span class="en">The one-page explainer →</span><span class="ar-t">الصفحة التعريفية ←</span></a></p>
+  </div>
+
+  <h2><span class="en">What we need from you</span><span class="ar-t">ما نحتاجه منكِ</span></h2>
+  <p class="sub"><span class="en">Four small things, whenever you can.</span><span class="ar-t">أربعة أمور صغيرة، متى استطعتِ.</span></p>
+
+  <div class="need reveal">
+    <b><span class="en">1 · A portrait photo</span><span class="ar-t">١ · صورة شخصية</span></b>
+    <p><span class="en">Full quality, any recent one you like. It goes on your home page and your About page.</span><span class="ar-t">بجودة كاملة، أي صورة حديثة تعجبكِ. ستوضع في صفحتكِ الرئيسية وصفحة «عنكِ».</span></p>
+  </div>
+
+  <div class="need reveal" style="--d:.06s">
+    <b><span class="en">2 · Your first circle — when, where, how much</span><span class="ar-t">٢ · دائرتكِ الأولى — متى، أين، وبكم</span></b>
+    <p><span class="en">A date, a place (or online), a price per seat, and how many women. This one decision unlocks the launch posts.</span><span class="ar-t">تاريخ، ومكان (أو أونلاين)، وسعر للمقعد، وعدد النساء. هذا القرار وحده يفتح منشورات الإطلاق.</span></p>
+  </div>
+
+  <div class="need reveal" style="--d:.12s">
+    <b><span class="en">3 · Check the support numbers</span><span class="ar-t">٣ · تحقّقي من أرقام الدعم</span></b>
+    <p><span class="en">Before we print the Bad-Day Card, please call each number once to be sure it answers. A card that sends a woman to a dead line is worse than no card.</span><span class="ar-t">قبل طباعة بطاقة اليوم الصعب، اتصلي بكل رقم مرة واحدة للتأكد من أنه يردّ. بطاقة ترسل امرأة إلى خط مقطوع أسوأ من عدم وجود بطاقة.</span></p>
+  </div>
+
+  <div class="need reveal" style="--d:.18s">
+    <b><span class="en">4 · Two minutes on LinkedIn</span><span class="ar-t">٤ · دقيقتان على لينكدإن</span></b>
+    <p><span class="en">Add the Circle link and its paragraph to your profile. Abdel will send you the exact words to paste.</span><span class="ar-t">أضيفي رابط الدائرة وفقرتها إلى ملفكِ. سيرسل لكِ عبد الخالق النص الجاهز للصق.</span></p>
+  </div>
+
+  <div class="privacy reveal">
+    <b><span class="en">Your privacy</span><span class="ar-t">خصوصيتكِ</span></b>
+    <span class="en">Your Hub and Studio are private links, not listed anywhere and not findable by search. What you tick and write stays on your own device unless you choose to send it. Your CV and certificates are not published on the website.</span>
+    <span class="ar-t">لوحتكِ والاستوديو روابط خاصة، غير مُدرجة في أي مكان ولا يمكن العثور عليها عبر البحث. ما تضعينه من علامات وملاحظات يبقى على جهازكِ ما لم تختاري إرساله. سيرتكِ الذاتية وشهاداتكِ غير منشورة على الموقع.</span>
+  </div>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 100 100" width="16" height="16" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="#0F382F" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="5" fill="#C59A54"/></svg>
+  <span class="en">Dorina Salman · Women in Power Circle</span>
+  <span class="ar-t">دورينا سلمان · دائرة قوّة للنساء</span>
+</footer>
+
+<script>
+(function(){
+  var KEY='dorina-start-lang';
+  var lang; try{lang=localStorage.getItem(KEY)||'en'}catch(e){lang='en'}
+  function apply(){
+    document.body.classList.toggle('ar',lang==='ar');
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    document.documentElement.lang=lang==='ar'?'ar':'en';
+  }
+  document.getElementById('langBtn').onclick=function(){
+    lang=(lang==='ar'?'en':'ar');
+    try{localStorage.setItem(KEY,lang)}catch(e){}
+    apply();
+  };
+  apply();
+
+  // If she arrived with her private key, carry it through to the Studio so she
+  // never has to handle the token herself.
+  var m=/[?&]k=([A-Za-z0-9_-]{16,128})/.exec(location.search);
+  if(m){ document.getElementById('studioLink').href='/dorina/studio/?k='+m[1]; }
+
+  document.documentElement.classList.add('js-anim');
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return }
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target) } });
+  },{threshold:.05,rootMargin:'0px 0px -5% 0px'});
+  var vh=window.innerHeight||0;
+  els.forEach(function(el){ var r=el.getBoundingClientRect(); if(vh<=0||r.top<vh) el.classList.add('in'); else io.observe(el); });
+})();
+</script>
+</body>
+</html>
