@@ -51,10 +51,12 @@ from duotone import duotone, RAMPS  # noqa: E402
 #   nano-banana-pro-preview   ~194s   beautiful but 10x slower, cropped the subject
 # Pro is the default because it costs 6 seconds over flash for a visibly better
 # image. Nano Banana Pro stays available for a hero shot where the wait is worth it.
+#   gemini-3.1-flash-lite-image  ~10s   Nano Banana 2 Lite — busier, fine for drafts
 MODELS = {
-    "fast": "gemini-3.1-flash-image",
-    "pro":  "gemini-3-pro-image",
-    "max":  "nano-banana-pro-preview",
+    "draft": "gemini-3.1-flash-lite-image",
+    "fast":  "gemini-3.1-flash-image",
+    "pro":   "gemini-3-pro-image",
+    "max":   "nano-banana-pro-preview",   # same model as pro, slower endpoint
 }
 API = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
 
@@ -130,7 +132,7 @@ def main():
     ap.add_argument("--aspect", default="3:4",
                     help="aspect ratio: 1:1, 3:4, 4:3, 9:16, 16:9")
     ap.add_argument("--tier", choices=list(MODELS), default="pro",
-                    help="fast ~20s | pro ~26s (default) | max = nano-banana-pro, ~3min")
+                    help="draft ~10s | fast ~20s | pro ~26s (default) | max = same as pro, ~3min")
     ap.add_argument("--batch", action="store_true",
                     help="generate one image per deck in content/cards.json, from each "
                          "deck's own brief, and wire the results into the cards")
