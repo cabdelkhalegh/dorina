@@ -2,3 +2,8 @@
 # Dorina personal documents — never publish (repo is public)
 assets/dorina-salman-cv.pdf
 assets/dorina-salman-certificate-scan-*.pdf
+
+# pipeline / loop runtime state
+studio/.pipeline-state.json
+studio/.loop-log.jsonl
+studio/.loop-stop
