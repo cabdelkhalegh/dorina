@@ -45,9 +45,16 @@ from duotone import duotone, RAMPS  # noqa: E402
 # longer reach — that endpoint has been retired, which is why the old image
 # system stopped producing. The current equivalents are the Gemini image models,
 # called through generateContent with an IMAGE response modality.
+# Measured on this key, same prompt, 3:4 (29 Aug 2026):
+#   gemini-3.1-flash-image     ~20s   crisp, defined
+#   gemini-3-pro-image         ~26s   softest gradation, best space for type  <- default
+#   nano-banana-pro-preview   ~194s   beautiful but 10x slower, cropped the subject
+# Pro is the default because it costs 6 seconds over flash for a visibly better
+# image. Nano Banana Pro stays available for a hero shot where the wait is worth it.
 MODELS = {
-    "fast": "gemini-3.1-flash-image",   # cheap, good enough for texture
-    "pro":  "gemini-3-pro-image",       # slower, better light and gradation
+    "fast": "gemini-3.1-flash-image",
+    "pro":  "gemini-3-pro-image",
+    "max":  "nano-banana-pro-preview",
 }
 API = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
 
@@ -122,14 +129,20 @@ def main():
     ap.add_argument("--ramp", choices=list(RAMPS), default="forest")
     ap.add_argument("--aspect", default="3:4",
                     help="aspect ratio: 1:1, 3:4, 4:3, 9:16, 16:9")
-    ap.add_argument("--tier", choices=list(MODELS), default="fast",
-                    help="fast = cheap texture, pro = better light and gradation")
+    ap.add_argument("--tier", choices=list(MODELS), default="pro",
+                    help="fast ~20s | pro ~26s (default) | max = nano-banana-pro, ~3min")
+    ap.add_argument("--batch", action="store_true",
+                    help="generate one image per deck in content/cards.json, from each "
+                         "deck's own brief, and wire the results into the cards")
     ap.add_argument("--keep-raw", action="store_true",
                     help="also keep the untouched generation, for reference")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the prompt and cost note, generate nothing")
     ap.add_argument("--list-prompts", action="store_true")
     a = ap.parse_args()
+
+    if a.batch:
+        return run_batch(a)
 
     if a.list_prompts:
         for k, v in PROMPTS.items():
@@ -162,6 +175,53 @@ def main():
     rel = os.path.relpath(path, REPO).replace("\\", "/")
     print("wrote %s %s  (ramp: %s, brand-locked)" % (rel, size, a.ramp))
     print("Reference it from studio/content/cards.json as:  \"bg\": \"%s\"" % rel)
+
+
+def run_batch(a):
+    """One image per deck, briefed by the deck itself.
+
+    This is the Mission Control pattern — a prompt per post rather than a shared
+    stock library — but the brief is authored in cards.json rather than derived
+    from the copy. That is deliberate: the copy is about pressure, tension and
+    the body, and a model asked to illustrate it literally drifts straight into
+    clinical or distressed imagery, which is the one thing her compliance rules
+    forbid. The brief names a mood instead, and the duotone guarantees palette.
+    """
+    cards_path = os.path.join(STUDIO, "content", "cards.json")
+    with io.open(cards_path, encoding="utf-8") as f:
+        content = json.load(f)
+
+    default_brief = PROMPTS["still-dawn"]
+    made = []
+    for deck in content["decks"]:
+        brief = deck.get("image_brief") or default_brief
+        ramp = deck.get("image_ramp", "forest")
+        print("· %s — generating (%s, %s)" % (deck["id"], MODELS[a.tier], ramp))
+        raw = generate(brief, a.aspect, a.tier)
+
+        raw_path = os.path.join(OUT_DIR, "_raw-%s.jpg" % deck["id"])
+        os.makedirs(OUT_DIR, exist_ok=True)
+        with io.open(raw_path, "wb") as f:
+            f.write(raw)
+        out = os.path.join(OUT_DIR, "deck-%s.jpg" % deck["id"])
+        duotone(raw_path, out, ramp)
+        os.remove(raw_path)
+
+        rel = os.path.relpath(out, REPO).replace("\\", "/")
+        made.append(rel)
+
+        # Wire it into the cards that carry a background.
+        for lang in ("en", "ar"):
+            for card in deck.get(lang, []):
+                if card.get("bg"):
+                    card["bg"] = rel
+        print("  -> %s" % rel)
+
+    with io.open(cards_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(content, ensure_ascii=False, indent=2) + "\n")
+
+    print("\n%d deck image(s) generated and wired into cards.json." % len(made))
+    print("Now re-render:  python build_graphics.py")
 
 
 if __name__ == "__main__":

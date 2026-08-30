@@ -78,7 +78,7 @@
           "lead": "Many women notice pressure only after the moment has become too full.",
           "swipe": "Swipe",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-forest.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "slide",
@@ -87,7 +87,7 @@
           "sub": "My work starts earlier than that.",
           "dots": 4,
           "dotOn": 1,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "ladder",
@@ -96,7 +96,7 @@
           "sub": "Each move produces something usable — a body cue, a Trigger Map, a boundary phrase, a Support Map, a seven-day practice.",
           "dots": 4,
           "dotOn": 2,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "cta",
@@ -106,7 +106,7 @@
           "sub": "Choose the path that fits you.",
           "pill": "Link in bio",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-forest.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         }
       ],
       "ar": [
@@ -117,7 +117,7 @@
           "lead": "تلاحظ كثير من النساء الضغط بعد أن تصبح اللحظة ممتلئة أكثر من اللازم.",
           "swipe": "اسحبي",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-forest.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "slide",
@@ -126,7 +126,7 @@
           "sub": "يبدأ عملي في وقت أبكر من ذلك.",
           "dots": 4,
           "dotOn": 1,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "ladder",
@@ -135,7 +135,7 @@
           "sub": "تنتج كل خطوة أداة قابلة للاستخدام: إشارة جسدية، خريطة محفّز، عبارة حدود، خريطة دعم، أو ممارسة لسبعة أيام.",
           "dots": 4,
           "dotOn": 2,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         },
         {
           "type": "cta",
@@ -145,9 +145,11 @@
           "sub": "واختاري المسار الأنسب لكِ.",
           "pill": "الرابط في البايو",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-forest.jpg"
+          "bg": "assets/social/textures/deck-p1.jpg"
         }
-      ]
+      ],
+      "image_brief": "Minimal abstract composition: a single wide circular arc of warm light that does not quite close, resting on a deep textured surface. Generous calm space in the upper two thirds, soft falloff, fine photographic grain. Cinematic, restrained, contemplative.",
+      "image_ramp": "forest"
     },
     {
       "id": "p2",
@@ -166,7 +168,7 @@
           "lead": "The first sign of pressure is rarely a thought.",
           "swipe": "Swipe",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-mint.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "slide",
@@ -174,7 +176,7 @@
           "lead": "It’s the jaw that sets. The shoulders that climb. The pace that quickens while the to-do list stands still.",
           "dots": 4,
           "dotOn": 1,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "ladder",
@@ -184,7 +186,7 @@
           "sub": "You can’t name what you haven’t noticed.",
           "dots": 4,
           "dotOn": 2,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "practice",
@@ -194,7 +196,7 @@
           "sub": "That’s it. That’s the practice.",
           "pill": "Save this",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-mint.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         }
       ],
       "ar": [
@@ -205,7 +207,7 @@
           "lead": "أول علامة للضغط نادراً ما تكون فكرة.",
           "swipe": "اسحبي",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-mint.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "slide",
@@ -213,7 +215,7 @@
           "lead": "إنها الفكّ الذي يشتد. الكتفان اللذان يرتفعان. الإيقاع الذي يتسارع بينما قائمة المهام واقفة مكانها.",
           "dots": 4,
           "dotOn": 1,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "ladder",
@@ -223,7 +225,7 @@
           "sub": "لا يمكنكِ تسمية ما لم تلاحظيه.",
           "dots": 4,
           "dotOn": 2,
-          "bg": "assets/social/textures/still-ivory.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         },
         {
           "type": "practice",
@@ -233,9 +235,11 @@
           "sub": "هذا كل شيء. هذه هي الممارسة.",
           "pill": "احفظي هذا",
           "disclaimer": true,
-          "bg": "assets/social/textures/still-mint.jpg"
+          "bg": "assets/social/textures/deck-p2.jpg"
         }
-      ]
+      ],
+      "image_brief": "Abstract macro of a single small ripple spreading across an otherwise perfectly still water surface at first light. One quiet disturbance in a calm field, soft reflected light, most of the frame smooth and undisturbed. Meditative, understated.",
+      "image_ramp": "mint"
     }
   ]
 }
