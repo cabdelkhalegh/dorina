@@ -108,6 +108,26 @@ def log_publish(post_id, platform, status, remote_id=None, detail=None):
         print("warning: could not write publish_log: %s" % e, file=sys.stderr)
 
 
+sys.path.insert(0, os.path.join(HERE, "tools"))
+try:
+    from compliance_check import check_post as _compliance_check
+except Exception:  # the gate must exist; failing open would defeat the point
+    _compliance_check = None
+
+
+def compliance_gate(post, queue):
+    """Refuse to publish anything that implies clinical licensure.
+
+    This runs at publish time, not authoring time, on purpose: captions are
+    written weeks earlier and sent by a scheduled job while nobody is watching.
+    A block here is not advisory — the post is skipped.
+    """
+    if _compliance_check is None:
+        raise RuntimeError("compliance checker missing — refusing to publish blind")
+    blocks, warns = _compliance_check(post, queue)
+    return blocks, warns
+
+
 def compose(post, queue):
     """Caption exactly as it will appear: body, hashtags, then the standing footer."""
     parts = [post["caption"]]
@@ -268,6 +288,20 @@ def main():
         caption = compose(post, queue)
         entry = {"id": post["id"], "title": post["title"], "lang": post["lang"],
                  "when": post["day"] + " " + post["time"], "approval": status}
+
+        blocks, warns = compliance_gate(post, queue)
+        if warns:
+            entry["compliance_warnings"] = ["%s — %s" % (t, r) for t, r in warns]
+        if blocks:
+            entry["compliance"] = "BLOCKED"
+            entry["compliance_blocks"] = ["%s — %s" % (t, r) for t, r in blocks]
+            results.append(entry)
+            if not args.dry_run:
+                for platform in post["platforms"]:
+                    log_publish(post["id"], platform, "skipped", None,
+                                "compliance: " + "; ".join(t for t, _ in blocks))
+            continue
+        entry["compliance"] = "passed"
 
         for platform in post["platforms"]:
             if not args.dry_run and already_published(post["id"], platform):
