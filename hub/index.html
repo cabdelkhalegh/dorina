@@ -114,6 +114,12 @@
   .badge{font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.12rem .5rem;border-radius:99px;white-space:nowrap;flex:none}
   .badge.pub{background:#DAE9DD;color:#1E5240}
   .badge.priv{background:#F0E7D2;color:#7A5A1E}
+  .badge.new{background:var(--gold);color:#2A1F0E}
+  .place.first{background:var(--paper);border:1px solid var(--gold);border-radius:14px;padding:1rem 1.1rem;margin:.9rem 0 .4rem;grid-column:1/-1}
+  .place.first .pname{font-size:1.4rem}
+  body.ar .place.first .pname{font-size:1.15rem}
+  .place.first .pdesc{font-size:.84rem;color:var(--soft)}
+  .place.first .pacts{opacity:1}
   .pdesc{font-size:.76rem;color:var(--muted);margin-top:.15rem;line-height:1.5}
   .pacts{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem;opacity:.55;transition:opacity .25s}
   .place:hover .pacts,.place:focus-within .pacts{opacity:1}
@@ -338,7 +344,8 @@
 
   /* ---------- 01 · the places ---------- */
   var LINKS=[
-    {en:'Start here — your guide',ar:'ابدئي من هنا — دليلكِ',den:'Three steps, what is yours, and what we need from you.',dar:'ثلاث خطوات، ما هو لكِ، وما نحتاجه منكِ.',url:BASE+'/start/',pub:0},
+    {en:'Start here — your December answers',ar:'ابدئي من هنا — أجوبتكِ لكانون الأول',den:'Fourteen short answers for your first circle on Saturday 5 December. Reply on WhatsApp, a few at a time.',dar:'أربعة عشر جواباً قصيراً لدائرتكِ الأولى يوم السبت ٥ كانون الأول. أجيبي على واتساب، بضعة أجوبة كل مرة.',url:BASE+'/hub/answers/en.html',urlar:BASE+'/hub/answers/ar.html',pub:0,isNew:1},
+    {en:'Your guide',ar:'دليلكِ',den:'Three steps, what is yours, and what we need from you.',dar:'ثلاث خطوات، ما هو لكِ، وما نحتاجه منكِ.',url:BASE+'/start/',pub:0},
     {en:'Home page',ar:'الصفحة الرئيسية',den:'Your front door — promise, portrait, three paths.',dar:'بوابتكِ — الوعد والصورة والمسارات الثلاثة.',url:BASE+'/',pub:1},
     {en:'Women in Power Circle',ar:'دائرة قوّة للنساء',den:'The Circle page — method, journey, inquiry.',dar:'صفحة الدائرة — المنهج والرحلة وطلب التواصل.',url:BASE+'/women-circle/',pub:1},
     {en:'Private consultation',ar:'الاستشارة الفردية',den:'The one-to-one path.',dar:'مسار الجلسات الفردية.',url:BASE+'/consultation/',pub:1},
@@ -363,15 +370,18 @@
   function renderPlaces(){
     var host=document.getElementById('places');host.innerHTML='';
     LINKS.forEach(function(l,i){
-      var el=document.createElement('div');el.className='place reveal';el.style.setProperty('--d',(i*0.03)+'s');
-      var badge=l.pub
+      var el=document.createElement('div');el.className='place reveal'+(l.isNew?' first':'');el.style.setProperty('--d',(i*0.03)+'s');
+      var url=(isAr()&&l.urlar)||l.url;
+      var badge=l.isNew
+        ? '<span class="badge new">'+(isAr()?'جديد':'New')+'</span>'
+        : l.pub
         ? '<span class="badge pub">'+(isAr()?'للعميلات':'Clients')+'</span>'
         : '<span class="badge priv">'+(isAr()?'لكِ فقط':'Yours')+'</span>';
-      var wa=l.pub?'<a class="mini" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(T(l)+' — '+l.url)+'">'+(isAr()?'واتساب':'WhatsApp')+'</a>':'';
+      var wa=l.pub?'<a class="mini" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(T(l)+' — '+url)+'">'+(isAr()?'واتساب':'WhatsApp')+'</a>':'';
       el.innerHTML='<div class="prow"><span class="pname">'+esc(T(l))+'</span>'+badge+'</div>'+
         '<div class="pdesc">'+esc(isAr()?l.dar:l.den)+'</div>'+
-        '<div class="pacts"><a class="mini solid" target="_blank" rel="noopener" href="'+esc(l.url)+'">'+(isAr()?'افتحي':'Open')+'</a>'+
-        '<button class="mini" type="button" data-copy="'+esc(l.url)+'">'+(isAr()?'انسخي الرابط':'Copy link')+'</button>'+wa+'</div>';
+        '<div class="pacts"><a class="mini solid" target="_blank" rel="noopener" href="'+esc(url)+'">'+(isAr()?'افتحي':'Open')+'</a>'+
+        '<button class="mini" type="button" data-copy="'+esc(url)+'">'+(isAr()?'انسخي الرابط':'Copy link')+'</button>'+wa+'</div>';
       host.appendChild(el);
     });
     host.querySelectorAll('[data-copy]').forEach(function(b){
@@ -402,7 +412,7 @@
     ]},
     {en:'The first circle',ar:'الدائرة الأولى',items:[
       {id:'brainstorm1',en:'Run your first Brainstorm Studio session with your co-coach',ar:'أقيمي أول جلسة عصف ذهني مع شريكتكِ',who:'YOU'},
-      {id:'pilotplan',en:'Decide date, venue, price, and cap (12–18 women)',ar:'قرري التاريخ والمكان والسعر والعدد (١٢–١٨ امرأة)',who:'YOU'},
+      {id:'pilotplan',en:'Answer your December page: date, room, price, seats',ar:'أجيبي على صفحة كانون الأول: التاريخ والمكان والسعر والمقاعد',who:'YOU'},
       {id:'invite',en:'Invite your warm list first',ar:'ادعي دائرتكِ القريبة أولاً',who:'YOU'},
       {id:'print',en:'Print the kit for every seat',ar:'اطبعي الحقيبة لكل مقعد',who:'YOU'},
       {id:'pilot',en:'Run the pilot circle 🌿',ar:'أقيمي الدائرة التجريبية 🌿',who:'YOU'},
@@ -484,8 +494,8 @@
 
   /* ---------- 03 · to decide ---------- */
   var DECISIONS=[
-    {id:'d-pilot',en:'The first circle — when, where, how much?',ar:'الدائرة الأولى — متى وأين وبكم؟',qen:'Write the date, the venue (or online), the price per seat, and the cap. This unlocks the launch posts.',qar:'اكتبي التاريخ والمكان (أو أونلاين)، سعر المقعد، والعدد الأقصى. هذا القرار يفتح منشورات الإطلاق.',type:'text',
-     phen:'e.g. Saturday 20 Sep, Beirut — Badaro, $35, 15 women',phar:'مثلاً: السبت ٢٠ أيلول، بيروت — بدارو، ٣٥$، ١٥ امرأة'},
+    {id:'d-pilot',en:'The first circle — when, where, how much?',ar:'الدائرة الأولى — متى وأين وبكم؟',qen:'This now lives on your December answers page, the first card in "The places": Saturday 5 December, the room, the price, the seats. Answer it there on WhatsApp, then note it here.',qar:'هذا السؤال صار في صفحة أجوبتكِ لكانون الأول، البطاقة الأولى في «أماكنكِ»: السبت ٥ كانون الأول، المكان، السعر، المقاعد. أجيبي هناك على واتساب، ثم دوّني هنا.',type:'text',
+     phen:'e.g. Saturday 5 Dec, Beirut, $40 a seat, 15 women',phar:'مثلاً: السبت ٥ كانون الأول، بيروت، ٤٠$ للمقعد، ١٥ امرأة'},
     {id:'d-posts',en:'The six LinkedIn posts',ar:'منشورات لينكدإن الستة',qen:'Read them (link in "The places"). Publish as written, or with your edits?',qar:'اقرئيها (الرابط في «أماكنكِ»). ننشرها كما هي، أم بتعديلاتكِ؟',type:'choice',
      opts:[{en:'Publish as written',ar:'انشروها كما هي'},{en:'I will send edits',ar:'سأرسل تعديلاتي'},{en:'Let me rewrite in my voice',ar:'سأعيد كتابتها بصوتي'}]},
     {id:'d-renew',en:'Hypnotherapy & Time Line certificates',ar:'شهادتا التنويم وخط الزمن',qen:'Both lapsed (≈$95 + $125/year to renew). You cannot advertise hypnotherapy in Dubai either way — renewal only keeps the titles current on paper.',qar:'انتهت صلاحيتهما (نحو ٩٥$ + ١٢٥$ سنوياً للتجديد). لا يمكن الإعلان عن التنويم في دبي في الحالتين — التجديد يحفظ اللقب على الورق فقط.',type:'choice',
