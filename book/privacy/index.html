@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy notice · Dorina Salman</title>
+<meta name="description" content="What the booking page collects, why, who sees it, and how to ask for a copy, a correction or deletion.">
+<meta name="theme-color" content="#0B2C25">
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans+Arabic:wght@400;600&family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="../../assets/booking/booking.css">
+<script>document.documentElement.classList.add('bk-motion');</script>
+<script defer src="../../assets/launch-config.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var L = window.LAUNCH; if (!L) return;
+  var lang = L.applyLang(L.lang(), true);
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-lang]')) lang = L.applyLang(lang === 'ar' ? 'en' : 'ar'); });
+  var fw = document.getElementById('bk-footer-wa'); if (fw) fw.href = L.waLink(lang === 'ar' ? 'مرحباً دورينا' : 'Hello Dorina');
+  var ft = document.querySelector('.bk-footer');
+  if (ft && 'IntersectionObserver' in window) new IntersectionObserver(function (en) { ft.classList.toggle('is-on', en[0].isIntersecting); }).observe(ft);
+  var wa = document.getElementById('pv-wa'); if (wa) wa.href = L.waLink(lang === 'ar' ? 'مرحباً دورينا، بدّي إطلب حذف معلوماتي من الحجوزات.' : 'Hello Dorina, I would like my booking details deleted.');
+  if (!L.config.showTodoMarkers) document.body.classList.add('bk-no-todo');
+});
+</script>
+</head>
+<body>
+<script>(function(){var l='en';try{var q=new URLSearchParams(location.search).get('lang');l=q==='ar'||q==='en'?q:(localStorage.getItem('dorinaLang')||'en')}catch(e){}if(l==='ar'){document.body.classList.add('ar');document.documentElement.lang='ar';document.documentElement.dir='rtl'}})();</script>
+<header class="bk-nav">
+  <div class="bk-nav__in">
+    <a class="bk-brand" href="../../"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg><b>Dorina Salman</b></a>
+    <a class="bk-nav__link" href="../"><span data-en>Reserve a seat</span><span data-ar data-ar-new>احجزي مقعد</span></a>
+    <button class="bk-lang" type="button" data-lang aria-label="Switch language"><span data-en>العربية</span><span data-ar>English</span></button>
+  </div>
+</header>
+<main>
+  <section class="bk-hero bk-bg-forest">
+    <div class="bk-layer bk-tex" aria-hidden="true"></div>
+    <div class="bk-layer bk-bloom bk-bloom--mint" aria-hidden="true"></div>
+    <div class="bk-layer bk-ringbg" aria-hidden="true"><svg viewBox="0 0 100 100"><circle class="bk-contour" cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width=".25"/><path class="bk-ring-path" pathLength="100" d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle class="bk-ring-dot" cx="71.86" cy="23.96" r="2.2" fill="#C59A54"/></svg></div>
+    <div class="bk-layer bk-grain" aria-hidden="true"></div>
+    <div class="bk-layer bk-scrim" aria-hidden="true"></div>
+    <div class="bk-hero__in">
+      <p class="bk-eyebrow"><span data-en>Privacy notice</span><span data-ar data-ar-new>إشعار الخصوصية</span></p>
+      <h1 class="bk-h1"><span class="bk-mask"><span style="--i:0"><span data-en>What we keep,</span><span data-ar data-ar-new>شو منحفظ،</span></span></span><span class="bk-mask"><span style="--i:1"><span data-en>and why.</span><span data-ar data-ar-new>وليش.</span></span></span></h1>
+      <p class="bk-lead"><span data-en>The least needed to hold your seat and reach you about it. Nothing more.</span><span data-ar data-ar-new>أقل شي لازم لنحجزلك المقعد ونتواصل معك. وبس.</span></p>
+    </div>
+  </section>
+  <section class="bk-stage bk-bg-ivory">
+    <div class="bk-layer bk-bloom bk-bloom--sage" aria-hidden="true"></div>
+    <div class="bk-layer bk-bloom bk-bloom--rose" aria-hidden="true"></div>
+    <div class="bk-layer bk-grain" aria-hidden="true"></div>
+    <article class="bk-card"><div class="bk-step bk-prose">
+      <!-- PRIVACY-REVIEW-MARKER: this notice is a plain-language placeholder, not a legal text. Delete the line below once it has been reviewed; it must be gone before bookingMode becomes "system" (tests/go-live-guard.test.js). -->
+      
+
+      <h2><span data-en>What is collected</span><span data-ar data-ar-new>شو منجمع</span></h2>
+      <div data-en><ul>
+        <li>When you reserve a seat: your name, your phone number, your email if you choose to give it, the session you chose, whether you come alone or with a friend (and her first name), and, if you answer it, who told you about the circle.</li>
+        <li>When you join the Next Circle list: your name and phone number, and what you would like to hear about.</li>
+        <li>Feedback after a circle: your answers. It carries no name or phone unless you add your first name or a work email.</li>
+        <li>For each booking, a reference, its status, and how and when it was paid, which Dorina records herself.</li>
+      </ul><p>No card details, no account, no password, and no questions about your health or personal history.</p></div>
+      <div data-ar data-ar-new><ul>
+        <li>لمّا تحجزي مقعد: اسمك، رقمك، إيميلك إذا حبّيتي، الجلسة يلّي اخترتيها، إذا جايي لوحدك أو مع صديقة (واسمها الأول)، وإذا جاوبتي، مين خبّرك عن الدائرة.</li>
+        <li>لمّا تنضمّي لقائمة الدائرة الجاية: اسمك ورقمك، وشو بتحبّي تعرفي عنه.</li>
+        <li>رأيك بعد الدائرة: أجوبتك، بلا اسم أو رقم إلا إذا زدتي اسمك الأول أو إيميل الشغل.</li>
+        <li>لكل حجز: رقم الحجز، حالته، وكيف وإيمتى انْدفع، ودورينا بتسجّلهم بنفسها.</li>
+      </ul><p>ما في بطاقات، ولا حساب، ولا كلمة سر، ولا أسئلة عن صحّتك أو ماضيكِ.</p></div>
+
+      <h2><span data-en>Why</span><span data-ar data-ar-new>ليش</span></h2>
+      <p><span data-en>To hold your seat, to send you the payment details, the reminders and the address the day before, and, if you joined the list, the Friday message and the next dates. The source tag in a link (for example from a poster) only tells Dorina which channel brings bookings.</span><span data-ar data-ar-new>لنحجزلك المقعد، ونبعتلك تفاصيل الدفع والتذكير والعنوان قبل بيوم، وإذا انضمّيتي للقائمة، رسالة الجمعة والمواعيد الجاية. علامة المصدر بالرابط (مثلاً من ملصق) بتقول لدورينا بس من وين عم تجي الحجوزات.</span></p>
+
+      <h2><span data-en>Who sees it</span><span data-ar data-ar-new>مين بيشوفها</span></h2>
+      <p><span data-en>Dorina, from her own signed-in page. When she asks the person who maintains the site for help, that person can see the details too, only to set up or fix the booking system. Nobody else: the details are not sold or shared, and nobody on a list can see your number, because messages go out on a WhatsApp broadcast list, never a group. The data is kept with a hosting provider</span><span data-ar data-ar-new>دورينا، من صفحتها الخاصة. ولمّا تطلب مساعدة من الشخص يلّي بيهتمّ بالموقع، فيه يشوف المعلومات كمان، بس ليركّب أو يصلّح نظام الحجز. وما حدا غيرهم: المعلومات ما بتنباع ولا بتنعطى لحدا، وما حدا عالقائمة بيشوف رقمك، لأن الرسائل بتطلع على لائحة بث بواتساب، مش مجموعة. البيانات محفوظة عند مزوّد استضافة</span>.</p>
+
+      <h2><span data-en>How long it is kept</span><span data-ar data-ar-new>قدّيش بتنحفظ</span></h2>
+      
+
+      <h2><span data-en>Seeing, correcting or deleting your details</span><span data-ar data-ar-new>تشوفي أو تصحّحي أو تحذفي معلوماتك</span></h2>
+      <p><span data-en>Message Dorina on WhatsApp and say what you would like: a copy, a correction, or deletion. To leave the Friday list, reply "stop" to any message.</span><span data-ar data-ar-new>راسلي دورينا على واتساب وقوليلها شو بدّك: نسخة، تصحيح، أو حذف. لتطلعي من قائمة الجمعة، ردّي «توقّف» على أي رسالة.</span></p>
+      <p><a class="bk-btn bk-btn--wa" id="pv-wa" href="../../contact/" target="_blank" rel="noopener"><span data-en>Ask on WhatsApp</span><span data-ar data-ar-new>اسألي على واتساب</span></a></p>
+      
+    </div></article>
+  </section>
+</main>
+<footer class="bk-footer bk-bg-forest">
+  <div class="bk-layer bk-tex" aria-hidden="true"></div>
+  <div class="bk-layer bk-bloom bk-bloom--gold" aria-hidden="true"></div>
+  <svg class="bk-footer__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle class="bk-footer__arc" cx="50" cy="50" r="47"/><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25"/><circle class="bk-footer__arc" cx="50" cy="50" r="22"/><circle class="bk-footer__dot" cx="71.86" cy="23.96" r="1.4"/></svg>
+  <div class="bk-layer bk-grain" aria-hidden="true"></div>
+  <div class="bk-footer__in">
+    <div class="bk-footer__top">
+      <div>
+        <p class="bk-footer__brand"><svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true" focusable="false"><path d="M 79.14 32.49 A 34 34 0 1 1 62.18 18.25" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/><circle cx="71.86" cy="23.96" r="6" fill="#C59A54"/></svg>Dorina Salman</p>
+        <p class="bk-footer__lane"><span data-en>Women’s wellbeing · stress literacy · emotional awareness · Lebanon</span><span data-ar>رفاه النساء · فهم التوتر · الوعي بالمشاعر · لبنان</span></p>
+        <div class="bk-footer__wawrap"><a class="bk-footer__wa" id="bk-footer-wa" href="../../contact/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5L9.7 7.6c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 2.6 1.1 2.6.7 3.1.7.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3z"/></svg><span data-en>WhatsApp Dorina</span><span data-ar>راسلي دورينا واتساب</span></a></div>
+      </div>
+      <ul class="bk-footer__links">
+        <li><a href="../../women-circle/"><span data-en>Circle</span><span data-ar>الدائرة</span></a></li>
+        <li><a href="../../hosted/"><span data-en>Hosted circles</span><span data-ar>دوائر مستضافة</span></a></li>
+        <li><a href="../../hosted/teams/"><span data-en>For teams</span><span data-ar data-ar-new>للفرق</span></a></li>
+        <li><a href="./" aria-current="page"><span data-en>Privacy</span><span data-ar data-ar-new>الخصوصية</span></a></li>
+        <li><a href="../../contact/"><span data-en>Contact</span><span data-ar>التواصل</span></a></li>
+      </ul>
+    </div>
+    <div class="bk-footer__rule"></div>
+    <!-- AL-KENTAWI-SITE-CREDIT -->
+    <p class="bk-credit" lang="en" dir="ltr">Site by Al Kentawi</p>
+  </div>
+</footer>
+</body>
+</html>
